@@ -1,740 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UN AI Impact Assessment — Workflow Application Prototype</title>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UN AI Impact Assessment — Application Overview</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
 <div class="deck" id="deck">
 
-<!-- =====================================================
-     SLIDE 1 — HERO
-===================================================== -->
-<div class="slide slide-active" id="slide-1">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
+<!-- S1 HERO -->
+<div class="slide slide-active" id="s1">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
     <div class="progress-track"><div class="progress-fill" style="width:5%"></div></div>
-    <div class="slide-badge">1 / 20</div>
-  </header>
+    <div class="slide-badge">1 / 21</div>
+  </div>
   <div class="hero-wrap">
     <div class="hero-left">
-      <div class="hero-pill a a1"><span class="pill-dot"></span>AI Impact Assessment Focus Group · June 2026</div>
-      <div class="hero-title a a2">UN AI Impact<br><span class="line2">Assessment Workflow</span></div>
-      <p class="hero-sub a a3">Converting the Excel-based AIIA process into a structured digital governance workflow — intake, screening, assessment, risk scoring, mitigation, review, and policy-guided AI chat.</p>
+      <div class="hero-pill a a1"><span class="pill-dot"></span>FOCUS GROUP PREVIEW · JUNE 2026</div>
+      <h1 class="hero-title a a2">UN AI Impact<br><span class="line2">Assessment</span><br>Workflow App</h1>
+      <p class="hero-sub a a3">A digital-first governance platform converting the UN AI Impact Assessment from an Excel/email process into a structured, auditable, role-based workflow — built for the UN system.</p>
       <div class="hero-stats a a4">
-        <div class="hstat"><div class="hstat-n">10</div><div class="hstat-l">AI Principles</div></div>
+        <div class="hstat"><div class="hstat-n">10</div><div class="hstat-l">CEB AI Principles</div></div>
         <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">User Roles</div></div>
-        <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Assessment Routes</div></div>
+        <div class="hstat"><div class="hstat-n">6</div><div class="hstat-l">Workflow Stages</div></div>
+        <div class="hstat"><div class="hstat-n">∞</div><div class="hstat-l">Scalable Entities</div></div>
       </div>
     </div>
     <div class="hero-right a a3">
       <div class="globe">
-        <div class="ring r3"></div>
-        <div class="ring r2"></div>
-        <div class="ring r1"></div>
-        <div class="globe-core"><img src="images/UN_emblem_blue.svg.png" alt="UN emblem"/></div>
-        <div class="gdot" style="top:18%;left:50%;transform:translateX(-50%)"></div>
-        <div class="gdot" style="top:50%;right:8%;transform:translateY(-50%);width:6px;height:6px;opacity:.6"></div>
-        <div class="gdot" style="bottom:20%;left:20%;width:5px;height:5px;opacity:.5"></div>
+        <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+        <div class="globe-core"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(0,200,255,0.9)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="gdot" style="top:22%;left:66%"></div>
+        <div class="gdot" style="top:50%;right:12%;width:5px;height:5px;opacity:.6"></div>
+        <div class="gdot" style="bottom:24%;left:30%;width:6px;height:6px"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 2 — THE PROBLEM
-===================================================== -->
-<div class="slide" id="slide-2">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
+<!-- S2 THE PROBLEM -->
+<div class="slide" id="s2">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
     <div class="progress-track"><div class="progress-fill" style="width:10%"></div></div>
-    <div class="slide-badge">2 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">The Problem</div>
-    <div class="h2 a a2">Why the current process needs to change</div>
-    <p class="sub a a3" style="margin-bottom:10px">The AIIA today relies on Excel files distributed by email — creating fragmentation, inconsistency, and zero oversight visibility across entities.</p>
-    <div class="compare-wrap a a4">
+    <div class="slide-badge">2 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">The Challenge</div>
+    <h2 class="h2 a a2">Why the current process falls short</h2>
+    <p class="sub a a2">UN entities manage AI impact assessments through spreadsheets and email chains — creating accountability gaps, inconsistent outcomes, and no portfolio-level visibility.</p>
+    <div class="compare-wrap a a3" style="flex:1;">
       <div class="compare-col">
-        <div class="compare-hdr bad">⚠ Today — Excel &amp; Email Process</div>
+        <div class="compare-hdr bad">&#x2715; &nbsp;Today: Excel + Email</div>
         <div class="compare-body">
-          <div class="ci"><span class="ci-icon">📎</span>Assessments sent as spreadsheet attachments via email — no central record</div>
-          <div class="ci"><span class="ci-icon">🔀</span>No dynamic routing — all entities fill the full questionnaire regardless of risk level</div>
-          <div class="ci"><span class="ci-icon">👥</span>No structured handoff between focal points, contributors, and reviewers</div>
-          <div class="ci"><span class="ci-icon">📊</span>Leadership cannot see risk distribution or coverage without manual aggregation</div>
-          <div class="ci"><span class="ci-icon">🔍</span>No audit trail of who completed what, when, or what decisions were made</div>
-          <div class="ci"><span class="ci-icon">💬</span>No way for entities to query guidance documents or prior decisions</div>
-          <div class="ci"><span class="ci-icon">🔄</span>No lifecycle reassessment trigger when a use case evolves</div>
+          <div class="ci"><span class="ci-icon">📎</span>Assessment forms shared as Excel attachments — no version control or audit trail</div>
+          <div class="ci"><span class="ci-icon">📧</span>Review decisions in email threads — easily lost, hard to retrieve or audit</div>
+          <div class="ci"><span class="ci-icon">🔀</span>No consistent scoring — reviewers apply different standards across entities</div>
+          <div class="ci"><span class="ci-icon">🕳️</span>Risk mitigation tracked informally — no follow-up or completion enforcement</div>
+          <div class="ci"><span class="ci-icon">🔒</span>No data isolation — shared documents can expose other entities' assessments</div>
+          <div class="ci"><span class="ci-icon">📊</span>No cross-entity analytics or portfolio-level risk view for oversight bodies</div>
+          <div class="ci"><span class="ci-icon">⏳</span>Manual questionnaire routing — no automated path determination</div>
         </div>
       </div>
       <div class="compare-col">
-        <div class="compare-hdr good">✦ This Application — Digital Workflow</div>
+        <div class="compare-hdr good">&#x2713; &nbsp;With the AIIA Workflow App</div>
         <div class="compare-body">
-          <div class="ci"><span class="ci-icon">🌐</span>Centralised online workflow — one place from registration to approval decision</div>
-          <div class="ci"><span class="ci-icon">🎯</span>Screening routes each use case to minimal, standard, or full assessment automatically</div>
-          <div class="ci"><span class="ci-icon">🔐</span>Role-based access with structured handoff, RBAC, and entity-scoped data isolation</div>
-          <div class="ci"><span class="ci-icon">📈</span>Real-time dashboard with risk distribution, pipeline, and principle heatmap</div>
-          <div class="ci"><span class="ci-icon">📋</span>Immutable audit log records every action — actor, timestamp, metadata</div>
-          <div class="ci"><span class="ci-icon">🤖</span>Policy chat powered by RAG over approved guidance documents (RBAC-enforced)</div>
-          <div class="ci"><span class="ci-icon">⏱</span>Questionnaire version tracking enables lifecycle reassessment when needed</div>
+          <div class="ci"><span class="ci-icon">🔄</span>Structured digital workflow — fully versioned and traceable from intake to decision</div>
+          <div class="ci"><span class="ci-icon">📋</span>Reviewer decisions recorded in-platform with rationale, timestamps, audit log</div>
+          <div class="ci"><span class="ci-icon">⚖️</span>Automated risk scoring via CEB AIIA question weights — consistent, objective</div>
+          <div class="ci"><span class="ci-icon">✅</span>Mitigation action tracking built into the workflow — completion verified before approval</div>
+          <div class="ci"><span class="ci-icon">🛡️</span>Row-Level Security isolates each entity's data — enforced at the database layer</div>
+          <div class="ci"><span class="ci-icon">📈</span>Cross-entity dashboard and analytics for the AI governance oversight function</div>
+          <div class="ci"><span class="ci-icon">🧠</span>Screening logic automatically routes: minimal, standard, or full assessment path</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 3 — OBJECTIVES
-===================================================== -->
-<div class="slide" id="slide-3">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:15%"></div></div>
-    <div class="slide-badge">3 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Project Objectives</div>
-    <div class="h2 a a2">Nine goals driving this prototype</div>
-    <div class="grid2 a a3" style="flex:1;gap:8px">
-      <div>
-        <div class="step"><div class="snum">1</div><div><div class="slabel">Digitise the AI Impact Assessment questionnaire</div><div class="sdesc">Extract questions, weights, options &amp; principle mappings from source Excel into structured JSON and Supabase.</div></div></div>
-        <div class="step"><div class="snum">2</div><div><div class="slabel">Dynamic screening and route selection</div><div class="sdesc">A short screener determines minimal, standard, or full assessment — reducing unnecessary burden.</div></div></div>
-        <div class="step"><div class="snum">3</div><div><div class="slabel">Qualitative justification and evidence capture</div><div class="sdesc">Each response accepts free-text explanation and evidence URL to create a documented rationale for reviewers.</div></div></div>
-        <div class="step"><div class="snum">4</div><div><div class="slabel">Preliminary risk scoring engine</div><div class="sdesc">Weighted question × response scores across 10 AI principles and 6 lifecycle stages → exposure and residual risk.</div></div></div>
-        <div class="step"><div class="snum">5</div><div><div class="slabel">Mitigation action tracking</div><div class="sdesc">High-risk areas generate mitigation actions that entities document, track, and update over time.</div></div></div>
-      </div>
-      <div>
-        <div class="step"><div class="snum">6</div><div><div class="slabel">Structured review and escalation workflow</div><div class="sdesc">Reviewers work a submission queue and record decisions: approve, return, request mitigation, or escalate.</div></div></div>
-        <div class="step"><div class="snum">7</div><div><div class="slabel">Governance dashboards and analytics</div><div class="sdesc">Executive summary, risk distribution, principle heatmap, mitigation status — with role-scoped access.</div></div></div>
-        <div class="step"><div class="snum">8</div><div><div class="slabel">Policy chat with RAG (retrieval-augmented generation)</div><div class="sdesc">Entities query guidance documents and prior decisions. RBAC enforces entity-scoped retrieval — no cross-entity leakage.</div></div></div>
-        <div class="step"><div class="snum">9</div><div><div class="slabel">Azure migration-ready architecture</div><div class="sdesc">Clean adapter pattern allows migration to Azure PostgreSQL, Azure AI Search, and Microsoft Entra ID without rewriting core logic.</div></div></div>
-      </div>
+<!-- S3 OBJECTIVES -->
+<div class="slide" id="s3">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:14%"></div></div>
+    <div class="slide-badge">3 / 21</div>
+  </div>
+  <div class="pad-narrow" style="max-width:900px">
+    <div class="eyebrow a a1">Design Goals</div>
+    <h2 class="h2 a a2">What this application achieves</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-around;" class="a a3">
+      <div class="step"><div class="snum">1</div><div><div class="slabel">Digitise the full AIIA lifecycle</div><div class="sdesc">Replace the static Excel form with a structured digital workflow: intake, screening, dynamic questionnaire, risk scoring, mitigation planning, and reviewer decision — all in one auditable platform.</div></div></div>
+      <div class="step"><div class="snum">2</div><div><div class="slabel">Embed the 10 CEB AI Principles as the assessment spine</div><div class="sdesc">Every questionnaire question maps to one of the 10 UN/CEB AI principles, ensuring risk scoring directly reflects alignment with the UN governance framework — not a custom scoring model.</div></div></div>
+      <div class="step"><div class="snum">3</div><div><div class="slabel">Enforce role-based access and entity data isolation</div><div class="sdesc">Row-Level Security ensures each entity can only access its own assessments. Reviewers and admins get cross-entity views. Every action is logged to an immutable audit trail.</div></div></div>
+      <div class="step"><div class="snum">4</div><div><div class="slabel">Enable portfolio-level AI governance visibility</div><div class="sdesc">The analytics dashboard gives the AI governance oversight function a real-time view of risk distribution, assessment pipeline status, and AI principle compliance across all UN entities.</div></div></div>
+      <div class="step"><div class="snum">5</div><div><div class="slabel">Provide policy-grounded decision support via RAG</div><div class="sdesc">The RAG-powered policy chat lets reviewers and focal points ask natural-language questions against authoritative UN AI governance documents — with citation-backed, entity-scoped answers.</div></div></div>
+      <div class="step"><div class="snum">6</div><div><div class="slabel">Be Azure-ready by design — zero vendor lock-in</div><div class="sdesc">The WorkflowStore adapter pattern isolates the application from its backend. Migration from Supabase to Azure PostgreSQL + Microsoft Entra ID requires no changes to application code.</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 4 — USER ROLES OVERVIEW
-===================================================== -->
-<div class="slide" id="slide-4">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
-    <div class="slide-badge">4 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Focus Group &amp; Users</div>
-    <div class="h2 a a2">Five roles — three operational spaces</div>
-    <p class="sub a a3" style="margin-bottom:10px">Each role has a defined scope and data access boundary. Row-level security in the database enforces entity isolation — no application-layer override is permitted.</p>
-    <div class="grid5 a a4" style="flex:1;align-content:start">
-      <div class="card b-blue" style="padding:16px 14px">
-        <div style="font-size:26px;margin-bottom:8px">🧑‍💼</div>
-        <div class="ct">Entity Focal Point</div>
-        <div class="cb">Designated governance officer. Registers use cases, drives the assessment workflow end-to-end, and submits for review. Sees own entity only.</div>
-        <div style="margin-top:8px"><span class="badge b-blue">entity_focal_point</span></div>
-      </div>
-      <div class="card b-blue" style="padding:16px 14px">
-        <div style="font-size:26px;margin-bottom:8px">🔬</div>
-        <div class="ct">Contributor</div>
-        <div class="cb">Technical or subject-matter expert within the entity. Completes assigned questionnaire sections and provides evidence. Cannot register or submit.</div>
-        <div style="margin-top:8px"><span class="badge b-blue">contributor</span></div>
-      </div>
-      <div class="card b-green" style="padding:16px 14px">
-        <div style="font-size:26px;margin-bottom:8px">⚖️</div>
-        <div class="ct">Reviewer</div>
-        <div class="cb">Methodology owner or governance body member. Reviews submitted assessments across all entities. Approves, returns, requests mitigation, or escalates.</div>
-        <div style="margin-top:8px"><span class="badge b-low">reviewer</span></div>
-      </div>
-      <div class="card b-amber" style="padding:16px 14px">
-        <div style="font-size:26px;margin-bottom:8px">⚙️</div>
-        <div class="ct">Administrator</div>
-        <div class="cb">Methodology team. Manages users, entities, questionnaire versions, and scoring logic. Full cross-entity visibility and audit access.</div>
-        <div style="margin-top:8px"><span class="badge b-med">admin</span></div>
-      </div>
-      <div class="card" style="padding:16px 14px">
-        <div style="font-size:26px;margin-bottom:8px">👁</div>
-        <div class="ct">Governance Viewer</div>
-        <div class="cb">Leadership or oversight body. Read-only access to dashboards and cross-entity analytics. No edit, register, or review privileges.</div>
-        <div style="margin-top:8px"><span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1)">viewer</span></div>
-      </div>
-    </div>
-    <div class="a a5" style="margin-top:10px;background:rgba(0,158,219,.06);border:1px solid rgba(0,158,219,.12);border-radius:10px;padding:10px 16px;font-size:11.5px;color:rgba(255,255,255,.5)">
-      <strong style="color:rgba(0,200,255,.7)">Next 4 slides:</strong> Deep-dive into each role — what they do, what they can see, and how they interact. Then the full workflow, RBAC table, and system details follow.
+<!-- S4 AI PRINCIPLES -->
+<div class="slide" id="s4">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:19%"></div></div>
+    <div class="slide-badge">4 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Assessment Spine</div>
+    <h2 class="h2 a a2">10 CEB AI Principles</h2>
+    <p class="sub a a2" style="font-size:13px;margin-bottom:10px;">Every questionnaire question maps to one of these principles. Risk scoring aggregates across all 10 domains to produce exposure and residual risk scores.</p>
+    <div class="pgrid a a3">
+      <div class="pitem"><div class="pnum">01</div><div class="ptxt">Do No Harm</div><div class="pdesc">Prevent adverse impacts on people, communities, and the environment. AI must not create, amplify, or enable physical, social, psychological, or economic harm.</div></div>
+      <div class="pitem"><div class="pnum">02</div><div class="ptxt">Defined Purpose, Necessity &amp; Proportionality</div><div class="pdesc">AI deployment must serve a clear, justified objective. Use only what is necessary and proportionate — no broader data collection, no scope creep beyond the stated aim.</div></div>
+      <div class="pitem"><div class="pnum">03</div><div class="ptxt">Safety and Security</div><div class="pdesc">Ensure AI systems are reliable, secure, and resistant to adversarial attacks, manipulation, and unintended failures throughout the full operational lifecycle.</div></div>
+      <div class="pitem"><div class="pnum">04</div><div class="ptxt">Fairness and Non-Discrimination</div><div class="pdesc">Identify and mitigate bias. Ensure AI outputs are equitable across gender, nationality, age, disability, and other characteristics protected under international human rights law.</div></div>
+      <div class="pitem"><div class="pnum">05</div><div class="ptxt">Sustainability</div><div class="pdesc">Account for long-term environmental, economic, and social consequences of AI — including energy consumption, resource use, labour displacement, and community impact.</div></div>
+      <div class="pitem"><div class="pnum">06</div><div class="ptxt">Privacy, Data Protection &amp; Governance</div><div class="pdesc">Protect personal data, ensure lawful processing with proper consent, and maintain responsible governance of all data assets used in AI training, testing, and operation.</div></div>
+      <div class="pitem"><div class="pnum">07</div><div class="ptxt">Human Autonomy and Oversight</div><div class="pdesc">Preserve meaningful human control. Affected individuals must be able to understand, challenge, and override AI-assisted decisions that affect their rights or welfare.</div></div>
+      <div class="pitem"><div class="pnum">08</div><div class="ptxt">Transparency and Explainability</div><div class="pdesc">Be open about AI use. Provide understandable explanations of how systems operate and how decisions are reached — to those affected and to governance oversight bodies.</div></div>
+      <div class="pitem"><div class="pnum">09</div><div class="ptxt">Responsibility and Accountability</div><div class="pdesc">Establish clear ownership for AI outcomes. Define who is answerable when AI systems cause harm, produce errors, or unintended consequences — and ensure redress mechanisms exist.</div></div>
+      <div class="pitem"><div class="pnum">10</div><div class="ptxt">Inclusion and Participation</div><div class="pdesc">Ensure AI benefits reach all groups. Engage diverse stakeholders — especially marginalised communities — in the design, deployment, and governance of AI systems.</div></div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 5 — ROLE INTERACTION SWIMLANE
-===================================================== -->
-<div class="slide" id="slide-5">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
-    <div class="slide-badge">5 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role Activity Map</div>
-    <div class="h2 a a2">Who participates at each workflow stage</div>
-
-    <div class="swimlane-section a a3">
-      <table class="swimlane">
-        <thead>
-          <tr>
-            <th>Role</th>
-            <th>Register</th>
-            <th>Screening</th>
-            <th>Questionnaire</th>
-            <th>Risk Score</th>
-            <th>Mitigation</th>
-            <th>Submit</th>
-            <th>Review Queue</th>
-            <th>Decision</th>
-            <th>Audit Log</th>
-            <th>Dashboard</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row-fp">
-            <td>🧑‍💼 Focal Point</td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-view">view</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-own">own entity</span></td>
-            <td><span class="sw-own">own entity</span></td>
-          </tr>
-          <tr class="row-contrib">
-            <td>🔬 Contributor</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-view">view</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-own">own entity</span></td>
-          </tr>
-          <tr class="row-reviewer">
-            <td>⚖️ Reviewer</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-view">read only</span></td>
-            <td><span class="sw-all">all entities</span></td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-all">all entities</span></td>
-            <td><span class="sw-all">all entities</span></td>
-          </tr>
-          <tr class="row-admin">
-            <td>⚙️ Admin</td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-all">all entities</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-full">●</span></td>
-            <td><span class="sw-all">all entities</span></td>
-            <td><span class="sw-all">all entities</span></td>
-          </tr>
-          <tr class="row-viewer">
-            <td>👁 Viewer</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-lim">limited</span></td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-view">read only</span></td>
-            <td class="sw-na">—</td>
-            <td><span class="sw-lim">limited</span></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="sw-legend a a4">
-        <div class="sw-leg-item"><span class="sw-full" style="font-size:14px">●</span> Full action rights</div>
-        <div class="sw-leg-item"><span class="sw-all">all entities</span> Cross-entity read/write</div>
-        <div class="sw-leg-item"><span class="sw-own">own entity</span> Scoped to own entity only</div>
-        <div class="sw-leg-item"><span class="sw-view">view</span> Read-only access</div>
-        <div class="sw-leg-item"><span class="sw-lim">limited</span> Partial / summary view</div>
-        <div class="sw-leg-item" style="color:rgba(255,255,255,.2)">— &nbsp;No access</div>
-        <div class="sw-leg-item" style="margin-left:auto;color:rgba(0,200,255,.4);font-size:9.5px">Database RLS enforces all entity boundaries — bypassing via the application layer is not permitted.</div>
-      </div>
-    </div>
+<!-- S5 END-TO-END WORKFLOW -->
+<div class="slide" id="s5">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:24%"></div></div>
+    <div class="slide-badge">5 / 21</div>
   </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 6 — ENTITY FOCAL POINT
-===================================================== -->
-<div class="slide" id="slide-6">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:30%"></div></div>
-    <div class="slide-badge">6 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role Deep-Dive · 1 of 4</div>
-    <div class="h2 a a2">Entity Focal Point — the assessment owner</div>
-
-    <div class="rjourney-wide a a3">
-      <!-- Left: who they are + what they can/cannot do -->
-      <div>
-        <div class="role-hero-card blue">
-          <div class="rhc-icon">🧑‍💼</div>
-          <div>
-            <div class="rhc-title">Entity Focal Point</div>
-            <div class="rhc-code">role: entity_focal_point</div>
-            <div class="rhc-desc">The designated governance officer within each participating UN entity. Owns the AI use case assessment lifecycle end-to-end — from registration to submission. One or more focal points may exist per entity.</div>
-          </div>
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px">Access &amp; Capabilities</div>
-        <div class="scope-list">
-          <div class="scope-item scope-can">Register new AI use cases for their entity</div>
-          <div class="scope-item scope-can">Run screening questions and receive route assignment</div>
-          <div class="scope-item scope-can">Complete questionnaire sections (all principles + lifecycle stages)</div>
-          <div class="scope-item scope-can">Plan and document mitigation actions</div>
-          <div class="scope-item scope-can">Submit completed assessments to the reviewer queue</div>
-          <div class="scope-item scope-can">View entity dashboard — pipeline, risk, principle coverage</div>
-          <div class="scope-item scope-can">Query policy chat within entity scope</div>
-          <div class="scope-item scope-view">View own entity's audit log entries</div>
-          <div class="scope-item scope-cannot">Cannot see other entities' use cases, assessments, or scores</div>
-          <div class="scope-item scope-cannot">Cannot make review decisions or access the reviewer queue</div>
-        </div>
-      </div>
-
-      <!-- Right: journey steps -->
-      <div>
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,200,255,.5);margin-bottom:8px">Their Workflow Journey</div>
-        <div class="step"><div class="snum" style="background:#009EDB">1</div><div><div class="slabel">Sign in &amp; check dashboard</div><div class="sdesc">Entity scope, risk summary, and items needing action are visible immediately on login.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">2</div><div><div class="slabel">Register a new AI use case</div><div class="sdesc">Title, description, business problem, data types, lifecycle stage, and stakeholders.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">3</div><div><div class="slabel">Complete screening questions</div><div class="sdesc">Short screener routes the use case to Minimal / Standard / Full assessment automatically.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">4</div><div><div class="slabel">Fill questionnaire (+ assign to contributors)</div><div class="sdesc">Select responses, add evidence URLs and qualitative justifications per question.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">5</div><div><div class="slabel">Review preliminary risk score</div><div class="sdesc">Exposure and residual risk across 10 AI principles and 6 lifecycle stages.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">6</div><div><div class="slabel">Document mitigation actions</div><div class="sdesc">For each high-risk area, record what mitigation is in place or planned.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">7</div><div><div class="slabel">Submit for reviewer decision</div><div class="sdesc">Submission is recorded in the immutable audit log. Track the reviewer's decision in the dashboard.</div></div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 7 — CONTRIBUTOR
-===================================================== -->
-<div class="slide" id="slide-7">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:35%"></div></div>
-    <div class="slide-badge">7 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role Deep-Dive · 2 of 4</div>
-    <div class="h2 a a2">Contributor — the domain expert</div>
-
-    <div class="rjourney a a3">
-      <!-- Left column -->
-      <div>
-        <div class="role-hero-card blue">
-          <div class="rhc-icon">🔬</div>
-          <div>
-            <div class="rhc-title">Contributor</div>
-            <div class="rhc-code">role: contributor</div>
-            <div class="rhc-desc">A technical or subject-matter expert within the same entity as the focal point. Assigned to complete specific questionnaire sections where their expertise applies — data protection, IT security, legal, programme, or risk management.</div>
-          </div>
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px">How they collaborate with the Focal Point</div>
-        <div style="background:rgba(0,59,92,.15);border:1px solid rgba(0,158,219,.12);border-radius:10px;padding:11px 13px;font-size:11px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:10px">
-          The <strong style="color:rgba(0,200,255,.7)">Focal Point</strong> owns the use case and drives the overall assessment. The <strong style="color:rgba(0,200,255,.7)">Contributor</strong> is a supporting expert who fills in specific sections that require technical or legal knowledge the focal point may not hold. Both work within the same entity scope — neither can see other entities.
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px">Access &amp; Capabilities</div>
-        <div class="scope-list">
-          <div class="scope-item scope-can">Complete assigned questionnaire sections with responses + justification</div>
-          <div class="scope-item scope-can">Add evidence URLs to support each response</div>
-          <div class="scope-item scope-can">Document mitigation actions for high-risk areas</div>
-          <div class="scope-item scope-view">View preliminary risk score for own entity's use cases</div>
-          <div class="scope-item scope-view">View entity dashboard (own entity only)</div>
-          <div class="scope-item scope-can">Query policy chat within entity scope</div>
-          <div class="scope-item scope-cannot">Cannot register new use cases</div>
-          <div class="scope-item scope-cannot">Cannot submit assessments for review</div>
-          <div class="scope-item scope-cannot">Cannot access review queue, analytics, or audit log</div>
-          <div class="scope-item scope-cannot">Cannot see any other entity's data</div>
-        </div>
-      </div>
-
-      <!-- Right column: what they see in the app -->
-      <div>
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,200,255,.5);margin-bottom:8px">What the contributor sees in the app</div>
-
-        <div class="card b-blue" style="margin-bottom:8px">
-          <div class="ct">📋 Assigned Questionnaire Sections</div>
-          <div class="cb">The contributor sees the full questionnaire for their entity's use cases. They select a response option from weighted choices, then add a free-text explanation and (optionally) an evidence URL for each question.</div>
-        </div>
-        <div class="card b-navy" style="margin-bottom:8px">
-          <div class="ct">📊 Risk Score Preview (read-only)</div>
-          <div class="cb">Once questionnaire sections are completed, contributors can view the preliminary exposure score and residual risk breakdown across AI principles and lifecycle stages — but cannot change scoring logic.</div>
-        </div>
-        <div class="card" style="margin-bottom:8px">
-          <div class="ct">🛡 Mitigation Actions</div>
-          <div class="cb">Contributors can draft and update mitigation actions for the areas they assessed. The focal point reviews and may edit these before submission.</div>
-        </div>
-        <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:9px;padding:10px 12px;font-size:10.5px;color:rgba(255,255,255,.5)">
-          <strong style="color:rgba(248,113,113,.7)">Not visible to contributors:</strong> Review queue · Reviewer decisions · Cross-entity analytics · Audit trail · User management · Other entities' dashboards or assessments
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 8 — REVIEWER
-===================================================== -->
-<div class="slide" id="slide-8">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
-    <div class="slide-badge">8 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role Deep-Dive · 3 of 4</div>
-    <div class="h2 a a2">Reviewer — the cross-entity decision maker</div>
-
-    <div class="rjourney a a3">
-      <!-- Left: overview + what they access -->
-      <div>
-        <div class="role-hero-card green">
-          <div class="rhc-icon">⚖️</div>
-          <div>
-            <div class="rhc-title">Reviewer</div>
-            <div class="rhc-code">role: reviewer</div>
-            <div class="rhc-desc">The methodology owner or governance body member responsible for reviewing submitted assessments across all entities. Unlike entity roles, the reviewer sees all entities' submissions — the scope boundary is lifted for this role.</div>
-          </div>
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px">What the reviewer can access</div>
-        <div class="scope-list">
-          <div class="scope-item scope-can">Review queue — all entities' submitted assessments in one view</div>
-          <div class="scope-item scope-can">Full assessment detail: responses, justifications, evidence links</div>
-          <div class="scope-item scope-can">Preliminary risk score, principle heatmap, lifecycle risk breakdown</div>
-          <div class="scope-item scope-can">Mitigation actions documented by the entity</div>
-          <div class="scope-item scope-can">Record a structured decision with written rationale</div>
-          <div class="scope-item scope-can">Cross-entity analytics dashboard and principle coverage</div>
-          <div class="scope-item scope-can">Full audit trail across all entities</div>
-          <div class="scope-item scope-can">Policy chat with cross-entity RAG scope</div>
-          <div class="scope-item scope-cannot">Cannot register or complete use case assessments</div>
-          <div class="scope-item scope-cannot">Cannot manage users, entities, or questionnaire versions</div>
-        </div>
-      </div>
-
-      <!-- Right: decision tree -->
-      <div>
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(34,211,174,.6);margin-bottom:8px">Review Decision Tree</div>
-
-        <div class="dtree-wrap">
-          <div class="dtree-trigger">
-            Assessment submitted to reviewer queue
-            <div class="dtt-sub">Reviewer opens the full assessment — responses, scores, mitigation actions, evidence links</div>
-          </div>
-          <div class="dtree-stem"></div>
-          <div class="dtree-qs">Is the assessment sufficiently complete and the risk acceptably managed?</div>
-          <div class="dtree-branch-line"></div>
-          <div class="dtree-outcomes">
-            <div class="dt-out">
-              <div class="dt-stick"></div>
-              <div class="dt-box approve">✓ Approve</div>
-              <div class="dt-detail">Risk score acceptable. Mitigation plan complete. Use case approved for deployment.</div>
-            </div>
-            <div class="dt-out">
-              <div class="dt-stick"></div>
-              <div class="dt-box return">↩ Return for Revision</div>
-              <div class="dt-detail">Assessment incomplete or rationale insufficient. Entity must revise and resubmit.</div>
-            </div>
-            <div class="dt-out">
-              <div class="dt-stick"></div>
-              <div class="dt-box mitigate">🛡 Request Mitigation</div>
-              <div class="dt-detail">Risk score too high. Entity must strengthen mitigation plan before re-review.</div>
-            </div>
-            <div class="dt-out">
-              <div class="dt-stick"></div>
-              <div class="dt-box escalate">⚠ Escalate</div>
-              <div class="dt-detail">Very high risk or unresolvable concern. Referred to senior governance body.</div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top:10px;background:rgba(34,211,174,.06);border:1px solid rgba(34,211,174,.14);border-radius:9px;padding:9px 12px;font-size:10.5px;color:rgba(255,255,255,.5)">
-          <strong style="color:rgba(34,211,174,.7)">Every decision is logged:</strong> The reviewer's decision, rationale text, and timestamp are appended to the immutable audit log. The entity focal point sees the outcome in their dashboard immediately.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 9 — ADMIN & VIEWER
-===================================================== -->
-<div class="slide" id="slide-9">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:45%"></div></div>
-    <div class="slide-badge">9 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role Deep-Dive · 4 of 4</div>
-    <div class="h2 a a2">Administrator &amp; Governance Viewer</div>
-
-    <div class="rjourney a a3">
-      <!-- Admin column -->
-      <div>
-        <div class="role-hero-card amber">
-          <div class="rhc-icon">⚙️</div>
-          <div>
-            <div class="rhc-title">Administrator</div>
-            <div class="rhc-code">role: admin</div>
-            <div class="rhc-desc">The methodology team member responsible for system configuration and full governance oversight. Has every capability of the reviewer plus system management access.</div>
-          </div>
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px">Full Capability Set</div>
-        <div class="cap-grid">
-          <div class="cap-item">
-            <div class="cap-icon">👥</div>
-            <div class="cap-label">User Management</div>
-            <div class="cap-desc">Create, update, and deactivate user accounts. Assign roles and link users to entities.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-icon">🏢</div>
-            <div class="cap-label">Entity Management</div>
-            <div class="cap-desc">Register UN entities, manage entity metadata and focal point assignments.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-icon">📋</div>
-            <div class="cap-label">Questionnaire Versions</div>
-            <div class="cap-desc">Manage questionnaire versions, weights, and scoring thresholds. Trigger reassessments when needed.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-icon">📊</div>
-            <div class="cap-label">Full Analytics</div>
-            <div class="cap-desc">All cross-entity analytics, risk distribution, principle heatmaps, and lifecycle risk views.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-icon">🔍</div>
-            <div class="cap-label">Audit Trail</div>
-            <div class="cap-desc">Complete immutable audit log across all entities — every action, actor, and timestamp.</div>
-          </div>
-          <div class="cap-item">
-            <div class="cap-icon">⚖️</div>
-            <div class="cap-label">Review &amp; Decisions</div>
-            <div class="cap-desc">All reviewer capabilities — queue, decisions, rationale, escalation — for any entity.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Viewer column -->
-      <div>
-        <div class="role-hero-card muted">
-          <div class="rhc-icon">👁</div>
-          <div>
-            <div class="rhc-title">Governance Viewer</div>
-            <div class="rhc-code">role: viewer</div>
-            <div class="rhc-desc">A leadership or oversight body member who needs situational awareness of AI governance progress across the UN system. Read-only — cannot interact with any assessment or make decisions.</div>
-          </div>
-        </div>
-
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:7px">What Viewers can see</div>
-        <div class="scope-list" style="margin-bottom:10px">
-          <div class="scope-item scope-view">Governance dashboard — aggregate stats across all entities</div>
-          <div class="scope-item scope-view">Risk distribution chart — Low / Medium / High / Very High</div>
-          <div class="scope-item scope-view">Assessment pipeline counts per status step</div>
-          <div class="scope-item scope-view">Limited cross-entity analytics and principle coverage</div>
-          <div class="scope-item scope-view">Reviewer decisions (read-only summary)</div>
-          <div class="scope-item scope-cannot">Cannot register, screen, or complete any assessment</div>
-          <div class="scope-item scope-cannot">Cannot make review decisions or record rationale</div>
-          <div class="scope-item scope-cannot">Cannot access audit trail or user management</div>
-          <div class="scope-item scope-cannot">Cannot use policy chat or access source documents</div>
-        </div>
-
-        <div style="background:rgba(0,158,219,.06);border:1px solid rgba(0,158,219,.13);border-radius:9px;padding:10px 12px;font-size:10.5px;color:rgba(255,255,255,.5)">
-          <strong style="color:rgba(0,200,255,.7)">Intended audience:</strong> Senior UN leadership, OIOS oversight, CEB Secretariat, or external governance observers who need a high-level view of AI risk coverage across the system — without needing to interact with individual assessments.
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 10 — AI PRINCIPLES
-===================================================== -->
-<div class="slide" id="slide-10">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
-    <div class="slide-badge">10 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Governance Context</div>
-    <div class="h2 a a2">10 CEB AI Principles — the assessment spine</div>
-    <p class="sub a a3" style="margin-bottom:10px">Every question maps to one or more of these principles. Risk scoring, principle heatmaps, and all dashboard views are structured around them.</p>
-    <div class="pgrid a a4">
-      <div class="pitem"><div class="pnum">01</div><div class="ptxt">Do No Harm</div></div>
-      <div class="pitem"><div class="pnum">02</div><div class="ptxt">Defined Purpose, Necessity &amp; Proportionality</div></div>
-      <div class="pitem"><div class="pnum">03</div><div class="ptxt">Safety and Security</div></div>
-      <div class="pitem"><div class="pnum">04</div><div class="ptxt">Fairness and Non-Discrimination</div></div>
-      <div class="pitem"><div class="pnum">05</div><div class="ptxt">Sustainability</div></div>
-      <div class="pitem"><div class="pnum">06</div><div class="ptxt">Right to Privacy, Data Protection &amp; Data Governance</div></div>
-      <div class="pitem"><div class="pnum">07</div><div class="ptxt">Human Autonomy and Oversight</div></div>
-      <div class="pitem"><div class="pnum">08</div><div class="ptxt">Transparency and Explainability</div></div>
-      <div class="pitem"><div class="pnum">09</div><div class="ptxt">Responsibility and Accountability</div></div>
-      <div class="pitem"><div class="pnum">10</div><div class="ptxt">Inclusion and Participation</div></div>
-    </div>
-    <div class="grid2 a a5" style="margin-top:10px">
-      <div class="card b-blue"><div class="ct">Lifecycle Stages</div><div class="cb">Plan &amp; Design · Data Collection · Model Building · Deployment · Operation &amp; Monitoring · Retirement</div></div>
-      <div class="card b-navy"><div class="ct">Risk Categories</div><div class="cb">Weighted scoring → preliminary category: <span class="badge b-low">Low</span> <span class="badge b-med">Medium</span> <span class="badge b-high">High</span> <span class="badge b-vhigh">Very High</span></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 11 — WORKFLOW DIAGRAM
-===================================================== -->
-<div class="slide" id="slide-11">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:55%"></div></div>
-    <div class="slide-badge">11 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">End-to-End Workflow</div>
-    <div class="h2 a a2">From registration to approval decision</div>
-    <div class="a a3">
+  <div class="pad">
+    <div class="eyebrow a a1">End-to-End Process</div>
+    <h2 class="h2 a a2">Assessment lifecycle — intake to decision</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-around;" class="a a3">
       <div class="phase-zone">
-        <div class="phase-zone-lbl entity">Entity Phase — focal point &amp; contributors</div>
+        <div class="phase-zone-lbl entity">Entity-Led Phases</div>
         <div class="wflow">
           <div class="wbox start">Use Case<br>Registration</div><div class="warr"></div>
           <div class="wbox">Screening<br>Questions</div><div class="warr"></div>
-          <div class="wbox">Route<br>Selection</div><div class="warr"></div>
+          <div class="wbox warn">Route: Minimal<br>Standard / Full</div><div class="warr"></div>
           <div class="wbox">Dynamic<br>Questionnaire</div><div class="warr"></div>
-          <div class="wbox">Risk Score<br>Preview</div><div class="warr"></div>
-          <div class="wbox">Mitigation<br>Actions</div><div class="warr"></div>
-          <div class="wbox">Submit<br>for Review</div>
+          <div class="wbox">Automated Risk<br>Scoring</div><div class="warr"></div>
+          <div class="wbox">Mitigation<br>Planning</div><div class="warr"></div>
+          <div class="wbox">Submit for<br>Review</div>
         </div>
       </div>
-      <div class="phase-zone" style="margin-bottom:6px">
-        <div class="phase-zone-lbl review">Review Phase — reviewer / methodology team</div>
+      <div class="phase-zone">
+        <div class="phase-zone-lbl review">Reviewer-Led Phases</div>
         <div class="wflow">
-          <div class="wbox review">Reviewer<br>Queue</div><div class="warr"></div>
-          <div class="wbox review">Read Assessment<br>&amp; Risk Score</div><div class="warr"></div>
-          <div class="wbox ok">Approve</div><div class="warr"></div>
-          <div class="wbox warn">Return /<br>Request Mitigation</div><div class="warr"></div>
-          <div class="wbox danger">Escalate</div>
+          <div class="wbox review start">Review<br>Queue</div><div class="warr"></div>
+          <div class="wbox review">Assessment<br>Evaluation</div><div class="warr"></div>
+          <div class="wbox ok">&#x2713; Approve</div>
+          <div class="warr" style="background:transparent"></div>
+          <div class="wbox warn">&#x21A9; Return for<br>Revision</div>
+          <div class="warr" style="background:transparent"></div>
+          <div class="wbox danger">&#x2B06; Escalate to<br>Oversight</div>
+        </div>
+      </div>
+      <div class="grid3">
+        <div class="card b-blue"><div class="ct">Screening logic</div><div class="cb">8 binary questions determine the assessment route. High-impact AI involving personal data or automated decisions triggers the full 120-question path. Low-risk internal tools follow the minimal path.</div></div>
+        <div class="card b-green"><div class="ct">Automated risk scoring</div><div class="cb">Exposure score = &#x3A3;(question weight &times; response weight) across all 10 principles. Residual score applies mitigation credits. Scores map to: Low / Medium / High / Very High risk.</div></div>
+        <div class="card b-amber"><div class="ct">Immutable audit trail</div><div class="cb">Every status change, form submission, reviewer decision, and role action is logged to an append-only table. Entries can never be modified or deleted — a full governance record.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S6 USER ROLES OVERVIEW -->
+<div class="slide" id="s6">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:29%"></div></div>
+    <div class="slide-badge">6 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Access Control</div>
+    <h2 class="h2 a a2">Five roles, distinct responsibilities</h2>
+    <div class="grid3 a a3" style="flex:1;gap:10px;align-content:stretch;">
+      <div class="card b-blue" style="grid-column:1;display:flex;flex-direction:column;">
+        <div style="font-size:24px;margin-bottom:8px;">👤</div>
+        <div class="ct">Entity Focal Point</div>
+        <div style="font-size:10px;font-family:monospace;color:rgba(0,200,255,.5);margin-bottom:8px;">entity_focal_point</div>
+        <div class="cb" style="flex:1;">Primary owner of an AI use case within a UN entity. Registers, manages, and submits assessments. Sees only their own entity's data — enforced at the database layer via RLS.</div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;"><span class="badge b-blue">Register</span><span class="badge b-blue">Assess</span><span class="badge b-blue">Submit</span></div>
+      </div>
+      <div class="card b-blue" style="display:flex;flex-direction:column;">
+        <div style="font-size:24px;margin-bottom:8px;">✍️</div>
+        <div class="ct">Contributor</div>
+        <div style="font-size:10px;font-family:monospace;color:rgba(0,200,255,.5);margin-bottom:8px;">contributor</div>
+        <div class="cb" style="flex:1;">Subject-matter expert assigned by the Focal Point to complete specific questionnaire sections. Has write access to in-progress assessments within their entity only.</div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;"><span class="badge b-blue">Questionnaire</span><span class="badge b-blue">Mitigation</span></div>
+      </div>
+      <div class="card b-green" style="display:flex;flex-direction:column;">
+        <div style="font-size:24px;margin-bottom:8px;">🔍</div>
+        <div class="ct">Reviewer</div>
+        <div style="font-size:10px;font-family:monospace;color:rgba(34,211,174,.5);margin-bottom:8px;">reviewer</div>
+        <div class="cb" style="flex:1;">Cross-entity governance reviewer. Evaluates submitted assessments, makes binding decisions, and has read access to all entities' data and full analytics.</div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;"><span class="badge b-low">Approve</span><span class="badge b-med">Return</span><span class="badge b-high">Escalate</span></div>
+      </div>
+      <div class="card b-amber" style="display:flex;flex-direction:column;">
+        <div style="font-size:24px;margin-bottom:8px;">⚙️</div>
+        <div class="ct">Administrator</div>
+        <div style="font-size:10px;font-family:monospace;color:rgba(245,158,11,.5);margin-bottom:8px;">admin</div>
+        <div class="cb" style="flex:1;">Full system access. Manages user accounts, entity registration, questionnaire versioning, and system configuration. Can view and intervene in any entity's assessment.</div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;"><span class="badge b-med">Users</span><span class="badge b-med">Config</span><span class="badge b-med">All Data</span></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;">
+        <div style="font-size:24px;margin-bottom:8px;">👁️</div>
+        <div class="ct">Governance Viewer</div>
+        <div style="font-size:10px;font-family:monospace;color:rgba(255,255,255,.35);margin-bottom:8px;">viewer</div>
+        <div class="cb" style="flex:1;">Read-only access to aggregated dashboards and analytics. Intended for senior leadership and oversight bodies who need portfolio visibility without operational permissions.</div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;"><span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);">Read-only</span><span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1);">Analytics</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7 ROLE ACTIVITY MAP -->
+<div class="slide" id="s7">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:33%"></div></div>
+    <div class="slide-badge">7 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Role Activity Map</div>
+    <h2 class="h2 a a2">Who acts at each workflow stage</h2>
+    <div class="swimlane-section a a3">
+      <div class="swimlane-wrap">
+        <table class="swimlane">
+          <thead><tr><th>Role</th><th>Intake &amp; Register</th><th>Screening</th><th>Questionnaire</th><th>Risk Score</th><th>Mitigation</th><th>Submit</th><th>Review &amp; Decide</th><th>Analytics</th></tr></thead>
+          <tbody>
+            <tr class="row-fp"><td>Entity Focal Point</td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-lim">Own sections</span></td><td><span class="sw-view">View</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-na">—</span></td><td><span class="sw-own">Own entity</span></td></tr>
+            <tr class="row-contrib"><td>Contributor</td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-view">View</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-own">Own entity</span></td></tr>
+            <tr class="row-reviewer"><td>Reviewer</td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-all">All entities</span></td><td><span class="sw-view">View</span></td><td><span class="sw-na">—</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-all">All entities</span></td></tr>
+            <tr class="row-admin"><td>Admin</td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-all">All entities</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-full">&#x2713;</span></td><td><span class="sw-all">All entities</span></td></tr>
+            <tr class="row-viewer"><td>Governance Viewer</td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-view">View</span></td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-na">—</span></td><td><span class="sw-all">All entities</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sw-legend a a4">
+        <div class="sw-leg-item"><span class="sw-full" style="font-size:11px;">&#x2713;</span> Full access</div>
+        <div class="sw-leg-item"><span class="sw-all">All entities</span> Cross-entity read</div>
+        <div class="sw-leg-item"><span class="sw-own">Own entity</span> Entity-scoped read</div>
+        <div class="sw-leg-item"><span class="sw-lim">Own sections</span> Partial write</div>
+        <div class="sw-leg-item"><span class="sw-view">View</span> Read-only</div>
+        <div class="sw-leg-item"><span class="sw-na">—</span> No access</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8 FOCAL POINT JOURNEY -->
+<div class="slide" id="s8">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:38%"></div></div>
+    <div class="slide-badge">8 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Role Deep-Dive</div>
+    <h2 class="h2 a a2">Entity Focal Point</h2>
+    <div class="rjourney a a3">
+      <div>
+        <div class="role-hero-card blue">
+          <div class="rhc-icon">👤</div>
+          <div><div class="rhc-title">Entity Focal Point</div><div class="rhc-code">entity_focal_point</div><div class="rhc-desc">Primary owner of an AI use case assessment within a UN entity. Drives the process from initial registration through submission for governance review. Full control over their entity's assessments — database-enforced data isolation.</div></div>
+        </div>
+        <div class="card b-blue">
+          <div class="ct" style="margin-bottom:10px;">Step-by-step journey</div>
+          <div class="step"><div class="snum">1</div><div><div class="slabel">Register the AI use case</div><div class="sdesc">Name the system, describe its purpose, identify the UN entity, and select the primary domain (humanitarian, HR, finance, etc.).</div></div></div>
+          <div class="step"><div class="snum">2</div><div><div class="slabel">Complete screening questions</div><div class="sdesc">Answer 8 binary questions about personal data use, automated decision-making, and operational context. System determines assessment route.</div></div></div>
+          <div class="step"><div class="snum">3</div><div><div class="slabel">Coordinate the questionnaire</div><div class="sdesc">Work through 30–120 questions across all 10 CEB AI principles. Assign specific sections to Contributors with domain expertise.</div></div></div>
+          <div class="step"><div class="snum">4</div><div><div class="slabel">Review risk score and plan mitigations</div><div class="sdesc">View automated exposure and residual risk scores by principle. Document mitigation actions with owners and target completion dates.</div></div></div>
+          <div class="step"><div class="snum">5</div><div><div class="slabel">Submit for governance review</div><div class="sdesc">Mark the assessment complete and submit to the reviewer queue. Track the review outcome — approval, return, or escalation — in the dashboard.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:10px;">
+          <div class="scope-hdr">CAN DO</div>
+          <div class="scope-list">
+            <div class="scope-item scope-can">Register new AI use cases for their entity</div>
+            <div class="scope-item scope-can">Initiate, edit, and submit assessments</div>
+            <div class="scope-item scope-can">Assign questionnaire sections to Contributors</div>
+            <div class="scope-item scope-can">Document and track mitigation actions</div>
+            <div class="scope-item scope-can">View their entity's risk scores and dashboard</div>
+            <div class="scope-item scope-can">Reopen and update a returned assessment</div>
+          </div>
+          <div class="scope-hdr" style="margin-top:12px;">CANNOT DO</div>
+          <div class="scope-list">
+            <div class="scope-item scope-cannot">View other entities' assessments or data</div>
+            <div class="scope-item scope-cannot">Access the reviewer decision panel</div>
+            <div class="scope-item scope-cannot">Manage user accounts or entity settings</div>
+            <div class="scope-item scope-cannot">Access cross-entity analytics or audit logs</div>
+          </div>
+        </div>
+        <div class="card b-navy"><div class="ct">Data isolation guarantee</div><div class="cb">Row-Level Security ensures a Focal Point can only ever query records belonging to their own entity ID — even if the application layer had a bug, the database enforces the boundary.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9 CONTRIBUTOR -->
+<div class="slide" id="s9">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:43%"></div></div>
+    <div class="slide-badge">9 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Role Deep-Dive</div>
+    <h2 class="h2 a a2">Contributor</h2>
+    <div class="rjourney a a3">
+      <div>
+        <div class="role-hero-card blue">
+          <div class="rhc-icon">✍️</div>
+          <div><div class="rhc-title">Contributor</div><div class="rhc-code">contributor</div><div class="rhc-desc">A subject-matter expert within the entity assigned to complete specific sections of the AIIA questionnaire. Typically a data protection officer, IT security lead, or programme officer with expertise in a particular AI principle domain.</div></div>
+        </div>
+        <div class="card b-blue">
+          <div class="ct" style="margin-bottom:10px;">What Contributors do</div>
+          <div class="step"><div class="snum">1</div><div><div class="slabel">Access assigned questionnaire sections</div><div class="sdesc">The Focal Point assigns specific AI principle sections (e.g., Safety and Security, Privacy) to Contributors with the most relevant expertise.</div></div></div>
+          <div class="step"><div class="snum">2</div><div><div class="slabel">Answer structured questions</div><div class="sdesc">For each assigned question, select a structured response (Yes/No/Partial/Unknown), with supporting narrative where required by the question.</div></div></div>
+          <div class="step"><div class="snum">3</div><div><div class="slabel">Document mitigation measures</div><div class="sdesc">Where risks are identified in their section, Contributors propose specific mitigation actions, assign owners, and set target completion dates.</div></div></div>
+          <div class="step"><div class="snum">4</div><div><div class="slabel">Mark sections complete</div><div class="sdesc">Once all assigned questions are answered, mark the section complete. The Focal Point is notified and reviews before final submission.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:10px;">
+          <div class="scope-hdr">CAN DO</div>
+          <div class="scope-list">
+            <div class="scope-item scope-can">Complete questionnaire sections assigned by the Focal Point</div>
+            <div class="scope-item scope-can">Propose mitigation actions for their assigned sections</div>
+            <div class="scope-item scope-can">View the full assessment context (read-only) for their entity</div>
+            <div class="scope-item scope-can">See their entity's assessment progress and status</div>
+          </div>
+          <div class="scope-hdr" style="margin-top:12px;">CANNOT DO</div>
+          <div class="scope-list">
+            <div class="scope-item scope-cannot">Register or initiate new AI use cases</div>
+            <div class="scope-item scope-cannot">Submit completed assessments for review</div>
+            <div class="scope-item scope-cannot">Access or modify other entities' data</div>
+            <div class="scope-item scope-cannot">View reviewer decisions or the review queue</div>
+            <div class="scope-item scope-cannot">Manage user roles or entity configuration</div>
+          </div>
+        </div>
+        <div class="card b-blue"><div class="ct">Why Contributors matter</div><div class="cb">Complex AIIA questionnaires span 10 distinct governance domains. No single person holds expertise across all areas. The Contributor role enables multi-expert collaboration within a single assessment — each section answered by the most qualified person in the entity.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S10 REVIEWER -->
+<div class="slide" id="s10">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:48%"></div></div>
+    <div class="slide-badge">10 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Role Deep-Dive</div>
+    <h2 class="h2 a a2">Reviewer — Decision Framework</h2>
+    <div class="rjourney-wide a a3" style="flex:1;align-items:stretch;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="role-hero-card green">
+          <div class="rhc-icon">🔍</div>
+          <div><div class="rhc-title">Reviewer</div><div class="rhc-code">reviewer</div><div class="rhc-desc">Cross-entity governance reviewer who evaluates submitted assessments and makes binding decisions. Has read access to all entities' submitted assessments and full cross-entity analytics.</div></div>
+        </div>
+        <div class="card b-green" style="flex:1;">
+          <div class="ct" style="margin-bottom:10px;">Reviewer responsibilities</div>
+          <div class="scope-list">
+            <div class="scope-item scope-can">Access the cross-entity review queue — all submitted assessments</div>
+            <div class="scope-item scope-can">Review questionnaire responses, risk scores, and mitigation plans</div>
+            <div class="scope-item scope-can">Make formal decisions: approve, return, conditional, or escalate</div>
+            <div class="scope-item scope-can">Add review rationale and conditions to each decision record</div>
+            <div class="scope-item scope-can">View cross-entity analytics, risk distribution, and audit logs</div>
+            <div class="scope-item scope-can">Use the RAG policy chat against UN governance documents</div>
+            <div class="scope-item scope-cannot">Cannot register or edit use cases or assessments</div>
+            <div class="scope-item scope-cannot">Cannot manage users or system configuration</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="card" style="text-align:center;padding:14px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;">Decision Framework</div>
+          <div class="dtree-wrap">
+            <div class="dtree-trigger">Assessment submitted for review<div class="dtt-sub">Reviewer evaluates risk score, responses, and mitigation plan</div></div>
+            <div class="dtree-connector"></div>
+            <div class="dtree-qs">What is the risk level and completeness?</div>
+            <div class="dtree-branch-container">
+              <div class="dtree-branch-line"></div>
+              <div class="dtree-outcomes">
+                <div class="dt-out"><div class="dt-stick"></div><div class="dt-box approve">&#x2713; Approve<div class="dt-detail">Risk acceptable, mitigations adequate. Use case cleared.</div></div></div>
+                <div class="dt-out"><div class="dt-stick"></div><div class="dt-box return">&#x21A9; Return<div class="dt-detail">Incomplete answers or weak mitigations. Sent back for revision.</div></div></div>
+                <div class="dt-out"><div class="dt-stick"></div><div class="dt-box mitigate">&#x26A1; Conditional<div class="dt-detail">Approve with mandatory mitigation actions before deployment.</div></div></div>
+                <div class="dt-out"><div class="dt-stick"></div><div class="dt-box escalate">&#x2B06; Escalate<div class="dt-detail">Very High risk or unresolvable concerns. Referred to senior oversight.</div></div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="grid3 a a4" style="margin-top:6px">
-      <div class="card b-blue"><div class="ct">Entity phase</div><div class="cb">Registration → Screening → Assessment → Risk Scoring → Mitigation → Submission</div></div>
-      <div class="card b-green"><div class="ct">Review phase</div><div class="cb">Reviewer queue → Decision → Entity notification → Audit log update</div></div>
-      <div class="card b-amber"><div class="ct">Governance phase</div><div class="cb">Dashboard refresh → Audit record → Lifecycle reassessment trigger → Policy KB update</div></div>
-    </div>
-    <div class="a a5" style="margin-top:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:9px 14px;display:flex;gap:20px;flex-wrap:wrap">
-      <div style="font-size:11px;color:rgba(255,255,255,.5)"><strong style="color:rgba(255,255,255,.75)">Screening routes:</strong> Minimal (low-risk, no sensitive data) · Standard (moderate) · Full (public-facing, sensitive data, autonomous decisions)</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.5)"><strong style="color:rgba(255,255,255,.75)">Audit log:</strong> Every action is append-only — actor, timestamp, action type, metadata. Never modified or deleted.</div>
+  </div>
+</div>
+
+<!-- S11 ADMIN & VIEWER -->
+<div class="slide" id="s11">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:52%"></div></div>
+    <div class="slide-badge">11 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Role Deep-Dive</div>
+    <h2 class="h2 a a2">Administrator &amp; Governance Viewer</h2>
+    <div class="grid2 a a3" style="flex:1;gap:14px;align-items:stretch;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="role-hero-card amber">
+          <div class="rhc-icon">⚙️</div>
+          <div><div class="rhc-title">Administrator</div><div class="rhc-code">admin</div><div class="rhc-desc">Full system access. Manages users, entities, questionnaire configuration, and system settings. The operational backbone of the platform — ensures the workflow functions correctly for all participants.</div></div>
+        </div>
+        <div class="card b-amber" style="flex:1;">
+          <div class="ct" style="margin-bottom:10px;">Admin capabilities</div>
+          <div class="cap-grid">
+            <div class="cap-item"><div class="cap-icon">👥</div><div class="cap-label">User Management</div><div class="cap-desc">Create, update, suspend, and assign roles to all user accounts across all entities.</div></div>
+            <div class="cap-item"><div class="cap-icon">🏢</div><div class="cap-label">Entity Registration</div><div class="cap-desc">Onboard new UN entities, set their scope, and configure entity-specific settings.</div></div>
+            <div class="cap-item"><div class="cap-icon">📋</div><div class="cap-label">Questionnaire Config</div><div class="cap-desc">Manage questionnaire versions, update questions, and control which version is active.</div></div>
+            <div class="cap-item"><div class="cap-icon">📊</div><div class="cap-label">System Analytics</div><div class="cap-desc">Full cross-entity analytics, risk distributions, and portfolio-level governance views.</div></div>
+            <div class="cap-item"><div class="cap-icon">📜</div><div class="cap-label">Audit Log Access</div><div class="cap-desc">View the complete immutable audit trail for all entities, users, and workflow events.</div></div>
+            <div class="cap-item"><div class="cap-icon">🛠️</div><div class="cap-label">Assessment Override</div><div class="cap-desc">Can view, edit, or intervene in any entity's assessment for support and governance.</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="role-hero-card muted">
+          <div class="rhc-icon">👁️</div>
+          <div><div class="rhc-title">Governance Viewer</div><div class="rhc-code">viewer</div><div class="rhc-desc">Read-only access to aggregated dashboards and analytics. Designed for senior leadership, oversight bodies, and governing board members who need portfolio visibility without operational access.</div></div>
+        </div>
+        <div class="card" style="flex:1;">
+          <div class="ct" style="margin-bottom:10px;">Governance Viewer access</div>
+          <div class="scope-list">
+            <div class="scope-item scope-view">Cross-entity dashboard with risk distribution charts</div>
+            <div class="scope-item scope-view">Assessment pipeline status across all entities</div>
+            <div class="scope-item scope-view">AI principle compliance coverage overview</div>
+            <div class="scope-item scope-view">High and Very High risk use case summaries</div>
+            <div class="scope-item scope-view">Approved, pending, and escalated assessment counts</div>
+            <div class="scope-item scope-cannot">Cannot view detailed questionnaire responses</div>
+            <div class="scope-item scope-cannot">Cannot access individual entity operational data</div>
+            <div class="scope-item scope-cannot">Cannot take any workflow actions or decisions</div>
+            <div class="scope-item scope-cannot">Cannot access the audit trail or user management</div>
+          </div>
+        </div>
+        <div class="card b-navy"><div class="cb">The Viewer role enables transparent AI governance reporting to leadership — real insight without creating information security risks from broad data access.</div></div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 12 — ROLE-BASED ACCESS TABLE
-===================================================== -->
-<div class="slide" id="slide-12">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
-    <div class="slide-badge">12 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Role-Based Access Control</div>
-    <div class="h2 a a2">Complete capability matrix</div>
-    <p class="sub a a2" style="margin-bottom:8px">Row-level security in Supabase enforces entity scoping at the data layer. No application-layer bypass permitted.</p>
-    <div class="a a3" style="flex:1;overflow:auto">
-      <table class="rbac-table">
-        <thead>
-          <tr>
-            <th>Capability</th>
-            <th>Focal Point</th>
-            <th>Contributor</th>
-            <th>Reviewer</th>
-            <th>Admin</th>
-            <th>Viewer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Register AI use case</td><td class="ck">✓</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>Complete screening &amp; questionnaire</td><td class="ck">✓</td><td class="ck">✓</td><td class="cx">—</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>View preliminary risk score</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td><td class="ck">✓</td><td class="cp">own entity</td></tr>
-          <tr><td>Complete mitigation actions</td><td class="ck">✓</td><td class="ck">✓</td><td class="cx">—</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>Submit assessment for review</td><td class="ck">✓</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>Review submissions (all entities)</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>Record review decisions</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="ck">✓</td><td class="cx">—</td></tr>
-          <tr><td>Entity dashboard</td><td class="ck">✓ own</td><td class="ck">✓ own</td><td class="ck">✓ all</td><td class="ck">✓ all</td><td class="ck">✓</td></tr>
-          <tr><td>Cross-entity analytics</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="ck">✓</td><td class="cp">limited</td></tr>
-          <tr><td>Policy chat (RAG)</td><td class="cp">entity scope</td><td class="cp">entity scope</td><td class="ck">✓ all</td><td class="ck">✓ all</td><td class="cx">—</td></tr>
-          <tr><td>View audit trail</td><td class="cp">own entity</td><td class="cx">—</td><td class="ck">✓ all</td><td class="ck">✓ all</td><td class="cx">—</td></tr>
-          <tr><td>Manage users / entities / questions</td><td class="cx">—</td><td class="cx">—</td><td class="cx">—</td><td class="ck">✓</td><td class="cx">—</td></tr>
-        </tbody>
-      </table>
+<!-- S12 RBAC MATRIX -->
+<div class="slide" id="s12">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:57%"></div></div>
+    <div class="slide-badge">12 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Access Control Summary</div>
+    <h2 class="h2 a a2">Role capability matrix</h2>
+    <div style="flex:1;display:flex;flex-direction:column;" class="a a3">
+      <div style="border-radius:12px;border:1px solid rgba(255,255,255,.08);overflow:hidden;flex:1;">
+        <table class="rbac-table" style="height:100%;">
+          <thead><tr><th style="width:230px;">Feature / Capability</th><th style="text-align:center;">Focal Point</th><th style="text-align:center;">Contributor</th><th style="text-align:center;">Reviewer</th><th style="text-align:center;">Admin</th><th style="text-align:center;">Viewer</th></tr></thead>
+          <tbody>
+            <tr><td>Register AI use case</td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Complete screening form</td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Complete questionnaire</td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>View risk score</td><td style="text-align:center"><span class="cp">Own</span></td><td style="text-align:center"><span class="cp">Own</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cp">Agg.</span></td></tr>
+            <tr><td>Submit assessment</td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Review &amp; decide</td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Cross-entity analytics</td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td></tr>
+            <tr><td>View audit log</td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Manage users &amp; entities</td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Questionnaire versioning</td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="cx">—</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+            <tr><td>Policy RAG chat</td><td style="text-align:center"><span class="cp">Own entity</span></td><td style="text-align:center"><span class="cp">Own entity</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="ck">&#x2713;</span></td><td style="text-align:center"><span class="cx">—</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;gap:18px;margin-top:9px;font-size:12px;color:var(--muted);align-items:center;">
+        <span><span class="ck" style="font-size:14px;">&#x2713;</span> Full access</span>
+        <span><span class="cp">Own</span> Entity-scoped</span>
+        <span><span class="cp">Agg.</span> Aggregated only</span>
+        <span><span class="cx" style="font-size:14px;">—</span> No access</span>
+        <span style="margin-left:auto;font-size:11.5px;color:rgba(255,255,255,.3);">Enforced at database layer via RLS — not just UI controls</span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 13 — HOW TO USE THE APPLICATION
-===================================================== -->
-<div class="slide" id="slide-13">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:65%"></div></div>
-    <div class="slide-badge">13 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Application Walkthrough</div>
-    <div class="h2 a a2">Step-by-step guide for entity focal points</div>
-    <div class="how-wrap a a3">
-      <div>
-        <div class="step"><div class="snum">1</div><div><div class="slabel">Sign in at the login page</div><div class="sdesc">Use your assigned account or click "Continue with demo session". Role and entity are set on sign-in.</div></div></div>
-        <div class="step"><div class="snum">2</div><div><div class="slabel">Check your dashboard</div><div class="sdesc">Your entity's use cases, risk scores, assessment pipeline, and any items needing action appear here.</div></div></div>
-        <div class="step"><div class="snum">3</div><div><div class="slabel">Register a new AI use case</div><div class="sdesc">Navigate to Use Cases → New. Enter title, description, business problem, stakeholders, and lifecycle stage.</div></div></div>
-        <div class="step"><div class="snum">4</div><div><div class="slabel">Complete the screening questions</div><div class="sdesc">Answer the short screener. The system routes you to Minimal, Standard, or Full assessment automatically.</div></div></div>
-        <div class="step"><div class="snum">5</div><div><div class="slabel">Complete questionnaire sections</div><div class="sdesc">Select a response option per question. Add a qualitative explanation and evidence URL for each response.</div></div></div>
-        <div class="step"><div class="snum">6</div><div><div class="slabel">Review your preliminary risk score</div><div class="sdesc">The system shows exposure and residual risk across principles and lifecycle stages. Review the risk category.</div></div></div>
-        <div class="step"><div class="snum">7</div><div><div class="slabel">Add mitigation actions</div><div class="sdesc">For each area of concern, document the mitigation in place or planned. This reduces the residual risk score.</div></div></div>
-        <div class="step"><div class="snum">8</div><div><div class="slabel">Submit for reviewer decision</div><div class="sdesc">When complete, submit. An audit log entry records the submission. Track the decision in your dashboard.</div></div></div>
+<!-- S13 DASHBOARD -->
+<div class="slide" id="s13">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:62%"></div></div>
+    <div class="slide-badge">13 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Platform Feature</div>
+    <h2 class="h2 a a2">Dashboard &amp; analytics</h2>
+    <div style="flex:1;display:flex;gap:14px;" class="a a3">
+      <div style="flex:1;display:flex;flex-direction:column;gap:9px;">
+        <div class="mrow4" style="gap:8px;">
+          <div class="card b-blue" style="padding:11px 14px;"><div style="font-size:28px;font-weight:900;color:#00C8FF;line-height:1;">10</div><div style="font-size:11.5px;color:var(--muted);margin-top:4px;">Use Cases Registered</div></div>
+          <div class="card b-amber" style="padding:11px 14px;"><div style="font-size:28px;font-weight:900;color:#F59E0B;line-height:1;">3</div><div style="font-size:11.5px;color:var(--muted);margin-top:4px;">In Progress</div></div>
+          <div class="card b-red" style="padding:11px 14px;"><div style="font-size:28px;font-weight:900;color:#F87171;line-height:1;">2</div><div style="font-size:11.5px;color:var(--muted);margin-top:4px;">High / Very High Risk</div></div>
+          <div class="card b-green" style="padding:11px 14px;"><div style="font-size:28px;font-weight:900;color:#22D3AE;line-height:1;">7</div><div style="font-size:11.5px;color:var(--muted);margin-top:4px;">Approved</div></div>
+        </div>
+        <div class="card" style="flex:1;">
+          <div class="ct" style="margin-bottom:10px;">Risk distribution across use cases</div>
+          <div style="display:flex;align-items:flex-end;gap:10px;height:110px;padding:0 8px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:13px;font-weight:700;color:#22D3AE;">2</div><div style="flex:1;width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,rgba(34,211,174,.5),rgba(34,211,174,.2));min-height:40px;"></div><div style="font-size:11px;color:rgba(255,255,255,.4);">Low</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:13px;font-weight:700;color:#F59E0B;">4</div><div style="flex:1.8;width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,rgba(245,158,11,.5),rgba(245,158,11,.2));min-height:65px;"></div><div style="font-size:11px;color:rgba(255,255,255,.4);">Medium</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:13px;font-weight:700;color:#F87171;">3</div><div style="flex:1.4;width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,rgba(248,113,113,.5),rgba(248,113,113,.2));min-height:52px;"></div><div style="font-size:11px;color:rgba(255,255,255,.4);">High</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:13px;font-weight:700;color:#EF4444;">1</div><div style="flex:0.6;width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,rgba(239,68,68,.55),rgba(239,68,68,.2));min-height:25px;"></div><div style="font-size:11px;color:rgba(255,255,255,.4);">Very High</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="width:360px;display:flex;flex-direction:column;gap:9px;">
+        <div class="card" style="flex:1;">
+          <div class="ct" style="margin-bottom:10px;">AI principle coverage</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Do No Harm</span><span style="color:#22D3AE;font-weight:600;">78%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:78%;height:100%;background:linear-gradient(90deg,#22D3AE,rgba(34,211,174,.4));border-radius:3px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Safety &amp; Security</span><span style="color:#22D3AE;font-weight:600;">85%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:85%;height:100%;background:linear-gradient(90deg,#22D3AE,rgba(34,211,174,.4));border-radius:3px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Privacy &amp; Data</span><span style="color:#F59E0B;font-weight:600;">62%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:62%;height:100%;background:linear-gradient(90deg,#F59E0B,rgba(245,158,11,.4));border-radius:3px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Human Oversight</span><span style="color:#F59E0B;font-weight:600;">54%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:54%;height:100%;background:linear-gradient(90deg,#F59E0B,rgba(245,158,11,.4));border-radius:3px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Fairness</span><span style="color:#F87171;font-weight:600;">41%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:41%;height:100%;background:linear-gradient(90deg,#F87171,rgba(248,113,113,.4));border-radius:3px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:3px;"><span>Transparency</span><span style="color:#F87171;font-weight:600;">48%</span></div><div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;"><div style="width:48%;height:100%;background:linear-gradient(90deg,#F87171,rgba(248,113,113,.4));border-radius:3px;"></div></div></div>
+          </div>
+        </div>
+        <div class="card b-blue">
+          <div class="ct" style="margin-bottom:8px;">Recently submitted</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;"><span style="color:rgba(255,255,255,.7);">OCHA Sitrep Triage</span><span class="badge b-high" style="font-size:10px;">High</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;"><span style="color:rgba(255,255,255,.7);">DOS Vendor Screening</span><span class="badge b-high" style="font-size:10px;">High</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:12.5px;"><span style="color:rgba(255,255,255,.7);">DESA SDG Anomaly</span><span class="badge b-low" style="font-size:10px;">Low</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S14 POLICY CHAT -->
+<div class="slide" id="s14">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:67%"></div></div>
+    <div class="slide-badge">14 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Platform Feature</div>
+    <h2 class="h2 a a2">RAG-powered policy chat</h2>
+    <div class="grid2 a a3" style="flex:1;gap:14px;">
+      <div style="display:flex;flex-direction:column;gap:10px;justify-content:space-between;">
+        <div>
+          <p class="sub" style="margin-bottom:14px;">Reviewers and focal points ask natural-language questions against authoritative UN AI governance documents — with citation-backed, entity-scoped responses.</p>
+          <div class="step"><div class="snum">1</div><div><div class="slabel">Policy corpus ingested</div><div class="sdesc">UN SG AI Strategy, CEB AIIA Framework, ITU AI Ethics Guidelines, and internal policy documents — chunked, embedded, and stored in pgvector.</div></div></div>
+          <div class="step"><div class="snum">2</div><div><div class="slabel">Natural-language questions</div><div class="sdesc">Users ask "What does the AIIA framework require for automated HR decisions?" No keyword search — semantic similarity retrieval across the full corpus.</div></div></div>
+          <div class="step"><div class="snum">3</div><div><div class="slabel">Entity-scoped retrieval</div><div class="sdesc">For entity users, vector search filters by entity_id. Reviewers and admins retrieve across all entities. Entity data never leaks into another entity's context.</div></div></div>
+          <div class="step"><div class="snum">4</div><div><div class="slabel">Cited, grounded response</div><div class="sdesc">The LLM synthesises retrieved chunks into a clear answer, citing source document title, section, and page — no hallucinated references.</div></div></div>
+        </div>
+        <div class="card b-blue"><div class="ct">Source documents (illustrative)</div><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;"><span class="badge b-blue">UN SG AI Strategy</span><span class="badge b-blue">CEB AIIA Framework</span><span class="badge b-blue">ITU AI Guidelines</span><span class="badge b-blue">UN HR Policy Manual</span><span class="badge b-blue">DPPA AI Guidelines</span></div></div>
+      </div>
+      <div class="chat-mock" style="flex:1;">
+        <div class="chat-hdr"><div class="online"></div>Policy Chat — powered by RAG</div>
+        <div class="chat-msgs">
+          <div class="cmsg u">What does the AIIA framework require for AI systems that make automated HR decisions?</div>
+          <div class="cmsg a">Under <strong>Principle 7 — Human Autonomy and Oversight</strong>, AI systems involved in automated HR decisions must provide a meaningful human review mechanism before any decision takes effect. Affected individuals must be notified that AI was used and have a clear pathway to request manual review or appeal.<div class="csrc">📄 CEB AIIA Framework, §4.7 — Human Oversight Requirements</div></div>
+          <div class="cmsg u">Is there a minimum explainability standard for AI in UN peacekeeping?</div>
+          <div class="cmsg a">Yes. Under <strong>Principle 8 — Transparency</strong>, field commanders must receive a plain-language explanation of classification rationale before acting on AI-generated incident assessments. Statistical confidence alone is insufficient.<div class="csrc">📄 DPPA AI Guidelines, §2.3 — Explainability in Field Operations</div></div>
+          <div class="cmsg typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>
+        </div>
+        <div class="chat-inp"><span>Ask a policy question...</span><div class="csend">→</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S15 HOW TO USE -->
+<div class="slide" id="s15">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:71%"></div></div>
+    <div class="slide-badge">15 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Getting Started</div>
+    <h2 class="h2 a a2">Application walkthrough</h2>
+    <div class="how-wrap a a3" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:9px;justify-content:space-between;">
+        <div class="step"><div class="snum">1</div><div><div class="slabel">Open the application</div><div class="sdesc">Navigate to the app URL. Click "Continue with demo session" to explore with pre-loaded data, or sign in with your UN entity credentials.</div></div></div>
+        <div class="step"><div class="snum">2</div><div><div class="slabel">Focal Point: Start a new use case</div><div class="sdesc">From the dashboard, click "Register Use Case." Provide the system name, responsible entity, domain, and a brief description of the AI system's purpose.</div></div></div>
+        <div class="step"><div class="snum">3</div><div><div class="slabel">Complete the screening form</div><div class="sdesc">Answer 8 questions about data use, automation, and operational context. The system automatically determines minimal, standard, or full assessment path.</div></div></div>
+        <div class="step"><div class="snum">4</div><div><div class="slabel">Work through the questionnaire</div><div class="sdesc">Navigate the dynamic questionnaire by AI principle section. Assign sections to Contributors. Save progress at any point — responses are preserved automatically.</div></div></div>
+        <div class="step"><div class="snum">5</div><div><div class="slabel">Review risk score and document mitigations</div><div class="sdesc">After the questionnaire, view the automated risk score by principle. Document mitigation actions with owners and target completion dates.</div></div></div>
+        <div class="step"><div class="snum">6</div><div><div class="slabel">Submit, review, and decide</div><div class="sdesc">Focal Point submits for review. Reviewer evaluates in the review queue and records a formal decision. Entity receives notification of outcome in the dashboard.</div></div></div>
       </div>
       <div class="app-mock">
-        <div class="mock-bar"><div class="mdot"></div><div class="mdot" style="background:#F59E0B33"></div><div class="mdot" style="background:#22D3AE33"></div><div class="murl">localhost:3002/dashboard</div></div>
+        <div class="mock-bar"><div class="mdot"></div><div class="mdot"></div><div class="mdot"></div><div class="murl">aiia.un.org/dashboard</div></div>
         <div class="mock-body">
           <div class="mock-sidebar">
-            <div style="font-size:7px;color:rgba(0,200,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 6px 5px;margin-bottom:2px">Navigation</div>
+            <div class="mock-sidebar-lbl">Navigation</div>
             <div class="mnav on"><span class="ndot"></span>Dashboard</div>
             <div class="mnav"><span class="ndot"></span>Use Cases</div>
             <div class="mnav"><span class="ndot"></span>Assessments</div>
@@ -742,25 +621,29 @@
             <div class="mnav"><span class="ndot"></span>Analytics</div>
             <div class="mnav"><span class="ndot"></span>Policy Chat</div>
             <div class="mnav"><span class="ndot"></span>Audit Log</div>
+            <div class="mnav"><span class="ndot"></span>Admin</div>
           </div>
           <div class="mock-main">
+            <div class="mlabel">MY ASSESSMENTS</div>
             <div class="mrow4">
-              <div class="mstat"><div class="msv" style="color:#00C8FF">7</div><div class="msl">Use Cases</div></div>
-              <div class="mstat"><div class="msv" style="color:#F59E0B">3</div><div class="msl">In Progress</div></div>
-              <div class="mstat"><div class="msv" style="color:#F87171">2</div><div class="msl">High Risk</div></div>
-              <div class="mstat"><div class="msv" style="color:#22D3AE">2</div><div class="msl">Approved</div></div>
+              <div class="mstat"><div class="msv">12</div><div class="msl">Registered</div></div>
+              <div class="mstat"><div class="msv" style="color:#F59E0B">5</div><div class="msl">In Progress</div></div>
+              <div class="mstat"><div class="msv" style="color:#009EDB">3</div><div class="msl">In Review</div></div>
+              <div class="mstat"><div class="msv" style="color:#22D3AE">4</div><div class="msl">Approved</div></div>
             </div>
-            <div class="mchart">
-              <div class="mbar" style="height:70%;background:rgba(34,211,174,.5)"></div>
-              <div class="mbar" style="height:50%;background:rgba(245,158,11,.5)"></div>
-              <div class="mbar" style="height:85%;background:rgba(248,113,113,.5)"></div>
-              <div class="mbar" style="height:30%;background:rgba(239,68,68,.5)"></div>
-              <div class="mbar" style="height:60%;background:rgba(0,158,219,.4)"></div>
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:6px 8px;flex:1;">
+              <div class="mlabel" style="margin-bottom:5px;">RISK DISTRIBUTION</div>
+              <div class="mchart">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;"><div class="mbar" style="height:60%;background:rgba(34,211,174,.6);width:100%;"></div><span style="font-size:8px;color:rgba(255,255,255,.3);">Low</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;"><div class="mbar" style="height:80%;background:rgba(245,158,11,.6);width:100%;"></div><span style="font-size:8px;color:rgba(255,255,255,.3);">Med</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;"><div class="mbar" style="height:55%;background:rgba(248,113,113,.6);width:100%;"></div><span style="font-size:8px;color:rgba(255,255,255,.3);">High</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;"><div class="mbar" style="height:20%;background:rgba(239,68,68,.7);width:100%;"></div><span style="font-size:8px;color:rgba(255,255,255,.3);">V.High</span></div>
+              </div>
             </div>
             <div class="mlist">
-              <div class="mitem"><div class="mbadge" style="background:rgba(245,158,11,.2);color:#F59E0B">Screening</div>AI-assisted incident classification</div>
-              <div class="mitem"><div class="mbadge" style="background:rgba(248,113,113,.2);color:#F87171">High</div>Predictive beneficiary targeting</div>
-              <div class="mitem"><div class="mbadge" style="background:rgba(34,211,174,.2);color:#22D3AE">Approved</div>NLP document translation</div>
+              <div class="mitem">📋 <span style="flex:1;color:rgba(255,255,255,.55);font-size:10px;">C2C Planning Assistant</span> <span class="mbadge" style="background:rgba(34,211,174,.15);color:#22D3AE;font-size:9px;">Approved</span></div>
+              <div class="mitem">📋 <span style="flex:1;color:rgba(255,255,255,.55);font-size:10px;">HR Attrition Prediction</span> <span class="mbadge" style="background:rgba(245,158,11,.15);color:#F59E0B;font-size:9px;">In Review</span></div>
+              <div class="mitem">📋 <span style="flex:1;color:rgba(255,255,255,.55);font-size:10px;">Incident Classification</span> <span class="mbadge" style="background:rgba(239,68,68,.15);color:#EF4444;font-size:9px;">Escalated</span></div>
             </div>
           </div>
         </div>
@@ -769,429 +652,321 @@
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 14 — EXAMPLE USE CASE
-===================================================== -->
-<div class="slide" id="slide-14">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:70%"></div></div>
-    <div class="slide-badge">14 / 20</div>
-  </header>
+<!-- S16 EXAMPLE USE CASE -->
+<div class="slide" id="s16">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:76%"></div></div>
+    <div class="slide-badge">16 / 21</div>
+  </div>
   <div class="pad-narrow">
-    <div class="eyebrow a a1">Illustrative Example</div>
-    <div class="h2 a a2">A real-world use case through the workflow</div>
-    <div class="uc-card a a3">
-      <div class="uc-hdr"><div class="uc-title">AI-Assisted Incident Classification Tool</div><div class="uc-sub">UNHCR · Operations — Field Response Systems · 2026 · <span class="badge b-vhigh">High Risk</span></div></div>
-      <div class="uc-body">
-        <div><div class="ufl">Purpose</div><div class="ufv">Automatically classify protection incidents from field reports to prioritise case management workload</div></div>
-        <div><div class="ufl">Assessment Route</div><div class="ufv">Full — public-facing, sensitive personal data, automated decision support</div></div>
-        <div><div class="ufl">Sensitive Data</div><div class="ufv">Yes — protection status, case history, biometric-linked identifiers</div></div>
-        <div><div class="ufl">Human in Loop</div><div class="ufv">Partial — classification reviewed by case manager before action</div></div>
-      </div>
-      <div class="uc-foot">
-        <div class="rbar-wrap"><div class="rbar-label"><span>Exposure score</span><span style="color:#F87171">82.5 / 100</span></div><div class="rbar-track"><div class="rbar-fill exp" style="width:82.5%"></div></div></div>
-        <div class="rbar-wrap"><div class="rbar-label"><span>Residual risk (post-mitigation)</span><span style="color:#00C8FF">64.5 / 100</span></div><div class="rbar-track"><div class="rbar-fill res" style="width:64.5%"></div></div></div>
-        <div style="margin-top:7px"><div class="ufl">Mitigation actions required</div><div class="chips"><span class="chip">Human oversight protocol</span><span class="chip">Data protection impact assessment</span><span class="chip">Explainability documentation</span><span class="chip">Bias testing report</span><span class="chip">Continuous monitoring</span></div></div>
-      </div>
-    </div>
-    <div class="grid2 a a4" style="margin-top:9px">
-      <div class="card b-amber"><div class="ct">Review decision</div><div class="cb">Returned to entity — reviewer requested completion of data protection impact assessment before approval. Escalation possible if not resolved within 30 days.</div></div>
-      <div class="card b-blue"><div class="ct">Principles triggered</div><div class="cb">Do No Harm · Privacy &amp; Data Protection · Human Autonomy &amp; Oversight · Fairness &amp; Non-Discrimination · Transparency · Accountability</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 15 — DASHBOARD
-===================================================== -->
-<div class="slide" id="slide-15">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
-    <div class="slide-badge">15 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Dashboard &amp; Decision Support</div>
-    <div class="h2 a a2">What the governance dashboard shows</div>
-    <div class="grid2 a a3" style="flex:1;align-content:start">
-      <div>
-        <div class="grid2" style="gap:8px;margin-bottom:8px">
-          <div class="card b-blue"><div class="ct">Executive Summary</div><div class="cb">Total use cases · In progress · Awaiting review · High/Very High risk · Approved</div></div>
-          <div class="card b-red" style="border-left-color:#F87171;background:rgba(248,113,113,.04)"><div class="ct">Risk Distribution</div><div class="cb">Bar chart — Low / Medium / High / Very High categories across all entity assessments</div></div>
-          <div class="card b-blue"><div class="ct">Assessment Pipeline</div><div class="cb">Count per status: Screening → Questionnaire → Scoring → Mitigation → Submitted → In Review → Approved → Escalated</div></div>
-          <div class="card b-green"><div class="ct">Principle Heatmap</div><div class="cb">Coverage percentage and risk concentration per AI principle — highlights gaps and hot spots</div></div>
-          <div class="card b-navy"><div class="ct">Lifecycle Risk View</div><div class="cb">Risk exposure by stage: Plan &amp; Design · Data Collection · Model Building · Deployment · Operation · Retirement</div></div>
-          <div class="card b-amber"><div class="ct">Mitigation Tracker</div><div class="cb">Pending · In progress · Completed · Overdue. High-risk cases without mitigation plan flagged.</div></div>
+    <div class="eyebrow a a1">Demo Scenario</div>
+    <h2 class="h2 a a2">Example: UNMISS Incident Classifier</h2>
+    <div class="a a3" style="flex:1;display:flex;flex-direction:column;gap:10px;">
+      <div class="uc-card">
+        <div class="uc-hdr">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <div><div class="uc-title">UNMISS Incident Classification System</div><div class="uc-sub">UN Mission in South Sudan · Peace Operations Domain</div></div>
+            <div style="display:flex;gap:6px;"><span class="badge b-vhigh">Very High Risk</span><span class="badge b-blue">Escalated</span></div>
+          </div>
         </div>
-        <div class="card" style="padding:10px 13px;background:rgba(0,158,219,.06);border-color:rgba(0,158,219,.15)"><div class="cb"><strong style="color:rgba(255,255,255,.7)">Review queue (reviewers &amp; admins):</strong> Cross-entity list of submitted assessments — entity name, use case, risk category, submission date, reviewer assignment status.</div></div>
-      </div>
-      <div>
-        <div class="app-mock dash-mock">
-          <div class="mock-bar"><div class="mdot"></div><div class="mdot"></div><div class="mdot"></div><div class="murl">localhost:3002/dashboard</div></div>
-          <div class="mock-body" style="height:260px">
-            <div class="mock-sidebar">
-              <div style="font-size:6.5px;color:rgba(0,200,255,.5);font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 6px 5px">Nav</div>
-              <div class="mnav on"><span class="ndot"></span>Dashboard</div>
-              <div class="mnav"><span class="ndot"></span>Use Cases</div>
-              <div class="mnav"><span class="ndot"></span>Assessments</div>
-              <div class="mnav"><span class="ndot"></span>Review</div>
-              <div class="mnav"><span class="ndot"></span>Analytics</div>
-              <div class="mnav"><span class="ndot"></span>Chat</div>
-              <div class="mnav"><span class="ndot"></span>Audit</div>
-              <div class="mnav"><span class="ndot"></span>Admin</div>
-            </div>
-            <div class="mock-main">
-              <div class="mrow4">
-                <div class="mstat"><div class="msv">24</div><div class="msl">Total</div></div>
-                <div class="mstat"><div class="msv" style="color:#F59E0B">11</div><div class="msl">In Progress</div></div>
-                <div class="mstat"><div class="msv" style="color:#F87171">5</div><div class="msl">High Risk</div></div>
-                <div class="mstat"><div class="msv" style="color:#22D3AE">8</div><div class="msl">Approved</div></div>
-              </div>
-              <div style="font-size:7.5px;color:rgba(255,255,255,.3);font-weight:700;letter-spacing:.1em;margin-top:2px">RISK DISTRIBUTION</div>
-              <div class="mchart" style="height:48px">
-                <div class="mbar" style="height:55%;background:rgba(34,211,174,.55)"></div>
-                <div class="mbar" style="height:75%;background:rgba(245,158,11,.55)"></div>
-                <div class="mbar" style="height:90%;background:rgba(248,113,113,.55)"></div>
-                <div class="mbar" style="height:40%;background:rgba(239,68,68,.55)"></div>
-              </div>
-              <div style="font-size:7.5px;color:rgba(255,255,255,.3);font-weight:700;letter-spacing:.1em;margin-top:2px">AI PRINCIPLE COVERAGE</div>
-              <div style="display:flex;flex-direction:column;gap:3px">
-                <div style="display:flex;align-items:center;gap:5px;font-size:7px;color:rgba(255,255,255,.3)"><span style="width:50px;flex-shrink:0">Do No Harm</span><div style="flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px"><div style="width:78%;height:100%;background:rgba(0,158,219,.5);border-radius:2px"></div></div><span>78%</span></div>
-                <div style="display:flex;align-items:center;gap:5px;font-size:7px;color:rgba(255,255,255,.3)"><span style="width:50px;flex-shrink:0">Privacy</span><div style="flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px"><div style="width:92%;height:100%;background:rgba(248,113,113,.5);border-radius:2px"></div></div><span>92%</span></div>
-                <div style="display:flex;align-items:center;gap:5px;font-size:7px;color:rgba(255,255,255,.3)"><span style="width:50px;flex-shrink:0">Fairness</span><div style="flex:1;height:4px;background:rgba(255,255,255,.06);border-radius:2px"><div style="width:63%;height:100%;background:rgba(245,158,11,.5);border-radius:2px"></div></div><span>63%</span></div>
-              </div>
-            </div>
+        <div class="uc-body">
+          <div><div class="ufl">Assessment Route</div><div class="ufv">Full (120 questions)</div></div>
+          <div><div class="ufl">Primary Domain</div><div class="ufv">Peace &amp; Security</div></div>
+          <div><div class="ufl">Exposure Score</div><div class="ufv" style="color:#F87171;font-weight:700;">104 / 150</div></div>
+          <div><div class="ufl">Residual Score</div><div class="ufv" style="color:#F59E0B;font-weight:700;">88 / 150 (after mitigations)</div></div>
+          <div><div class="ufl">Questionnaire Version</div><div class="ufv">AIIA v1.0 (2025)</div></div>
+          <div><div class="ufl">Submitted</div><div class="ufv">2025-11-03 · UNMISS Focal Point</div></div>
+        </div>
+        <div class="uc-foot">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:7px;font-weight:600;">Why this case scored Very High</div>
+          <div class="chips">
+            <span class="chip">Automated triage of civilian incident reports</span>
+            <span class="chip">No meaningful human override mechanism</span>
+            <span class="chip">Limited explainability for field commanders</span>
+            <span class="chip">Potential life-safety consequences of misclassification</span>
+            <span class="chip">Training data bias across conflict zones</span>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 16 — POLICY CHAT / RAG
-===================================================== -->
-<div class="slide" id="slide-16">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
-    <div class="slide-badge">16 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Retrieval-Augmented Chat</div>
-    <div class="h2 a a2">Chat with assessment &amp; policy data</div>
-    <div class="grid2 a a3" style="flex:1;align-items:start;gap:22px">
-      <div>
-        <div class="step"><div class="snum" style="background:var(--navy)">1</div><div><div class="slabel">User asks in natural language</div><div class="sdesc">Entity focal point asks about their assessment, a mitigation option, or a policy principle.</div></div></div>
-        <div class="step"><div class="snum" style="background:var(--navy)">2</div><div><div class="slabel">RBAC filter applied</div><div class="sdesc">The user's entity ID and role determine which documents and assessment records are in scope. Zero cross-entity leakage.</div></div></div>
-        <div class="step"><div class="snum" style="background:var(--navy)">3</div><div><div class="slabel">Semantic search over chunks</div><div class="sdesc">Query is embedded and matched against source document chunks using pgvector / Azure AI Search.</div></div></div>
-        <div class="step"><div class="snum" style="background:var(--navy)">4</div><div><div class="slabel">Answer generated with citations</div><div class="sdesc">LLM generates a response grounded in retrieved context. Source document title and section are cited.</div></div></div>
-        <div class="div"></div>
-        <div class="grid2" style="gap:8px;margin-top:4px">
-          <div class="card b-blue"><div class="ct" style="font-size:11px">Documents in scope</div><div class="cb">AIIA Full Spec · Discussion Docs · Kickoff Presentation · Meeting Summary · Assessment Instructions</div></div>
-          <div class="card b-navy"><div class="ct" style="font-size:11px">Security model</div><div class="cb">Entity-scoped retrieval · No cross-entity data · Reviewer scope = all entities · Admin = full access</div></div>
+      <div class="grid2" style="gap:10px;">
+        <div class="card b-red">
+          <div class="ct">Principle gaps identified</div>
+          <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
+            <div class="rbar-wrap"><div class="rbar-label"><span>Do No Harm</span><span style="color:#F87171;">High exposure</span></div><div class="rbar-track"><div class="rbar-fill exp" style="width:88%"></div></div></div>
+            <div class="rbar-wrap"><div class="rbar-label"><span>Human Autonomy</span><span style="color:#F87171;">High exposure</span></div><div class="rbar-track"><div class="rbar-fill exp" style="width:82%"></div></div></div>
+            <div class="rbar-wrap"><div class="rbar-label"><span>Transparency</span><span style="color:#F59E0B;">Medium</span></div><div class="rbar-track"><div class="rbar-fill exp" style="width:60%"></div></div></div>
+            <div class="rbar-wrap"><div class="rbar-label"><span>Fairness</span><span style="color:#F59E0B;">Medium</span></div><div class="rbar-track"><div class="rbar-fill exp" style="width:55%"></div></div></div>
+          </div>
+        </div>
+        <div class="card b-green">
+          <div class="ct">Reviewer decision</div>
+          <div class="cb" style="margin-top:6px;line-height:1.7;">Assessment escalated to senior oversight. Deployment suspended pending independent algorithmic audit, mandatory human-in-the-loop redesign, and field-commander explainability briefing. Re-assessment required before any operational use.</div>
+          <div style="margin-top:10px;padding:7px 11px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:8px;font-size:12px;color:#F87171;font-weight:600;">&#x2B06; Escalated — Awaiting Senior Review</div>
         </div>
       </div>
-      <div class="chat-mock" style="height:310px">
-        <div class="chat-hdr"><div class="online"></div>UN AIIA Policy Assistant <span style="font-size:9px;color:rgba(255,255,255,.3);margin-left:4px">RAG · entity-scoped</span></div>
-        <div class="chat-msgs">
-          <div class="cmsg u">Why was our incident classification tool classified as high risk?</div>
-          <div class="cmsg a">Based on your assessment responses, the tool scored 82.5/100 exposure across three principles: <strong style="color:#00C8FF">Do No Harm</strong>, <strong style="color:#00C8FF">Privacy &amp; Data Protection</strong>, and <strong style="color:#00C8FF">Human Oversight</strong>.<br><br>Key factors: processing sensitive protection-status data, partial human review only, and automated prioritisation of case workload.<div class="csrc">📄 AIIA Full Spec §4.2 · Your assessment ID #001</div></div>
-          <div class="cmsg u">What mitigation is required before approval?</div>
-          <div class="cmsg typing"><div class="tdot"></div><div class="tdot"></div><div class="tdot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S17 ARCHITECTURE -->
+<div class="slide" id="s17">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:81%"></div></div>
+    <div class="slide-badge">17 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Technical Overview</div>
+    <h2 class="h2 a a2">Architecture &amp; Azure migration path</h2>
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px;" class="a a3">
+      <div class="arch-grid">
+        <div class="arch-layer">
+          <div class="arch-hdr fe">Frontend</div>
+          <div class="arch-item">Next.js 15 — App Router<em>React 19 · TypeScript strict mode</em></div>
+          <div class="arch-item">Tailwind CSS + shadcn/ui<em>UN blue design tokens via CSS custom properties</em></div>
+          <div class="arch-item">Lucide React icons<em>Consistent iconography throughout the application</em></div>
+          <div class="arch-item">Zod validation at system boundaries<em>All server actions validate input schemas before processing</em></div>
         </div>
-        <div class="chat-inp"><span style="font-style:italic">Ask about your assessment or UN AI policy…</span><div class="csend">↑</div></div>
+        <div class="arch-layer">
+          <div class="arch-hdr sv">Backend / Auth</div>
+          <div class="arch-item">Supabase Auth + RLS<em>Session management · demo cookie bypass for offline use</em></div>
+          <div class="arch-item">WorkflowStore adapter pattern<em>Interface isolates local vs Supabase vs Azure implementations</em></div>
+          <div class="arch-item">Server Actions only<em>No client-side data mutations — all state changes via server</em></div>
+          <div class="arch-item">pgvector (Supabase)<em>Vector similarity search for RAG retrieval</em></div>
+        </div>
+        <div class="arch-layer">
+          <div class="arch-hdr dt">Data &amp; AI</div>
+          <div class="arch-item">Supabase PostgreSQL + RLS<em>Row-Level Security — entity isolation enforced at the DB layer</em></div>
+          <div class="arch-item">Append-only audit log<em>Immutable governance record — never updated or deleted</em></div>
+          <div class="arch-item">LLM via REST endpoint<em>Configurable — Azure OpenAI or any compatible API</em></div>
+          <div class="arch-item">JSON file fallback store<em>Full offline demo without Supabase credentials</em></div>
+        </div>
+      </div>
+      <div class="azure-bar">
+        <div class="azure-bar-lbl">Azure Migration Targets — drop-in via adapter pattern</div>
+        <div class="azure-items">
+          <span class="atag">Azure App Service</span>
+          <span class="atag">Azure PostgreSQL Flexible Server</span>
+          <span class="atag">Microsoft Entra ID</span>
+          <span class="atag">Azure OpenAI Service</span>
+          <span class="atag">Azure AI Search</span>
+          <span class="atag">Azure Blob Storage</span>
+          <span class="atag">GitHub Actions → Azure CI/CD</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 17 — ARCHITECTURE
-===================================================== -->
-<div class="slide" id="slide-17">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
-    <div class="slide-badge">17 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Technical Architecture</div>
-    <div class="h2 a a2">Prototype stack &amp; Azure migration path</div>
-    <p class="sub a a2" style="margin-bottom:10px">Clean adapter pattern — every component can migrate to Azure infrastructure without rewriting core application logic.</p>
-    <div class="arch-grid a a3">
-      <div class="arch-layer">
-        <div class="arch-hdr fe">Frontend</div>
-        <div class="arch-item">Next.js 15 App Router <em>TypeScript · React 19</em></div>
-        <div class="arch-item">shadcn/ui + Tailwind CSS <em>UN blue design system</em></div>
-        <div class="arch-item">Lucide React icons</div>
-        <div class="arch-item">Server components + Server actions <em>Minimal client JS</em></div>
-        <div class="arch-item">Zod form validation <em>System boundary safety</em></div>
+<!-- S18 AZURE COSTS -->
+<div class="slide" id="s18">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:86%"></div></div>
+    <div class="slide-badge">18 / 21</div>
+  </div>
+  <div class="pad">
+    <div class="eyebrow a a1">Cost Estimates</div>
+    <h2 class="h2 a a2">Azure hosting costs — three deployment tiers</h2>
+    <div class="cost-grid a a3">
+      <div class="cost-tier">
+        <div class="cost-tier-hdr light">
+          <div class="cost-tier-name light">Pilot / Light</div>
+          <div class="cost-tier-scope">1–5 UN entities · Dev &amp; focus group use · Low traffic</div>
+        </div>
+        <div class="cost-rows">
+          <div class="cost-row"><div class="cost-label">Azure App Service B2<em>2 vCores, 3.5 GB RAM</em></div><div class="cost-val">$75/mo</div></div>
+          <div class="cost-row"><div class="cost-label">PostgreSQL Flexible Burstable<em>1 vCore, 2 GB — medium-tier storage</em></div><div class="cost-val">$35/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure AI Search Basic<em>Vector search for RAG</em></div><div class="cost-val">$75/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure OpenAI (light use)<em>~500K tokens/month</em></div><div class="cost-val">$30/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Blob Storage + CDN<em>Documents and static assets</em></div><div class="cost-val">$10/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Microsoft Entra ID P1<em>Likely included in existing M365</em></div><div class="cost-val">$0–6/user</div></div>
+        </div>
+        <div class="cost-total-row"><div class="cost-total-label">Est. Monthly Total</div><div class="cost-total-val light">~$225</div></div>
       </div>
-      <div class="arch-layer">
-        <div class="arch-hdr sv">Application Services</div>
-        <div class="arch-item">Assessment workflow engine <em>Screening · routing · scoring</em></div>
-        <div class="arch-item">Weighted risk scoring <em>Exposure · residual risk · category</em></div>
-        <div class="arch-item">Review workflow <em>Queue · decisions · audit log</em></div>
-        <div class="arch-item">RAG service <em>Embedding · retrieval · chat</em></div>
-        <div class="arch-item">WorkflowStore adapter <em>Swappable: local JSON / Supabase / Azure</em></div>
+      <div class="cost-tier">
+        <div class="cost-tier-hdr standard">
+          <div class="cost-tier-name standard">Standard / Production</div>
+          <div class="cost-tier-scope">10–30 UN entities · Production pilot · Moderate load</div>
+        </div>
+        <div class="cost-rows">
+          <div class="cost-row"><div class="cost-label">Azure App Service P1v3<em>2 vCores, 8 GB RAM — auto-scale</em></div><div class="cost-val">$140/mo</div></div>
+          <div class="cost-row"><div class="cost-label">PostgreSQL Flexible General Purpose<em>4 vCores, 16 GB — medium tier</em></div><div class="cost-val">$320/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure AI Search S1<em>Production-grade vector search</em></div><div class="cost-val">$250/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure OpenAI (moderate use)<em>~3M tokens/month</em></div><div class="cost-val">$180/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Blob Storage + CDN<em>Documents, attachments, static assets</em></div><div class="cost-val">$25/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Microsoft Entra ID P1<em>Likely included in existing M365</em></div><div class="cost-val">$0–6/user</div></div>
+        </div>
+        <div class="cost-total-row"><div class="cost-total-label">Est. Monthly Total</div><div class="cost-total-val standard">~$915</div></div>
       </div>
-      <div class="arch-layer">
-        <div class="arch-hdr dt">Data Layer</div>
-        <div class="arch-item">Supabase PostgreSQL <em>→ Azure PostgreSQL Flexible Server</em></div>
-        <div class="arch-item">Row-level security (RLS) <em>Entity + role enforcement</em></div>
-        <div class="arch-item">pgvector <em>→ Azure AI Search (vector index)</em></div>
-        <div class="arch-item">Supabase Auth <em>→ Microsoft Entra ID (OIDC)</em></div>
-        <div class="arch-item">Supabase Storage <em>→ Azure Blob Storage</em></div>
+      <div class="cost-tier">
+        <div class="cost-tier-hdr enterprise">
+          <div class="cost-tier-name enterprise">Enterprise / Full Scale</div>
+          <div class="cost-tier-scope">50+ UN entities · High availability · Large volumes</div>
+        </div>
+        <div class="cost-rows">
+          <div class="cost-row"><div class="cost-label">Azure App Service P2v3 ×2<em>4 vCores, 16 GB — high availability pair</em></div><div class="cost-val">$580/mo</div></div>
+          <div class="cost-row"><div class="cost-label">PostgreSQL Flexible GP 8 vCore HA<em>High-availability with standby replica</em></div><div class="cost-val">$950/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure AI Search S2<em>High-throughput vector search</em></div><div class="cost-val">$1,000/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Azure OpenAI (high volume)<em>~15M tokens/month</em></div><div class="cost-val">$500/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Blob Storage + CDN + Monitoring<em>Full observability stack</em></div><div class="cost-val">$65/mo</div></div>
+          <div class="cost-row"><div class="cost-label">Microsoft Entra ID P1<em>Likely included in existing M365</em></div><div class="cost-val">$0–6/user</div></div>
+        </div>
+        <div class="cost-total-row"><div class="cost-total-label">Est. Monthly Total</div><div class="cost-total-val enterprise">~$3,095</div></div>
       </div>
     </div>
-    <div class="azure-bar a a4">
-      <div class="azure-bar-lbl">Azure Target Stack</div>
-      <div class="azure-items">
-        <span class="atag">Azure App Service</span>
-        <span class="atag">Azure PostgreSQL</span>
-        <span class="atag">Azure AI Search</span>
-        <span class="atag">Azure OpenAI GPT-4</span>
-        <span class="atag">Microsoft Entra ID</span>
-        <span class="atag">Azure Blob Storage</span>
-        <span class="atag">GitHub Actions CI/CD</span>
-      </div>
-    </div>
+    <div class="cost-note a a4"><strong>Note:</strong> Estimates based on Azure public pricing (June 2026), Pay-As-You-Go rates. Actual costs depend on traffic volume, data storage growth, and OpenAI token consumption. UN entities with existing Microsoft Enterprise Agreements may qualify for significant discounts. Entra ID P1 is typically already licensed through M365 E3/E5 — no additional cost. A 1-year Reserved Instance on the Standard tier reduces PostgreSQL by ~35%, bringing the production estimate to approximately <strong>$700/month</strong>.</div>
   </div>
 </div>
 
-<!-- =====================================================
-     SLIDE 18 — ROADMAP
-===================================================== -->
-<div class="slide" id="slide-18">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
+<!-- S19 ROADMAP -->
+<div class="slide" id="s19">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
     <div class="progress-track"><div class="progress-fill" style="width:90%"></div></div>
-    <div class="slide-badge">18 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Development Roadmap</div>
-    <div class="h2 a a2">Nine implementation phases — current status</div>
-    <div class="roadmap a a3">
-      <div class="rphase"><div class="rpdot done">1</div><div class="rpname">Document Extraction</div><div class="rpdesc">Excel/DOCX → structured JSON</div></div>
-      <div class="rphase"><div class="rpdot done">2</div><div class="rpname">Questionnaire JSON</div><div class="rpdesc">Questions · weights · principles</div></div>
-      <div class="rphase"><div class="rpdot done">3</div><div class="rpname">Schema &amp; RBAC</div><div class="rpdesc">Supabase · RLS · migrations</div></div>
-      <div class="rphase"><div class="rpdot done">4</div><div class="rpname">Use Case Workflow</div><div class="rpdesc">End-to-end entity flow</div></div>
-      <div class="rphase"><div class="rpdot done">5</div><div class="rpname">Risk Scoring</div><div class="rpdesc">Exposure · residual · category</div></div>
-      <div class="rphase"><div class="rpdot done">6</div><div class="rpname">Review Workflow</div><div class="rpdesc">Queue · decisions · audit</div></div>
-      <div class="rphase"><div class="rpdot current">7</div><div class="rpname">Dashboard &amp; Analytics</div><div class="rpdesc">Current phase — in progress</div></div>
-      <div class="rphase"><div class="rpdot next">8</div><div class="rpname">RAG &amp; Chat</div><div class="rpdesc">Ingestion · vector · UI</div></div>
-      <div class="rphase"><div class="rpdot future">9</div><div class="rpname">Azure Migration</div><div class="rpdesc">Adapter validation · deploy</div></div>
-    </div>
-    <div class="grid3 a a4" style="margin-top:14px">
-      <div class="card b-green"><div class="ct">Phases 1–6 — Complete</div><div class="cb">Full entity workflow, risk scoring, review decisions, and audit trail are fully operational in the prototype.</div></div>
-      <div class="card b-amber"><div class="ct">Phase 7 — In Progress</div><div class="cb">Dashboard panels, analytics charts, risk heatmap, and cross-entity review queue being built now.</div></div>
-      <div class="card b-navy"><div class="ct">Phases 8–9 — Upcoming</div><div class="cb">RAG ingestion pipeline and policy chat require LLM endpoint config. Azure migration follows validation.</div></div>
-    </div>
-    <div class="a a5" style="margin-top:8px;background:rgba(34,211,174,.06);border:1px solid rgba(34,211,174,.12);border-radius:10px;padding:9px 14px;font-size:11px;color:rgba(255,255,255,.5)">
-      <strong style="color:rgba(34,211,174,.8)">Legend:</strong> <span style="color:#22D3AE">●</span> Done &nbsp;|&nbsp; <span style="color:#F59E0B">●</span> Current phase &nbsp;|&nbsp; <span style="color:rgba(0,158,219,.6)">●</span> Next &nbsp;|&nbsp; <span style="color:rgba(255,255,255,.3)">●</span> Future
-    </div>
+    <div class="slide-badge">19 / 21</div>
   </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 19 — VALUE PROPOSITION
-===================================================== -->
-<div class="slide" id="slide-19">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:95%"></div></div>
-    <div class="slide-badge">19 / 20</div>
-  </header>
-  <div class="pad-wide">
-    <div class="eyebrow a a1">Value Proposition</div>
-    <div class="h2 a a2">Why this matters for UN AI governance</div>
-    <p class="sub a a2" style="margin-bottom:12px">Making responsible AI governance practical, consistent, and accountable across all UN entities — from a single platform.</p>
-    <div class="vgrid a a3">
-      <div class="vcard blue"><div class="vn">1</div><div class="vl">Central source of truth</div><div class="vd">All assessments, decisions, and risk scores in one place. No more chasing spreadsheets across email threads.</div></div>
-      <div class="vcard green"><div class="vn">10×</div><div class="vl">Faster cross-entity review</div><div class="vd">Reviewer queue replaces manual email triage. Risk scores, principle heatmaps, and mitigation status visible at a glance.</div></div>
-      <div class="vcard amber"><div class="vn">10</div><div class="vl">AI principles embedded</div><div class="vd">Every question maps to CEB AI principles. Ethics and risk awareness is built into the assessment process itself.</div></div>
-      <div class="vcard blue"><div class="vn">3</div><div class="vl">Assessment routes — right-sized burden</div><div class="vd">Screening routes use cases to Minimal / Standard / Full — reducing fatigue for low-risk deployments.</div></div>
-      <div class="vcard green"><div class="vn">∞</div><div class="vl">Auditable evidence record</div><div class="vd">Immutable log of every action — who completed what, when, and what decision was made. Traceable for oversight.</div></div>
-      <div class="vcard amber"><div class="vn">RAG</div><div class="vl">Policy guidance on demand</div><div class="vd">Entities query guidance documents in natural language. Reduces methodology team inbox load and speeds decision-making.</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =====================================================
-     SLIDE 20 — NEXT STEPS
-===================================================== -->
-<div class="slide" id="slide-20">
-  <header class="slide-header">
-    <div class="slide-logo"><div class="logo-icon"><img src="images/un-1-logo-png-transparent.png" alt="United Nations"/></div><div><div class="logo-text">UN AI Impact Assessment</div><div class="logo-sub">Workflow Application Prototype</div></div></div>
-    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
-    <div class="slide-badge">20 / 20</div>
-  </header>
   <div class="pad-narrow">
-    <div class="eyebrow a a1">Next Steps</div>
-    <div class="h2 a a2">Six priority actions after this review</div>
-    <div class="grid2 a a3" style="flex:1;align-content:start;gap:8px">
-      <div>
-        <div class="step"><div class="snum" style="background:#009EDB">1</div><div><div class="slabel">Validate questionnaire extraction</div><div class="sdesc">Focus group members review questions.json against source Excel — confirm text, weights, and principle mapping accuracy.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">2</div><div><div class="slabel">Test with 2–3 realistic use cases</div><div class="sdesc">Entity focal points complete the workflow end-to-end with real or near-real AI use cases and report on usability and routing logic.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">3</div><div><div class="slabel">Review scoring logic with methodology owners</div><div class="sdesc">Confirm question weights, response weights, and risk category thresholds reflect governance intent. Adjust as needed.</div></div></div>
+    <div class="eyebrow a a1">Development Plan</div>
+    <h2 class="h2 a a2">Roadmap</h2>
+    <div class="a a3" style="flex:1;display:flex;flex-direction:column;gap:10px;">
+      <div class="roadmap">
+        <div class="rphase"><div class="rpdot done">&#x2713;</div><div class="rpname">Phase 1<br>Prototype</div><div class="rpdesc">Core workflow, RBAC, risk scoring, local demo mode</div></div>
+        <div class="rphase"><div class="rpdot current">&#x25CF;</div><div class="rpname">Phase 2<br>Focus Group</div><div class="rpdesc">User testing, feedback integration, UX refinement</div></div>
+        <div class="rphase"><div class="rpdot next">3</div><div class="rpname">Phase 3<br>RAG &amp; Chat</div><div class="rpdesc">Full document ingestion, entity-scoped retrieval, LLM</div></div>
+        <div class="rphase"><div class="rpdot future">4</div><div class="rpname">Phase 4<br>Azure Migration</div><div class="rpdesc">Entra ID auth, Azure PostgreSQL, Azure OpenAI</div></div>
+        <div class="rphase"><div class="rpdot future">5</div><div class="rpname">Phase 5<br>UN System Roll-out</div><div class="rpdesc">Multi-entity onboarding, IRTM integration, lifecycle</div></div>
       </div>
-      <div>
-        <div class="step"><div class="snum" style="background:#009EDB">4</div><div><div class="slabel">Test RBAC with sample user accounts</div><div class="sdesc">Verify entity focal points cannot see other entity records, reviewers see the full queue, and admins have full visibility.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">5</div><div><div class="slabel">Refine dashboard indicators</div><div class="sdesc">Confirm which risk and mitigation metrics are most useful for governance reporting. Align with actual oversight requirements.</div></div></div>
-        <div class="step"><div class="snum" style="background:#009EDB">6</div><div><div class="slabel">Prepare stakeholder demonstration</div><div class="sdesc">Schedule a structured demo for the broader focus group, methodology team, and governance leadership using realistic sample data.</div></div></div>
-      </div>
-    </div>
-    <div class="a a4">
-      <div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,200,255,.6);margin-bottom:7px">Access the prototype</div>
-      <div class="access-bar">
-        <div class="aitem"><div class="albl">Application</div><div class="aval">localhost:3002</div></div>
-        <div class="adiv"></div>
-        <div class="aitem"><div class="albl">Demo Session</div><div class="aval">Click "Continue with demo session" on login</div></div>
-        <div class="adiv"></div>
-        <div class="aitem"><div class="albl">Focal Point</div><div class="aval">focal@demo.un.org · DemoPass123!</div></div>
-        <div class="adiv"></div>
-        <div class="aitem"><div class="albl">Reviewer</div><div class="aval">reviewer@demo.un.org · DemoPass123!</div></div>
+      <div class="grid3" style="gap:10px;">
+        <div class="card b-green">
+          <div class="ct">Phase 1 — Delivered</div>
+          <div class="scope-list" style="margin-top:6px;">
+            <div class="scope-item scope-can">Full 6-step assessment workflow</div>
+            <div class="scope-item scope-can">5-role RBAC with Supabase RLS</div>
+            <div class="scope-item scope-can">Automated risk scoring engine</div>
+            <div class="scope-item scope-can">Demo simulation (10 use cases)</div>
+            <div class="scope-item scope-can">Audit trail and analytics dashboard</div>
+          </div>
+        </div>
+        <div class="card b-amber">
+          <div class="ct">Phase 2 — In Progress</div>
+          <div class="scope-list" style="margin-top:6px;">
+            <div class="scope-item scope-view">Focus group session (June 2026)</div>
+            <div class="scope-item scope-view">Questionnaire validation</div>
+            <div class="scope-item scope-view">UX feedback integration</div>
+            <div class="scope-item scope-view">Edge case handling</div>
+            <div class="scope-item scope-view">Accessibility review</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ct">Phase 3–5 — Planned</div>
+          <div class="scope-list" style="margin-top:6px;">
+            <div class="scope-item scope-cannot">RAG document ingestion pipeline</div>
+            <div class="scope-item scope-cannot">Azure Entra ID integration</div>
+            <div class="scope-item scope-cannot">Multi-entity pilot deployment</div>
+            <div class="scope-item scope-cannot">Lifecycle reassessment triggers</div>
+            <div class="scope-item scope-cannot">IRTM / PAPI integration</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-</div><!-- end deck -->
-
-<!-- ── Navigation bar ─────────────────────── -->
-<nav class="nav-bar" id="nav-bar">
-  <button class="nav-btn" id="btn-prev" onclick="navigate(-1)" disabled>← Previous</button>
-  <div class="nav-center">
-    <div class="dot-nav" id="dot-nav"></div>
-    <div class="nav-label" id="nav-label">Introduction</div>
+<!-- S20 VALUE PROPOSITION -->
+<div class="slide" id="s20">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:95%"></div></div>
+    <div class="slide-badge">20 / 21</div>
   </div>
-  <button class="nav-btn" id="btn-next" onclick="navigate(1)">Next →</button>
+  <div class="pad">
+    <div class="eyebrow a a1">Why This Matters</div>
+    <h2 class="h2 a a2">Value for the UN system</h2>
+    <div class="vgrid a a3">
+      <div class="vcard blue"><div class="vn">10×</div><div class="vl">Faster assessment cycle</div><div class="vd">Structured digital workflow eliminates weeks of email coordination. Focal points, contributors, and reviewers work in parallel — status visible in real time to all parties.</div></div>
+      <div class="vcard green"><div class="vn">100%</div><div class="vl">Auditable governance trail</div><div class="vd">Every action, decision, and role assignment is recorded in an immutable append-only audit log. Governance bodies can verify the full history of any AI use case assessment.</div></div>
+      <div class="vcard amber"><div class="vn">5</div><div class="vl">Roles, zero data leakage</div><div class="vd">Row-Level Security enforces entity boundaries at the database layer — not just the UI. Even in the event of an application bug, one entity's data cannot be accessed by another.</div></div>
+      <div class="vcard blue"><div class="vn">&#x221E;</div><div class="vl">Scales to all UN entities</div><div class="vd">Multi-tenant architecture supports any number of UN entities, each fully isolated. Onboarding a new entity requires only account creation — no infrastructure changes.</div></div>
+      <div class="vcard green"><div class="vn">AI</div><div class="vl">Policy-grounded decisions</div><div class="vd">The RAG chat gives reviewers instant access to cited guidance from UN AI governance documents — turning policy expertise from a bottleneck into a scalable resource.</div></div>
+      <div class="vcard amber"><div class="vn">$0</div><div class="vl">Lock-in by design</div><div class="vd">The WorkflowStore adapter pattern allows the entire backend to migrate from Supabase to Azure with no changes to application code — protecting long-term UN optionality.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S21 NEXT STEPS -->
+<div class="slide" id="s21">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+    <div class="slide-badge">21 / 21</div>
+  </div>
+  <div class="pad-narrow" style="max-width:900px;">
+    <div class="eyebrow a a1">Next Steps</div>
+    <h2 class="h2 a a2">From prototype to pilot</h2>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:space-around;" class="a a3">
+      <div class="step"><div class="snum">1</div><div><div class="slabel">Focus Group validation today</div><div class="sdesc">Walk through the demo simulation — 10 pre-built use cases across diverse UN contexts. Validate whether the workflow, risk scoring, and reviewer experience reflect real-world AIIA practice. Flag questions that need rewording or reordering.</div></div></div>
+      <div class="step"><div class="snum">2</div><div><div class="slabel">Questionnaire review and iteration</div><div class="sdesc">Subject-matter experts review the extracted questions against the original CEB AIIA Excel for completeness and accuracy. Identify missing domains or ambiguous response options before the pilot.</div></div></div>
+      <div class="step"><div class="snum">3</div><div><div class="slabel">Identify two pilot UN entities</div><div class="sdesc">Select two volunteer entities to complete a real AIIA using the platform — ideally one with a High-risk use case and one with a Low/Medium case. Collect structured feedback on every workflow step.</div></div></div>
+      <div class="step"><div class="snum">4</div><div><div class="slabel">Complete RAG document ingestion</div><div class="sdesc">Ingest all approved source documents (UN AI Strategy, CEB AIIA Framework, ITU guidelines) into pgvector. Validate retrieval quality and citation accuracy before enabling Policy Chat for pilot users.</div></div></div>
+      <div class="step"><div class="snum">5</div><div><div class="slabel">Plan Azure migration and production deployment</div><div class="sdesc">Define the Azure environment, Entra ID tenant, and data residency requirements. Standard-tier production on Azure targeted for Q4 2026 — estimated ~$915/month, or ~$700/month with Reserved Instances.</div></div></div>
+    </div>
+    <div class="access-bar a a4">
+      <div class="aitem"><div class="albl">Live Demo</div><div class="aval">localhost:3002</div></div>
+      <div class="adiv"></div>
+      <div class="aitem"><div class="albl">Focal Point</div><div class="aval">focal@demo.un.org</div></div>
+      <div class="adiv"></div>
+      <div class="aitem"><div class="albl">Reviewer</div><div class="aval">reviewer@demo.un.org</div></div>
+      <div class="adiv"></div>
+      <div class="aitem"><div class="albl">Password</div><div class="aval">DemoPass123!</div></div>
+      <div class="adiv"></div>
+      <div class="aitem"><div class="albl">Presentation</div><div class="aval">mafiatun.github.io/un-ai-impact-assessments-presentation</div></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<nav class="nav-bar">
+  <button class="nav-btn" id="prevBtn" disabled onclick="navigate(-1)">&#x2190; Prev</button>
+  <div class="nav-center">
+    <div class="dot-nav" id="dotNav"></div>
+    <div class="nav-label" id="navLabel">Introduction</div>
+  </div>
+  <button class="nav-btn" id="nextBtn" onclick="navigate(1)">Next &#x2192;</button>
 </nav>
 
 <script>
-const TOTAL = 20;
-const LABELS = [
-  'Introduction',
-  'The Problem',
-  'Objectives',
-  'User Roles',
-  'Role Activity Map',
-  'Focal Point Journey',
-  'Contributor Role',
-  'Reviewer Decisions',
-  'Admin & Viewer',
-  'AI Principles',
-  'End-to-End Workflow',
-  'RBAC Matrix',
-  'How to Use',
-  'Example Use Case',
-  'Dashboard',
-  'Policy Chat',
-  'Architecture',
-  'Roadmap',
-  'Value Proposition',
-  'Next Steps'
-];
-let current = 1;
-
-function navigate(dir) {
-  const next = current + dir;
-  if (next < 1 || next > TOTAL) return;
-  const from = document.getElementById('slide-' + current);
-  const to = document.getElementById('slide-' + next);
-  from.classList.remove('slide-active');
-  from.classList.add(dir > 0 ? 'slide-left' : 'slide-right');
-  if (dir < 0) {
-    to.classList.add('no-trans');
-    to.classList.remove('slide-left','slide-right');
-    to.style.transform = 'translateX(-100%)';
-    to.style.opacity = '0';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      to.classList.remove('no-trans');
-      to.style.transform = '';
-      to.style.opacity = '';
-      to.classList.add('slide-active');
-    }));
-  } else {
-    to.classList.remove('slide-left','slide-right');
-    to.classList.add('slide-active');
-  }
-  current = next;
-  updateUI();
+const TOTAL=21;
+const LABELS=['Introduction','The Problem','Objectives','AI Principles','End-to-End Workflow','User Roles','Role Activity Map','Focal Point Journey','Contributor Role','Reviewer Decisions','Admin & Viewer','RBAC Matrix','Dashboard','Policy Chat','How to Use','Example Use Case','Architecture','Azure Costs','Roadmap','Value Proposition','Next Steps'];
+let current=0;
+const slides=Array.from({length:TOTAL},(_,i)=>document.getElementById('s'+(i+1)));
+const dotNav=document.getElementById('dotNav');
+const navLabel=document.getElementById('navLabel');
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+LABELS.forEach((_,i)=>{const d=document.createElement('button');d.className='dot'+(i===0?' active-dot':'');d.title=LABELS[i];d.onclick=()=>goTo(i);dotNav.appendChild(d);});
+function goTo(n){
+  const prev=current;current=Math.max(0,Math.min(TOTAL-1,n));if(prev===current)return;
+  const dir=n>prev?1:-1;
+  slides[prev].className='slide '+(dir>0?'slide-left':'slide-right');
+  slides[current].className='slide slide-active';
+  dotNav.querySelectorAll('.dot').forEach((d,i)=>d.className='dot'+(i===current?' active-dot':''));
+  navLabel.textContent=LABELS[current];
+  prevBtn.disabled=current===0;nextBtn.disabled=current===TOTAL-1;
 }
-
-function goToExact(n) {
-  if (n === current) return;
-  const dir = n > current ? 1 : -1;
-  const from = document.getElementById('slide-' + current);
-  const to = document.getElementById('slide-' + n);
-  from.classList.remove('slide-active');
-  from.classList.add(dir > 0 ? 'slide-left' : 'slide-right');
-  if (dir < 0) {
-    to.classList.add('no-trans');
-    to.classList.remove('slide-left','slide-right');
-    to.style.transform = 'translateX(-100%)';
-    to.style.opacity = '0';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      to.classList.remove('no-trans');
-      to.style.transform = '';
-      to.style.opacity = '';
-      to.classList.add('slide-active');
-    }));
-  } else {
-    to.classList.remove('slide-left','slide-right');
-    to.classList.add('slide-active');
-  }
-  current = n;
-  updateUI();
-}
-
-function updateUI() {
-  document.getElementById('btn-prev').disabled = current === 1;
-  document.getElementById('btn-next').disabled = current === TOTAL;
-  document.getElementById('nav-label').textContent = LABELS[current - 1];
-  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active-dot', i+1 === current));
-  document.querySelectorAll('.progress-fill').forEach(f => f.style.width = ((current/TOTAL)*100)+'%');
-}
-
-// Build dot nav
-const dotNav = document.getElementById('dot-nav');
-for (let i = 1; i <= TOTAL; i++) {
-  const d = document.createElement('button');
-  d.className = 'dot' + (i===1?' active-dot':'');
-  d.title = LABELS[i-1];
-  const n = i;
-  d.addEventListener('click', () => goToExact(n));
-  dotNav.appendChild(d);
-}
-
-// All slides except slide-1 start as slide-right
-document.querySelectorAll('.slide').forEach(s => {
-  if (s.id !== 'slide-1') {
-    s.classList.remove('slide-active');
-    s.classList.add('slide-right');
-  }
+function navigate(dir){goTo(current+dir);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')navigate(1);
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp')navigate(-1);
+  else if(e.key==='Home')goTo(0);
+  else if(e.key==='End')goTo(TOTAL-1);
 });
-
-// Keyboard navigation
-document.addEventListener('keydown', e => {
-  if (['ArrowRight','ArrowDown'].includes(e.key)) navigate(1);
-  if (['ArrowLeft','ArrowUp'].includes(e.key)) navigate(-1);
-  if (e.key === 'Home') goToExact(1);
-  if (e.key === 'End') goToExact(TOTAL);
-});
-
-// Touch swipe
-let tx = 0;
-document.addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive:true});
-document.addEventListener('touchend', e => {
-  const diff = tx - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 60) navigate(diff > 0 ? 1 : -1);
-}, {passive:true});
-
-updateUI();
+let ts=0,tx=0;
+document.addEventListener('touchstart',e=>{ts=e.touches[0].clientY;tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ts;if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50)navigate(dx<0?1:-1);else if(Math.abs(dy)>50)navigate(dy<0?1:-1);},{passive:true});
+slides.forEach((s,i)=>{if(i!==0)s.className='slide slide-right';});
 </script>
 </body>
 </html>
