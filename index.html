@@ -3169,6 +3169,70 @@ const QEXPLORER = {
   reviewerNotes: {"Do No Harm": "High-weight answers here indicate potential harm to affected persons \u2014 reviewer must assess severity, reversibility, and mitigation adequacy. Score \u22658 triggers mandatory independent safety review.", "Human Autonomy and Oversight": "Answers indicating no human override or limited explainability will escalate to senior governance review. UNMISS scored maximum here.", "Defined Purpose, Necessity, and Proportionality": "Questions here establish whether AI is needed and justified. Weak answers suggest scope creep.", "Responsibility and Accountability": "Defines who is accountable if the system fails. Missing accountability chains are a red flag for any reviewer.", "Right to Privacy, Data Protection and Data Governance": "Personal or sensitive data processing without proper governance triggers GDPR/data policy review.", "Safety and Security": "Security vulnerabilities or lack of adversarial testing require cybersecurity team sign-off.", "Transparency and Explainability": "Systems affecting individuals must have explainable outputs. Opaque models serving high-stakes decisions fail this principle.", "Fairness and non-discrimination": "Biased training data or unrepresentative datasets trigger fairness audits.", "Inclusion and Participation": "Systems serving diverse populations must be accessible and culturally sensitive.", "Sustainability": "Long-term environmental and operational sustainability of the AI system."}
 };
 
+// ── Free-text answers for metadata questions (no multiple-choice options) ──
+const QEX_FREE_TEXT = {
+  'DPNP 1': {
+    unmiss: 'AIIA/2025/UNMISS/001',
+    c2c:    'AIIA/2025/OSAA/002',
+    desa:   'AIIA/2025/DESA/008'
+  },
+  'DPNP 2': {
+    unmiss: 'Lt. Col. Grace Adeyemi',
+    c2c:    'Amara Diallo',
+    desa:   'Dr. Yuki Tanaka'
+  },
+  'DPNP 3': {
+    unmiss: 'JOC Intelligence Analyst',
+    c2c:    'Programme Officer, Knowledge Management',
+    desa:   'Senior Statistician, SDG Indicators Unit'
+  },
+  'DPNP 4': {
+    unmiss: 'UNMISS Joint Operations Centre',
+    c2c:    'OSAA Knowledge Management Unit',
+    desa:   'UN Statistics Division, DESA'
+  },
+  'DPNP 5': {
+    unmiss: 'Joint Operations Centre (JOC), Juba, South Sudan',
+    c2c:    'Office of the Special Adviser on Africa (OSAA), New York',
+    desa:   'Statistics Division, Department of Economic and Social Affairs (DESA)'
+  },
+  'DPNP 6': {
+    unmiss: 'Field operations, legal counsel, protection cluster, intelligence unit, civilian harm mitigation team',
+    c2c:    'OSAA senior management, programme staff, external AU liaison officers, policy analysis team',
+    desa:   'National statistical offices, SDG inter-agency working group, internal data quality team'
+  },
+  'DPNP 7': {
+    unmiss: 'UNMISS Incident Classification and Threat Prioritisation System',
+    c2c:    'AU-UN C2C Structured Dialogue Planning Assistant',
+    desa:   'DESA SDG Statistics Anomaly Detection Tool'
+  },
+  'DPNP 8': {
+    unmiss: 'UNMISS-IT-2024-047',
+    c2c:    'OSAA-IT-2024-012',
+    desa:   'DESA-IT-2025-003'
+  },
+  'DPNP 10': {
+    unmiss: 'AI-driven classification of field incident reports to prioritise threat response decisions for UNMISS peace operations across South Sudan. Covers 15,000+ displaced civilians in active conflict zones.',
+    c2c:    'Planning assistant for AU-UN structured dialogue sessions — recommends agenda items, summarises background documents, flags policy alignment gaps, and tracks action items from previous sessions.',
+    desa:   'Anomaly detection across SDG indicator time-series datasets to flag statistical outliers for analyst review before official publication to national statistical offices.'
+  },
+  'DPNP 12': {
+    unmiss: 'JOC duty officers, UNMISS Force and sector commanders, field patrol officers, protection cluster coordinators',
+    c2c:    'OSAA programme officers, senior management, AU Commission counterparts, regional political analysts',
+    desa:   'UN Statistics Division analysts, national statistical office data managers, SDG Working Group members'
+  },
+  'DPNP 18': {
+    unmiss: 'Gradient boosted decision tree (XGBoost) trained on 4 years of UNMISS incident logs. Selected for interpretability of feature importance scores. Deployed via secure on-premise server at JOC.',
+    c2c:    'Large language model (Claude) via API for document summarisation and agenda recommendation. Selected for language capability across English, French, Arabic. No fine-tuning applied.',
+    desa:   'Isolation Forest algorithm for multivariate time-series anomaly detection. Open-source (scikit-learn). Selected for low computational overhead and interpretable anomaly scores.'
+  },
+  'DPNP 19': {
+    unmiss: 'The system classifies incoming field reports into threat categories (High / Medium / Low) and generates a priority queue for JOC duty officers. Officers may override any classification. Classification feeds into patrol deployment recommendations.',
+    c2c:    'Generates a structured briefing document for each C2C session including: suggested agenda, summary of outstanding action items, policy alignment analysis, and recommended talking points. All outputs reviewed by lead programme officer before use.',
+    desa:   'Flags individual data points in SDG indicator submissions as anomalies based on historical trends and cross-country comparisons. Flagged items are queued for statistician review — no automatic exclusion or publication of flagged data.'
+  }
+};
+
 // ── State ──────────────────────────────────────────────────────────────────
 let qexCurrentCase = 'unmiss';
 let qexCurrentPrincipleKey = null;
@@ -3314,32 +3378,60 @@ function qexSelectQuestion(principleKey, questionId) {
   const c = QEXPLORER.cases[qexCurrentCase];
   const selectedCode = c.answers[q.id];
 
-  // Render options
+  // Render options (or free-text placeholder for metadata questions)
   const optsEl = document.getElementById('qexQOptions');
   optsEl.innerHTML = '';
-  q.opts.forEach(opt => {
-    const isSelected = opt.code === selectedCode;
-    const card = document.createElement('div');
-    card.className = 'qex-opt-card' + (isSelected ? ' qex-opt-selected' : '');
-    if (isSelected) card.style.borderColor = c.color;
 
-    const wPct = (opt.weight / 4) * 100;
-    const wColor = opt.weight >= 3 ? '#F87171' : opt.weight >= 2 ? '#F59E0B' : opt.weight >= 1 ? '#60A5FA' : '#22D3AE';
-
-    card.innerHTML = `
-      <div class="qex-opt-row">
-        <div class="qex-opt-check" style="border-color:${isSelected ? c.color : 'rgba(255,255,255,.15)'};background:${isSelected ? c.color + '30' : 'transparent'}">${isSelected ? '✓' : ''}</div>
-        <div class="qex-opt-text">${opt.label}</div>
-        <div class="qex-opt-weight">
-          <div class="qex-opt-wbar"><div style="width:${wPct}%;background:${wColor};height:100%;border-radius:2px;transition:width .3s;"></div></div>
-          <span style="font-size:11px;font-weight:800;color:${wColor}">${opt.weight}/4</span>
+  if (q.opts.length === 0) {
+    // Free-text / metadata question — show example answers per case
+    const ftEx = QEX_FREE_TEXT[q.id] || {};
+    let ftHtml = `<div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="font-size:11px;font-weight:800;letter-spacing:.1em;color:rgba(255,255,255,.3);text-transform:uppercase;">Free-text field · Not scored (weight 0)</span>
+      </div>`;
+    const caseOrder = ['unmiss','c2c','desa'];
+    caseOrder.forEach(ck => {
+      const cc = QEXPLORER.cases[ck];
+      const val = ftEx[ck];
+      const isActive = ck === qexCurrentCase;
+      ftHtml += `<div style="margin-bottom:8px;padding:9px 12px;border-radius:8px;border:1.5px solid ${isActive ? cc.color+'50' : 'rgba(255,255,255,.06)'};background:${isActive ? cc.color+'0e' : 'transparent'};">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:${cc.color};display:inline-block;flex-shrink:0;"></span>
+          <span style="font-size:10px;font-weight:800;color:${isActive ? cc.color : 'rgba(255,255,255,.3)'};">${cc.label}</span>
+          ${isActive ? `<span style="font-size:10px;color:rgba(255,255,255,.35);">· ${cc.respondent ? cc.respondent.name : ''}</span>` : ''}
         </div>
-      </div>
-      ${isSelected ? `<div class="qex-opt-case-tag" style="border-color:${c.color}40;color:${c.color};">&#9654; Selected by ${c.label} · contributes ${q.weight * opt.weight} pts to exposure</div>` : ''}
-    `;
-    card.onclick = () => qexShowOptionPopup(q, opt, isSelected, pData);
-    optsEl.appendChild(card);
-  });
+        <div style="font-size:12.5px;color:${val ? (isActive ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.45)') : 'rgba(255,255,255,.2)'};font-style:${val ? 'normal' : 'italic'};">
+          ${val || 'Not provided in demo dataset'}
+        </div>
+      </div>`;
+    });
+    ftHtml += '</div>';
+    optsEl.innerHTML = ftHtml;
+  } else {
+    q.opts.forEach(opt => {
+      const isSelected = opt.code === selectedCode;
+      const card = document.createElement('div');
+      card.className = 'qex-opt-card' + (isSelected ? ' qex-opt-selected' : '');
+      if (isSelected) card.style.borderColor = c.color;
+
+      const wPct = (opt.weight / 4) * 100;
+      const wColor = opt.weight >= 3 ? '#F87171' : opt.weight >= 2 ? '#F59E0B' : opt.weight >= 1 ? '#60A5FA' : '#22D3AE';
+
+      card.innerHTML = `
+        <div class="qex-opt-row">
+          <div class="qex-opt-check" style="border-color:${isSelected ? c.color : 'rgba(255,255,255,.15)'};background:${isSelected ? c.color + '30' : 'transparent'}">${isSelected ? '✓' : ''}</div>
+          <div class="qex-opt-text">${opt.label}</div>
+          <div class="qex-opt-weight">
+            <div class="qex-opt-wbar"><div style="width:${wPct}%;background:${wColor};height:100%;border-radius:2px;transition:width .3s;"></div></div>
+            <span style="font-size:11px;font-weight:800;color:${wColor}">${opt.weight}/4</span>
+          </div>
+        </div>
+        ${isSelected ? `<div class="qex-opt-case-tag" style="border-color:${c.color}40;color:${c.color};">&#9654; Selected by ${c.label} · contributes ${q.weight * opt.weight} pts to exposure</div>` : ''}
+      `;
+      card.onclick = () => qexShowOptionPopup(q, opt, isSelected, pData);
+      optsEl.appendChild(card);
+    });
+  }
 
   // Reviewer note + decision context
   const note = QEXPLORER.reviewerNotes[pData.name] || '';
