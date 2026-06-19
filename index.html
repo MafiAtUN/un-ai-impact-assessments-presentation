@@ -3523,6 +3523,338 @@ document.addEventListener('DOMContentLoaded', () => { qexInit(); });
 if (document.readyState !== 'loading') qexInit();
 </script>
 
+<!-- S26 DECISION CASCADE -->
+<div class="slide" id="s26">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><img src="un-logo.png" alt="UN"></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+    <div class="slide-badge">26 / 26</div>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;padding-bottom:58px;position:relative;z-index:2;">
+
+    <!-- Scenario selector row -->
+    <div class="csc-scenarios" id="cscScenarios">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- Pipeline (7 stages) -->
+    <div class="csc-pipeline" id="cscPipeline">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- Detail panel: changes per selected scenario + stage -->
+    <div class="csc-detail" id="cscDetail">
+      <div class="csc-detail-inner" id="cscDetailInner">
+        <div style="color:rgba(255,255,255,.35);font-size:13px;text-align:center;padding:16px;">
+          Select a trigger scenario above to trace the full decision cascade
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end flex column -->
+</div><!-- end slide -->
+
+<script>
+// ── CASCADE SCENARIOS ───────────────────────────────────────────────────────
+const CSC_SCENARIOS = [
+  {
+    id:'automated',
+    label:'Automated Individual Decisions',
+    icon:'⚡',
+    color:'#F87171',
+    route:'full',
+    score:95,
+    risk:'very_high',
+    stages:{
+      register:   {note:'UNMISS Incident Classification — threat priority assignment in active conflict'},
+      screen:     {note:'Q3: Makes automated decisions affecting specific persons → YES → Full route triggered',
+                   highlight:'Q3 answered YES — full assessment required'},
+      route:      {note:'FULL route selected (77 questions, all 10 principles)'},
+      assess:     {note:'Human Autonomy & Oversight: Full automation (w=4)\nDo No Harm: Very high physical/psychological impact (w=4×5)\nR&A: No performance targets, no proposal submitted (w=4)',
+                   principles:['Human Autonomy & Oversight','Do No Harm','Responsibility and Accountability']},
+      score:      {note:'Exposure score = 116\nKey contributors: HAO Q3 (Full automation ×4), DNH Q4–Q8 (Very high ×4 each), R&A Q1/Q2 (No ×4)',
+                   val:116},
+      review:     {note:'Assigned to: AI Governance Review Officer (OIOS)\nIndependent safety reviewer requested\nDecision: ESCALATE — Senior Governance Board required'},
+      outcome:    {note:'⚠ ESCALATED\nDeployment halted pending governance board review\nMandatory: independent safety review + human override mechanism + harm mitigation plan\nReassessment required before any pilot',
+                   decision:'escalate'}
+    }
+  },
+  {
+    id:'personal-data',
+    label:'Personal / Sensitive Data',
+    icon:'🔒',
+    color:'#A78BFA',
+    route:'standard',
+    score:62,
+    risk:'high',
+    stages:{
+      register:   {note:'OCHA Sitrep Triage — processes field reports and personal witness accounts'},
+      screen:     {note:'Q2: Processes personal or sensitive data → YES → Standard route triggered',
+                   highlight:'Q2 answered YES — standard assessment required'},
+      route:      {note:'STANDARD route selected (77 questions, core principles)'},
+      assess:     {note:'Privacy & Data Governance: No compliance verification, third-party data sharing, strictly confidential data (w=4 each)\nR&A: Third-party training data, third-party developer (w=3–4)',
+                   principles:['Right to Privacy, Data Protection and Data Governance','Responsibility and Accountability']},
+      score:      {note:'Exposure score = 74\nKey contributors: RPPG Q4 (No compliance ×4), RPPG Q5 (Third-party sharing ×4), RPPG Q6 (Strictly confidential ×4)',
+                   val:74},
+      review:     {note:'Assigned to: Privacy & Data Protection Reviewer\nData Protection Officer notified\nDecision: APPROVE with conditions'},
+      outcome:    {note:'✓ APPROVED WITH CONDITIONS\nConditions: Data governance plan within 30 days · DPO sign-off on data sharing agreements · Annual privacy audit\nMonitoring: Quarterly data access review',
+                   decision:'conditions'}
+    }
+  },
+  {
+    id:'third-party',
+    label:'Third-Party Vendor',
+    icon:'🏢',
+    color:'#F59E0B',
+    route:'standard',
+    score:55,
+    risk:'high',
+    stages:{
+      register:   {note:'DOS Vendor Risk Screening — external AI tool procured from private sector vendor'},
+      screen:     {note:'Q4: Developed by external vendor → YES → Standard route triggered\nQ5: Proprietary model → YES → reinforces standard route',
+                   highlight:'Q4+Q5 answered YES — standard assessment required'},
+      route:      {note:'STANDARD route selected (77 questions)'},
+      assess:     {note:'Responsibility & Accountability: Training data from third party (w=4), development by third party (w=4), configuration by third party (w=4)\nTransparency: Proprietary algorithm (w=4), no documentation (w=4)',
+                   principles:['Responsibility and Accountability','Transparency and Explainability']},
+      score:      {note:'Exposure score = 66\nKey contributors: R&A Q9–Q11/Q13 (Third-party ×4 each), T&E Q3 (Proprietary ×4), T&E Q4 (No docs ×4)',
+                   val:66},
+      review:     {note:'Assigned to: Procurement & Legal Review Team\nVendor due diligence checklist triggered\nDecision: APPROVE with conditions'},
+      outcome:    {note:'✓ APPROVED WITH CONDITIONS\nConditions: Contractual accountability clauses · Vendor audit right · Model documentation from vendor · 6-month review\nProcurement must attach AIIA conditions to contract',
+                   decision:'conditions'}
+    }
+  },
+  {
+    id:'planning-tool',
+    label:'Human-in-the-Loop Support',
+    icon:'👤',
+    color:'#60A5FA',
+    route:'standard',
+    score:34,
+    risk:'medium',
+    stages:{
+      register:   {note:'AU-UN C2C Planning Assistant — recommends dialogue options, human makes all decisions'},
+      screen:     {note:'Q2: Handles inter-institutional data → standard hint\nAll other questions: lower risk — standard route',
+                   highlight:'Q2 hint → standard route selected'},
+      route:      {note:'STANDARD route selected (77 questions)'},
+      assess:     {note:'Human Autonomy & Oversight: Partial automation (w=2), reversible impacts (w=2)\nDo No Harm: Moderate impacts across dimensions (w=2 each)\nPerformance monitored (w=0), fairness tested (w=0)',
+                   principles:['Human Autonomy & Oversight','Do No Harm']},
+      score:      {note:'Exposure score = 52, Mitigation = 18, Residual = 34\nKey answers: HAO Q3 (Partial automation ×2), DNH Q4–Q8 (Moderate ×2 each)\nMitigation reduces score by 18 pts',
+                   val:52},
+      review:     {note:'Standard reviewer queue\nNo specialist review triggered\nDecision: APPROVE'},
+      outcome:    {note:'✓ APPROVED\nRecommendation: Quarterly performance monitoring · Bias audit at 6-month mark\nRoute: Minimal reassessment on any scope change',
+                   decision:'approve'}
+    }
+  },
+  {
+    id:'low-risk',
+    label:'Low-Risk Internal Tool',
+    icon:'✓',
+    color:'#22D3AE',
+    route:'minimal',
+    score:10,
+    risk:'low',
+    stages:{
+      register:   {note:'DESA SDG Anomaly Detection — internal statistical tool, open-source, no personal data'},
+      screen:     {note:'Q1: Internal use only → minimal hint\nQ2–Q5: No personal data, no automation, no external access → no escalation',
+                   highlight:'All screening → minimal route'},
+      route:      {note:'MINIMAL route selected (20 key questions only)'},
+      assess:     {note:'All principles: Little to no impact (w=1)\nHuman autonomy: Partial automation, all anomalies reviewed by analyst (w=2)\nPerformance monitored, fairness tested, privacy compliant, no data sharing (all w=0)',
+                   principles:['All principles — low weight answers']},
+      score:      {note:'Exposure score = 32, Mitigation = 22, Residual = 10\nNo question contributed more than 2 pts\nFull mitigation credit applied',
+                   val:32},
+      review:     {note:'Standard reviewer queue — first-in-line priority (low complexity)\nNo specialist review triggered\nDecision: APPROVE at first review'},
+      outcome:    {note:'✓ APPROVED — No conditions\nAnnual reassessment scheduled\nAny scope change (personal data, automation) → triggers new assessment',
+                   decision:'approve'}
+    }
+  }
+];
+
+const CSC_STAGE_DEFS = [
+  {id:'register', label:'Register',   icon:'📋', sublabel:'Use Case Intake',      role:'Entity Focal Point'},
+  {id:'screen',   label:'Screen',     icon:'🔍', sublabel:'5 Binary Questions',   role:'Entity Focal Point'},
+  {id:'route',    label:'Route',      icon:'🔀', sublabel:'Path Determination',   role:'System'},
+  {id:'assess',   label:'Assess',     icon:'📝', sublabel:'Questionnaire (20–77)', role:'Focal Point + Contributors'},
+  {id:'score',    label:'Score',      icon:'📊', sublabel:'Exposure Calculation', role:'System'},
+  {id:'review',   label:'Review',     icon:'👁', sublabel:'Reviewer Assignment',  role:'Reviewer'},
+  {id:'outcome',  label:'Outcome',    icon:'✅', sublabel:'Decision + Actions',   role:'Governance'}
+];
+
+const RISK_COLORS = {very_high:'#F87171',high:'#F59E0B',medium:'#FBBF24',low:'#22D3AE'};
+const RISK_LABELS = {very_high:'VERY HIGH RISK',high:'HIGH RISK',medium:'MEDIUM RISK',low:'LOW RISK'};
+const DEC_COLORS  = {escalate:'#F87171',conditions:'#F59E0B',approve:'#22D3AE'};
+const DEC_LABELS  = {escalate:'ESCALATED',conditions:'APPROVED WITH CONDITIONS',approve:'APPROVED'};
+
+let cscActive = null;
+let cscActiveStage = null;
+
+function cscInit() {
+  // Build scenario tabs
+  const scDiv = document.getElementById('cscScenarios');
+  CSC_SCENARIOS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'csc-sc-btn';
+    btn.id = 'cscBtn-' + s.id;
+    btn.innerHTML = `<span class="csc-sc-icon">${s.icon}</span><span class="csc-sc-lbl">${s.label}</span>`;
+    btn.onclick = () => cscSelectScenario(s.id);
+    scDiv.appendChild(btn);
+  });
+
+  // Build pipeline stages
+  const pipe = document.getElementById('cscPipeline');
+  CSC_STAGE_DEFS.forEach((st, i) => {
+    if (i > 0) {
+      const arr = document.createElement('div');
+      arr.className = 'csc-arrow';
+      arr.id = 'cscArr-' + st.id;
+      arr.innerHTML = '&#9654;';
+      pipe.appendChild(arr);
+    }
+    const box = document.createElement('div');
+    box.className = 'csc-stage';
+    box.id = 'cscStage-' + st.id;
+    box.innerHTML = `<div class="csc-st-icon">${st.icon}</div><div class="csc-st-label">${st.label}</div><div class="csc-st-sub">${st.sublabel}</div><div class="csc-st-role">${st.role}</div>`;
+    box.onclick = () => cscSelectStage(st.id);
+    pipe.appendChild(box);
+  });
+}
+
+function cscSelectScenario(sid) {
+  cscActive = CSC_SCENARIOS.find(s => s.id === sid);
+  // Update tab active state
+  document.querySelectorAll('.csc-sc-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('cscBtn-' + sid).classList.add('active');
+  document.getElementById('cscBtn-' + sid).style.borderColor = cscActive.color;
+  document.getElementById('cscBtn-' + sid).style.color = cscActive.color;
+
+  // Animate pipeline stages
+  CSC_STAGE_DEFS.forEach(st => {
+    const box = document.getElementById('cscStage-' + st.id);
+    const arr = document.getElementById('cscArr-' + st.id);
+    box.classList.add('csc-stage-active');
+    box.style.borderColor = cscActive.color + '60';
+    if (arr) { arr.style.color = cscActive.color; }
+    // Special colouring for outcome node
+    if (st.id === 'outcome') {
+      const dec = cscActive.stages.outcome.decision;
+      box.style.borderColor = DEC_COLORS[dec];
+      box.style.background = DEC_COLORS[dec] + '15';
+    }
+    if (st.id === 'route') {
+      const rc = cscActive.route === 'full' ? '#F87171' : cscActive.route === 'standard' ? '#F59E0B' : '#22D3AE';
+      box.style.borderColor = rc;
+    }
+    if (st.id === 'score') {
+      const sc = cscActive.stages.score.val;
+      const pct = Math.min(100, Math.round(sc / 150 * 100));
+      const rc = RISK_COLORS[cscActive.risk];
+      box.querySelector('.csc-st-sub').innerHTML = `<div style="margin-top:4px;height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${rc};border-radius:3px;transition:width .6s;"></div></div><div style="font-size:10px;margin-top:2px;color:${rc};font-weight:700;">Score: ${sc} / 150</div>`;
+    }
+  });
+
+  // Select the first stage to show detail
+  cscSelectStage('register');
+}
+
+function cscSelectStage(stageId) {
+  if (!cscActive) return;
+  cscActiveStage = stageId;
+  // Highlight active stage
+  document.querySelectorAll('.csc-stage').forEach(b => b.classList.remove('csc-stage-current'));
+  const stEl = document.getElementById('cscStage-' + stageId);
+  if (stEl) { stEl.classList.add('csc-stage-current'); stEl.style.borderColor = cscActive.color; }
+
+  const stDef = CSC_STAGE_DEFS.find(s => s.id === stageId);
+  const stData = cscActive.stages[stageId] || {};
+
+  let html = `<div class="csc-detail-header" style="border-color:${cscActive.color}40;">
+    <span style="font-size:22px;">${stDef.icon}</span>
+    <div>
+      <div style="font-size:13px;font-weight:800;color:rgba(255,255,255,.9);">${stDef.label}: ${stDef.sublabel}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;">Role: <strong style="color:${cscActive.color};">${stDef.role}</strong></div>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.12em;color:${cscActive.color};">${cscActive.icon} ${cscActive.label.toUpperCase()}</div>
+      ${stageId==='outcome' ? `<div style="font-size:11px;font-weight:800;color:${DEC_COLORS[cscActive.stages.outcome.decision]};margin-top:3px;">${DEC_LABELS[cscActive.stages.outcome.decision]}</div>` : ''}
+    </div>
+  </div>`;
+
+  // Note text
+  if (stData.note) {
+    html += `<div class="csc-detail-note">${stData.note.replace(/\n/g,'<br>')}</div>`;
+  }
+
+  // Stage-specific extras
+  if (stageId === 'screen' && stData.highlight) {
+    html += `<div class="csc-detail-tag" style="border-color:${cscActive.color}40;color:${cscActive.color};">&#9654; Trigger: ${stData.highlight}</div>`;
+  }
+  if (stageId === 'route') {
+    const routes = [{id:'minimal',label:'MINIMAL',q:'20 questions',color:'#22D3AE'},{id:'standard',label:'STANDARD',q:'77 questions',color:'#F59E0B'},{id:'full',label:'FULL',q:'77 questions',color:'#F87171'}];
+    html += '<div style="display:flex;gap:8px;margin-top:8px;">';
+    routes.forEach(r => {
+      const active = r.id === cscActive.route;
+      html += `<div style="flex:1;padding:8px 10px;border-radius:9px;border:1.5px solid ${active ? r.color : 'rgba(255,255,255,.08)'};background:${active ? r.color+'18' : 'rgba(255,255,255,.02)'};">
+        <div style="font-size:11px;font-weight:900;color:${active ? r.color : 'rgba(255,255,255,.25)'};">${r.label}</div>
+        <div style="font-size:10px;color:rgba(255,255,255,${active?'.6':'.2'});margin-top:2px;">${r.q}</div>
+        ${active ? `<div style="font-size:10px;color:${r.color};margin-top:3px;font-weight:700;">&#9654; SELECTED</div>` : ''}
+      </div>`;
+    });
+    html += '</div>';
+  }
+  if (stageId === 'assess' && stData.principles) {
+    html += '<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">';
+    stData.principles.forEach(p => {
+      html += `<div style="background:${cscActive.color}18;border:1px solid ${cscActive.color}35;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700;color:${cscActive.color};">${p}</div>`;
+    });
+    html += '</div>';
+  }
+  if (stageId === 'score') {
+    const sc = stData.val || 0;
+    const pct = Math.min(100, Math.round(sc / 150 * 100));
+    const rc = RISK_COLORS[cscActive.risk];
+    html += `<div style="margin-top:10px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+        <span style="font-size:11px;color:rgba(255,255,255,.4);">0</span>
+        <span style="font-size:11px;font-weight:800;color:${rc};">${RISK_LABELS[cscActive.risk]}: ${sc} / 150</span>
+        <span style="font-size:11px;color:rgba(255,255,255,.4);">150</span>
+      </div>
+      <div style="height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;">
+        <div style="width:${pct}%;height:100%;background:${rc};border-radius:4px;transition:width .6s;"></div>
+      </div>
+      <div style="display:flex;margin-top:5px;gap:0;">
+        <div style="flex:13;text-align:center;font-size:9px;color:#22D3AE;border-right:1px solid rgba(255,255,255,.1);padding:2px 0;">Low<br>&lt;20</div>
+        <div style="flex:20;text-align:center;font-size:9px;color:#FBBF24;border-right:1px solid rgba(255,255,255,.1);padding:2px 0;">Medium<br>20–40</div>
+        <div style="flex:30;text-align:center;font-size:9px;color:#F59E0B;border-right:1px solid rgba(255,255,255,.1);padding:2px 0;">High<br>40–70</div>
+        <div style="flex:37;text-align:center;font-size:9px;color:#F87171;padding:2px 0;">Very High<br>&gt;70</div>
+      </div>
+    </div>`;
+  }
+  if (stageId === 'outcome') {
+    const dec = stData.decision;
+    const dc = DEC_COLORS[dec];
+    html += `<div style="margin-top:8px;background:${dc}12;border:1px solid ${dc}35;border-radius:10px;padding:10px 14px;">
+      <div style="font-size:12px;font-weight:800;color:${dc};letter-spacing:.08em;margin-bottom:5px;">
+        ${dec==='escalate'?'⚠':'✓'} ${DEC_LABELS[dec]}
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.6);line-height:1.6;">${stData.note.replace(/\n/g,'<br>')}</div>
+    </div>`;
+  } else {
+    // Stage navigation hint
+    const nextIdx = CSC_STAGE_DEFS.findIndex(s => s.id === stageId) + 1;
+    if (nextIdx < CSC_STAGE_DEFS.length) {
+      const nextSt = CSC_STAGE_DEFS[nextIdx];
+      html += `<div class="csc-detail-next" onclick="cscSelectStage('${nextSt.id}')">Next: ${nextSt.icon} ${nextSt.label} &#9654;</div>`;
+    }
+  }
+
+  document.getElementById('cscDetailInner').innerHTML = html;
+}
+
+// ── Boot ────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => { cscInit(); });
+if (document.readyState !== 'loading') cscInit();
+</script>
+
 <nav class="nav-bar">
   <button class="nav-btn" id="prevBtn" disabled onclick="navigate(-1)">&#x2190; Prev</button>
   <div class="nav-center">
@@ -3555,8 +3887,8 @@ function updateSidebarActive(n) {
   });
 }
 
-const TOTAL=25;
-const LABELS=['Introduction','The Problem','Objectives','AI Principles','End-to-End Workflow','User Roles','Role Activity Map','Focal Point Journey','Screening: 5 Questions','Screening: Decision Map','Screening: Route Outcomes','Contributor Role','Reviewer Decisions','Admin & Viewer','RBAC Matrix','Dashboard','Policy Chat','How to Use','Example Use Case','Architecture','Azure Costs','Roadmap','Value Proposition','Next Steps','Questionnaire Explorer'];
+const TOTAL=26;
+const LABELS=['Introduction','The Problem','Objectives','AI Principles','End-to-End Workflow','User Roles','Role Activity Map','Focal Point Journey','Screening: 5 Questions','Screening: Decision Map','Screening: Route Outcomes','Contributor Role','Reviewer Decisions','Admin & Viewer','RBAC Matrix','Dashboard','Policy Chat','How to Use','Example Use Case','Architecture','Azure Costs','Roadmap','Value Proposition','Next Steps','Questionnaire Explorer','Decision Cascade'];
 let current=0;
 const slides=Array.from({length:TOTAL},(_,i)=>document.getElementById('s'+(i+1)));
 const dotNav=document.getElementById('dotNav');
