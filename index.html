@@ -3340,7 +3340,7 @@ function qexShowOptionPopup(q, opt, isSelectedByCurrent, pData) {
                                        '✓ No risk contribution from this answer';
 
   const caseHtml = casesWithThis.length > 0
-    ? casesWithThis.map(({}, c) => `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:8px;height:8px;border-radius:50%;background:${c.color};flex-shrink:0;display:inline-block;"></span><span style="font-size:12px;color:rgba(255,255,255,.7);">${c.label}</span><span style="font-size:11px;color:rgba(255,255,255,.35);">(${RISK_LABELS[c.risk]})</span></div>`).join('')
+    ? casesWithThis.map(({key, c}) => `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:8px;height:8px;border-radius:50%;background:${c.color};flex-shrink:0;display:inline-block;"></span><span style="font-size:12px;color:rgba(255,255,255,.7);">${c.label}</span><span style="font-size:11px;color:rgba(255,255,255,.35);">(${RISK_LABELS[c.risk]})</span></div>`).join('')
     : '<div style="font-size:12px;color:rgba(255,255,255,.35);font-style:italic;">No demo case selected this option</div>';
 
   document.getElementById('qexPopupContent').innerHTML = `
