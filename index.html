@@ -3237,6 +3237,20 @@ function qexSetCase(caseKey) {
   document.getElementById('qexScoreVal').style.color = RISK_COLORS[c.risk] || '#fff';
   document.getElementById('qexScoreLabel').textContent = RISK_LABELS[c.risk] || c.risk.toUpperCase();
   document.getElementById('qexScoreLabel').style.color = RISK_COLORS[c.risk] || '#999';
+  // Show respondent and reviewer context
+  const rBar = document.getElementById('qexScoreBar');
+  const existingCtx = rBar.querySelector('.qex-resp-ctx');
+  if (existingCtx) existingCtx.remove();
+  if (c.respondent || c.reviewContext) {
+    const ctx = document.createElement('div');
+    ctx.className = 'qex-resp-ctx';
+    ctx.style.cssText = 'width:100%;margin-top:7px;border-top:1px solid rgba(255,255,255,.06);padding-top:7px;';
+    const r = c.respondent || {};
+    const rv = c.reviewContext || {};
+    ctx.innerHTML = (r.name ? `<div style="font-size:10.5px;font-weight:700;color:rgba(255,255,255,.65);">${r.name}</div><div style="font-size:10px;color:rgba(255,255,255,.35);line-height:1.4;">${r.title || ''}<br>${r.entity || ''}</div>` : '') +
+      (rv.reviewer ? `<div style="margin-top:6px;font-size:10px;color:rgba(255,255,255,.3);">Reviewer: <span style="color:rgba(0,200,255,.6);">${rv.reviewer}</span> · <span style="color:${rv.decision==='escalate'?'#F87171':'#22D3AE'}">${rv.decision?.toUpperCase()}</span></div>` : '');
+    rBar.appendChild(ctx);
+  }
   // Update question status indicators
   qexUpdateStatusIndicators();
   // Re-render current question if one is selected
@@ -3282,9 +3296,11 @@ function qexSelectQuestion(principleKey, questionId) {
     `<span style="background:rgba(255,255,255,.06);padding:3px 11px;border-radius:20px;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);">${q.lifecycle}</span>` +
     `<span style="background:rgba(255,255,255,.06);padding:3px 11px;border-radius:20px;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);">Q weight: ${q.weight}/4</span>`;
 
+  const resp = QEXPLORER.cases[qexCurrentCase].respondent;
+  const respStr = resp ? `${resp.name} · ${resp.role} · ${resp.entity}` : 'Demo Focal Point';
   document.getElementById('qexQMeta').innerHTML =
     `<span style="font-size:11px;color:rgba(255,255,255,.35);">Question ID: <strong style="color:rgba(255,255,255,.6);">${q.id}</strong></span>` +
-    ` &nbsp;·&nbsp; <span style="font-size:11px;color:rgba(255,255,255,.35);">Answered by: <strong style="color:rgba(255,255,255,.6);">Entity Focal Point / Contributor</strong></span>`;
+    ` &nbsp;·&nbsp; <span style="font-size:11px;color:rgba(255,255,255,.35);">Answered by: <strong style="color:rgba(255,255,255,.6);">${respStr}</strong></span>`;
 
   document.getElementById('qexQText').textContent = q.text;
 
@@ -3319,10 +3335,20 @@ function qexSelectQuestion(principleKey, questionId) {
     optsEl.appendChild(card);
   });
 
-  // Reviewer note
+  // Reviewer note + decision context
   const note = QEXPLORER.reviewerNotes[pData.name] || '';
+  const revCtxNote = QEXPLORER.cases[qexCurrentCase].reviewContext;
   const noteEl = document.getElementById('qexReviewerNote');
-  noteEl.innerHTML = note ? `<div class="qex-rev-note"><span style="font-size:11px;font-weight:800;color:rgba(255,200,100,.7);letter-spacing:.08em;">&#128269; REVIEWER ATTENTION</span><div style="margin-top:5px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;">${note}</div></div>` : '';
+  let noteHtml = '';
+  if (revCtxNote) {
+    const decColor = revCtxNote.decision === 'escalate' ? '#F87171' : '#22D3AE';
+    const decIcon = revCtxNote.decision === 'escalate' ? '⚠' : '✓';
+    noteHtml += `<div class="qex-rev-note" style="margin-bottom:8px;border-color:${decColor}30;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;"><span style="font-size:11px;font-weight:800;color:${decColor};letter-spacing:.08em;">${decIcon} REVIEWER DECISION: ${(revCtxNote.decision||'').toUpperCase()}</span><span style="font-size:10px;color:rgba(255,255,255,.3);">${revCtxNote.reviewer} · ${revCtxNote.reviewerTitle}</span></div><div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;">${revCtxNote.notes}</div></div>`;
+  }
+  if (note) {
+    noteHtml += `<div class="qex-rev-note"><span style="font-size:11px;font-weight:800;color:rgba(255,200,100,.7);letter-spacing:.08em;">&#128269; PRINCIPLE: ${pData.name.toUpperCase()}</span><div style="margin-top:5px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;">${note}</div></div>`;
+  }
+  noteEl.innerHTML = noteHtml;
 }
 
 function qexShowOptionPopup(q, opt, isSelectedByCurrent, pData) {
@@ -3383,6 +3409,115 @@ function qexClosePopup() {
   document.getElementById('qexOverlay').style.display = 'none';
   document.getElementById('qexPopup').classList.remove('open');
 }
+
+
+// ── Enrich cases with realistic differentiated answers ─────────────────────
+// UNMISS: all 29 answers remain as loaded from real workflow state (max weight=4)
+// Add respondent + reviewer context
+QEXPLORER.cases.unmiss.respondent = {
+  name: 'Lt. Col. Grace Adeyemi',
+  title: 'JOC Intelligence Analyst',
+  entity: 'UNMISS, Juba, South Sudan',
+  role: 'Entity Focal Point'
+};
+QEXPLORER.cases.unmiss.reviewContext = {
+  reviewer: 'Ibrahim Al-Rashid',
+  reviewerTitle: 'AI Governance Review Officer, OIOS',
+  decision: 'escalate',
+  notes: 'Full automation applied to incident classification in an active armed conflict. 29 questions answered, all at maximum risk weight. Irreversible, potentially life-affecting decisions with no human override mechanism. No harm assessment, no fairness testing, strictly classified data shared with non-UN third parties. Escalated to Senior Governance Board — independent safety review required before deployment.'
+};
+
+// ── C2C: AU-UN C2C Structured Dialogue Planning Assistant ─────────────────
+// Medium risk (34) — standard route — planning support, human-in-the-loop
+QEXPLORER.cases.c2c.respondent = {
+  name: 'Amara Diallo',
+  title: 'Programme Officer, Knowledge Management',
+  entity: 'OSAA, New York',
+  role: 'Entity Focal Point'
+};
+QEXPLORER.cases.c2c.reviewContext = {
+  reviewer: 'Ibrahim Al-Rashid',
+  reviewerTitle: 'AI Governance Review Officer, OIOS',
+  decision: 'approve',
+  notes: 'Planning support tool with human-in-the-loop design. Performance monitoring in place, harm assessment conducted, fairness testing performed. Data shared within UN System only. Recommend monitoring conditions: quarterly performance review and bias audit at 6-month mark.'
+};
+QEXPLORER.cases.c2c.answers = {
+  'R&A Q1':    'R&A Q1-yes-r31',          // Yes — performance targets monitored (w=0)
+  'DNH Q1':    'DNH Q1-yes-describe-the-barriers-and-any-planned-or-existing-measures-to-identify-remov-r46', // Yes (w=0)
+  'R&A Q2':    'R&A Q2-yes-r55',          // Yes — proposal submitted (w=0)
+  'HAO Q2':    'HAO Q2-likely-reversible-r74',  // Likely reversible (w=2)
+  'DNH Q3':    'DNH Q3-some-impacts-may-last-a-matter-of-months-but-some-lingering-impacts-may-last-lon-r79', // Months (w=2)
+  'DNH Q4':    'DNH Q4-moderate-impact-r85',    // Moderate — physical (w=2)
+  'DNH Q5':    'DNH Q5-moderate-impact-r91',    // Moderate — psychological (w=2)
+  'DNH Q6':    'DNH Q6-moderate-impact-r97',    // Moderate — health (w=2)
+  'DNH Q7':    'DNH Q7-moderate-impact-r103',   // Moderate — economic (w=2)
+  'S Q1':      'S Q1-moderate-impact-r109',     // Moderate — sustainability (w=2)
+  'DPNP 17':   'DPNP 17-26-to-50-r119',        // 26–50% of population (w=2)
+  'DNH Q8':    'DNH Q8-moderate-impact-r127',   // Moderate — wrongful inclusion (w=2)
+  'F&ND Q2A':  'F&ND Q2A-yes-if-yes-describe-your-assessment-approach-r132', // Yes, fairness tested (w=0)
+  'R&A Q5':    'R&A Q5-yes-r141',              // Interfaces with other IT systems (w=4)
+  'T&E Q2':    'T&E Q2-text-r147',             // Text outputs (w=1)
+  'RPPG Q4':   'RPPG Q4-yes-r161',             // Privacy compliance verified (w=0)
+  'RPPG Q5':   'RPPG Q5-with-another-un-system-entity-outside-the-secretariat-r167', // Within UN System (w=3)
+  'RPPG Q6':   'RPPG Q6-confidential-r180',    // Confidential (w=3)
+  'R&A Q9':    'R&A Q9-another-un-system-entity-outside-the-un-secretariat-r204', // UN entity (w=3)
+  'R&A Q10':   'R&A Q10-another-un-secretariat-entity-specify-r208',  // Internal UN (w=1)
+  'R&A Q11':   'R&A Q11-another-un-secretariat-entity-specify-r213',  // Internal UN (w=1)
+  'T&E Q3':    'T&E Q3-no-r226',              // No proprietary algorithms (w=0)
+  'T&E Q4':    'T&E Q4-yes-r228',             // Documented (w=0)
+  'HAO Q3':    'HAO Q3-partial-automations-the-ai-system-will-support-a-human-being-in-their-decision-m-r272', // Partial automation (w=2)
+  'HAO Q4':    'HAO Q4-no-r276',              // NOT consequential individual decisions (w=1)
+  'SS Q6':     'SS Q6-yes-r278',              // Access control in place (w=0)
+  'S Q2':      'S Q2-moderate-impact-r282',   // Moderate environmental impact (w=2)
+  'R&A Q13':   'R&A Q13-another-un-secretariat-department-office-r288', // UN internal (w=2)
+  'R&A Q14':   'R&A Q14-yes-r293'            // Data documented (w=0)
+};
+
+// ── DESA: SDG Statistics Anomaly Detection ────────────────────────────────
+// Low risk (10) — minimal route — internal statistical tool, open-source
+QEXPLORER.cases.desa.respondent = {
+  name: 'Dr. Yuki Tanaka',
+  title: 'Senior Statistician, SDG Indicators Unit',
+  entity: 'DESA / UN Statistics Division, New York',
+  role: 'Entity Focal Point'
+};
+QEXPLORER.cases.desa.reviewContext = {
+  reviewer: 'Ibrahim Al-Rashid',
+  reviewerTitle: 'AI Governance Review Officer, OIOS',
+  decision: 'approve',
+  notes: 'Low-risk internal statistical tool using open-source anomaly detection on public SDG data. No personal data, no individual decisions, full human oversight of all flagged anomalies. Approved at first review with no conditions. Minimal route appropriately selected.'
+};
+QEXPLORER.cases.desa.answers = {
+  'R&A Q1':    'R&A Q1-yes-r31',          // Yes — monitored (w=0)
+  'DNH Q1':    'DNH Q1-yes-describe-the-barriers-and-any-planned-or-existing-measures-to-identify-remov-r46', // Yes, assessed (w=0)
+  'R&A Q2':    'R&A Q2-yes-r55',          // Yes — proposal submitted (w=0)
+  'HAO Q2':    'HAO Q2-reversible-r73',        // Fully reversible (w=1)
+  'DNH Q3':    'DNH Q3-impacts-are-most-likely-to-be-brief-r78', // Brief (w=1)
+  'DNH Q4':    'DNH Q4-little-to-no-impact-r84',  // Little to no — physical (w=1)
+  'DNH Q5':    'DNH Q5-little-to-no-impact-r90',  // Little to no — psychological (w=1)
+  'DNH Q6':    'DNH Q6-little-to-no-impact-r96',  // Little to no — health (w=1)
+  'DNH Q7':    'DNH Q7-little-to-no-impact-r102', // Little to no — economic (w=1)
+  'S Q1':      'S Q1-little-to-no-impact-r108',   // Little to no — sustainability (w=1)
+  'DPNP 17':   'DPNP 17-0-to-25-r118',           // 0–25% of population (w=1)
+  'DNH Q8':    'DNH Q8-little-to-no-impact-r126', // Little to no — wrongful inclusion (w=1)
+  'F&ND Q2A':  'F&ND Q2A-yes-if-yes-describe-your-assessment-approach-r132', // Yes (w=0)
+  'R&A Q5':    'R&A Q5-no-r142',               // Standalone, no IT integrations (w=0)
+  'T&E Q2':    'T&E Q2-text-r147',              // Text reports (w=1)
+  'RPPG Q4':   'RPPG Q4-yes-r161',              // Privacy compliant (w=0)
+  'RPPG Q5':   'RPPG Q5-no-sharing-r164',       // No data sharing (w=0)
+  'RPPG Q6':   'RPPG Q6-unclassified-r179',     // Unclassified / public statistics (w=0)
+  'R&A Q9':    'R&A Q9-your-department-office-r202', // DESA collected own data (w=1)
+  'R&A Q10':   'R&A Q10-your-department-office-r207', // DESA develops (w=1)
+  'R&A Q11':   'R&A Q11-your-department-office-r212', // DESA configures (w=1)
+  'T&E Q3':    'T&E Q3-no-r226',               // Open-source algorithms (w=0)
+  'T&E Q4':    'T&E Q4-yes-r228',              // Fully documented (w=0)
+  'HAO Q3':    'HAO Q3-partial-automations-the-ai-system-will-support-a-human-being-in-their-decision-m-r272', // Human reviews all flags (w=2)
+  'HAO Q4':    'HAO Q4-no-r276',               // No individual consequential decisions (w=1)
+  'SS Q6':     'SS Q6-yes-r278',               // Access control in place (w=0)
+  'S Q2':      'S Q2-little-to-no-impact-r281', // Minimal environmental impact (w=1)
+  'R&A Q13':   'R&A Q13-your-department-office-r287', // DESA collects input data (w=1)
+  'R&A Q14':   'R&A Q14-yes-r293'              // Data documented (w=0)
+};
 
 document.addEventListener('DOMContentLoaded', () => { qexInit(); });
 if (document.readyState !== 'loading') qexInit();
