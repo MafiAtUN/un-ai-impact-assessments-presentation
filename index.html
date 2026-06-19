@@ -1199,6 +1199,2195 @@
 
 </div><!-- /deck -->
 
+<!-- S25 QUESTIONNAIRE EXPLORER -->
+<div class="slide" id="s25">
+  <div class="slide-header">
+    <div class="slide-logo"><div class="logo-icon"><img src="un-logo.png" alt="UN"></div><div><div class="logo-text">UN AIIA</div><div class="logo-sub">Workflow Application</div></div></div>
+    <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+    <div class="slide-badge">25 / 25</div>
+  </div>
+
+  <div style="flex:1;display:flex;overflow:hidden;position:relative;z-index:2;padding-bottom:58px;">
+
+    <!-- LEFT: Principle + question tree (scrollable) -->
+    <div class="qex-left" id="qexLeft">
+      <div class="qex-case-switcher">
+        <div class="qex-case-lbl">Viewing answers for:</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
+          <button class="qex-case-btn active" id="caseBtn-unmiss" onclick="qexSetCase('unmiss')">UNMISS <span style="opacity:.6">104</span></button>
+          <button class="qex-case-btn" id="caseBtn-c2c" onclick="qexSetCase('c2c')">C2C <span style="opacity:.6">34</span></button>
+          <button class="qex-case-btn" id="caseBtn-desa" onclick="qexSetCase('desa')">DESA <span style="opacity:.6">10</span></button>
+        </div>
+      </div>
+      <div class="qex-score-bar" id="qexScoreBar">
+        <div class="qex-score-val" id="qexScoreVal">104</div>
+        <div class="qex-score-max">/ 150</div>
+        <div class="qex-score-label" id="qexScoreLabel">VERY HIGH RISK</div>
+      </div>
+      <div class="qex-tree" id="qexTree"><!-- populated by JS --></div>
+    </div>
+
+    <!-- MAIN: Question detail panel -->
+    <div class="qex-main" id="qexMain">
+      <div class="qex-placeholder" id="qexPlaceholder">
+        <div style="font-size:32px;margin-bottom:12px;">&#9654;</div>
+        <div style="font-size:15px;font-weight:700;color:rgba(255,255,255,.5);">Select a question from the left panel</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.3);margin-top:6px;">Click any principle to expand, then click a question to explore options, weights, and real demo case answers.</div>
+      </div>
+      <div class="qex-question-view" id="qexQuestionView" style="display:none;">
+        <div class="qex-q-header">
+          <div class="qex-q-pill" id="qexQPill"></div>
+          <div class="qex-q-meta" id="qexQMeta"></div>
+        </div>
+        <div class="qex-q-text" id="qexQText"></div>
+        <div class="qex-q-options" id="qexQOptions"></div>
+        <div class="qex-reviewer-note" id="qexReviewerNote"></div>
+      </div>
+    </div>
+
+  </div><!-- end flex content row -->
+
+  <!-- POPUP OVERLAY -->
+  <div class="qex-popup-overlay" id="qexOverlay" onclick="qexClosePopup()"></div>
+  <div class="qex-popup" id="qexPopup">
+    <button class="qex-popup-close" onclick="qexClosePopup()">&#x2715;</button>
+    <div id="qexPopupContent"></div>
+  </div>
+
+</div><!-- end slide -->
+
+<script>
+const QEXPLORER = {
+  principles: [
+  {
+    "name": "Defined Purpose, Necessity, and Proportionality",
+    "color": "#8B9CF4",
+    "num": "01",
+    "key": "dpnp",
+    "questions": [
+      {
+        "id": "DPNP 1",
+        "text": "Published AI Impact Assessment Number (if applicable)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 2",
+        "text": "Name(s) of respondent(s)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 3",
+        "text": "Job Title(s)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 4",
+        "text": "Department(s)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 5",
+        "text": "Division/Office",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 6",
+        "text": "Teams consulted on completion of the AI Impact Assessment",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 7",
+        "text": "Project Title",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 8",
+        "text": "Project ID from IT Plan",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 9",
+        "text": "Project Phase",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 9-design-r13",
+            "label": "Design",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 9-implementation-r14",
+            "label": "Implementation",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 10",
+        "text": "Project Description",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 11",
+        "text": "What are the primary operational or organizational drivers for introducing this AI system? (check all that apply)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 11-reduce-existing-workload-backlogs-r19",
+            "label": "Reduce existing workload backlogs",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 11-lower-costs-of-an-exisiting-programme-r20",
+            "label": "Lower costs of an exisiting programme",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 11-enhance-existing-data-driven-analysis-r21",
+            "label": "Enhance existing data-driven analysis",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 11-develop-new-services-or-capabilities-that-were-not-previously-possible-r22",
+            "label": "Develop new services or capabilities that were not previously possible",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 11-other-please-specificy-r23",
+            "label": "Other (please specificy)",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 12",
+        "text": "What user, client, or business needs is the system intended to address, and how were those needs identified?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 13",
+        "text": "How effective will the AI system likely be in meeting client needs?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 13-slightly-effective-r26",
+            "label": "Slightly effective",
+            "weight": 2
+          },
+          {
+            "code": "DPNP 13-moderately-effective-r27",
+            "label": "Moderately effective",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 13-very-effective-r28",
+            "label": "Very effective",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 13-describe-why-effectiveness-is-as-selected-r29",
+            "label": "Describe why effectiveness is as selected.",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 14",
+        "text": "Have alternative solutions been considered (other than the use of AI)?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 14-yes-if-non-ai-solutions-were-considered-why-was-ai-identified-as-the-preferred-o-r34",
+            "label": "Yes (If non-AI solutions were considered, why was AI identified as the preferred option?)",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 14-no-r35",
+            "label": "No",
+            "weight": 1
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 15",
+        "text": "What would be the consequence of not deploying the system?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 15-service-cannot-be-delivered-at-all-r37",
+            "label": "Service cannot be delivered at all",
+            "weight": 2
+          },
+          {
+            "code": "DPNP 15-service-cannot-be-delivered-in-a-timely-or-efficient-manner-r38",
+            "label": "Service cannot be delivered in a timely or efficient manner",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 15-service-costs-are-too-high-r39",
+            "label": "Service costs are too high",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 15-service-quality-is-not-as-high-r40",
+            "label": "Service quality is not as high",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 15-service-delivery-cannot-achieve-performance-targets-r41",
+            "label": "Service delivery cannot achieve performance targets",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 15-other-please-specify-r42",
+            "label": "Other (please specify)",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 16",
+        "text": "Will the AI system perform an assessment or other operation that is not currently completed by a human?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 16-yes-please-describe-the-relevant-function-s-of-the-system-r67",
+            "label": "Yes (please describe the relevant function(s) of the system)",
+            "weight": 2
+          },
+          {
+            "code": "DPNP 16-no-r68",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 17",
+        "text": "What proportion of the intended target population will this AI system be applied to?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 17-specify-target-population-e-g-un-personnel-vendors-un-beneficiaries-etc-here-r117",
+            "label": "Specify target population (e.g., UN personnel, vendors, UN beneficiaries, etc.): [here]",
+            "weight": 0
+          },
+          {
+            "code": "DPNP 17-0-to-25-r118",
+            "label": "0 to 25%",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 17-26-to-50-r119",
+            "label": "26 to 50%",
+            "weight": 2
+          },
+          {
+            "code": "DPNP 17-51-to-75-r120",
+            "label": "51 to 75%",
+            "weight": 3
+          },
+          {
+            "code": "DPNP 17-76-to-100-r121",
+            "label": "76 to 100%",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "DPNP 17-76-to-100-r121",
+          "c2c": "DPNP 17-76-to-100-r121"
+        }
+      },
+      {
+        "id": "DPNP 18",
+        "text": "Describe the model being used and why you chose it:",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 19",
+        "text": "Describe the types of decisions, actions, or processes that may be informed, supported, or automated by the AI system.",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [],
+        "answers": {}
+      },
+      {
+        "id": "DPNP 20",
+        "text": "Will the types of decisions, actions and processes informed, supported, or automated by the AI System pertain to any of the following mandates within the UN Secretariat (check all that apply)? Note: Examples in brackets are not exhaustive.",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DPNP 20-international-peace-and-security-describe-r260",
+            "label": "International Peace and Security | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-human-rights-describe-r261",
+            "label": "Human Rights | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-development-describe-r262",
+            "label": "Development | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-global-communications-e-g-un-press-releases-social-media-campaigns-etc-describe-r263",
+            "label": "Global Communications (e.g. UN press releases, social media campaigns, etc) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-human-resources-e-g-recruitment-selection-appointments-contractural-status-perfo-r264",
+            "label": "Human Resources (e.g. recruitment; selection; appointments; contractural status; performance; career development; entitlements; benefits) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-access-and-security-e-g-physical-access-system-access-id-provisioning-security-c-r265",
+            "label": "Access and Security (e.g. physical access, system access, ID provisioning, security clearances) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-procurement-and-vendor-management-e-g-vendor-eligibility-proposal-scoring-contra-r266",
+            "label": "Procurement and Vendor Management (e.g. vendor eligibility, proposal scoring, contract selection) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-budgeting-and-resource-allocation-e-g-staffing-tables-fund-distribution-travel-o-r267",
+            "label": "Budgeting and Resource Allocation (e.g. staffing tables, fund distribution, travel or mission costs) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-internal-oversight-and-investigations-e-g-risk-flags-audit-prioritization-compli-r268",
+            "label": "Internal Oversight and Investigations (e.g. risk flags, audit prioritization, compliance screening) | Describe",
+            "weight": 1
+          },
+          {
+            "code": "DPNP 20-health-related-environmental-and-workplace-health-product-and-food-safety-descri-r269",
+            "label": "Health-related (environmental and workplace health, product and food safety) | Describe",
+            "weight": 1
+          }
+        ],
+        "answers": {}
+      }
+    ]
+  },
+  {
+    "name": "Do No Harm",
+    "color": "#F87171",
+    "num": "02",
+    "key": "dnh",
+    "questions": [
+      {
+        "id": "DNH Q1",
+        "text": "Has the AI system been assessed to understand whether it would create or exacerbate barriers for persons with disabilities?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q1-yes-describe-the-barriers-and-any-planned-or-existing-measures-to-identify-remov-r46",
+            "label": "Yes (describe the barriers and any planned or existing measures to identify, remove, and/or prevent them)",
+            "weight": 0
+          },
+          {
+            "code": "DNH Q1-no-r47",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q1-no-r47",
+          "c2c": "DNH Q1-no-r47",
+          "desa": "DNH Q1-no-r47"
+        }
+      },
+      {
+        "id": "DNH Q2",
+        "text": "Have potential issues or harms related to the development of this AI system been raised by clients, the media, audits or Member States?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q2-yes-indicate-the-issue-or-harm-the-group-that-raised-them-and-how-these-have-bee-r52",
+            "label": "Yes  (indicate the issue or harm, the group that raised them, and how these have been addressed)",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q2-no-r53",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "DNH Q3",
+        "text": "How long could impacts from the AI System's decision last?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q3-impacts-are-most-likely-to-be-brief-r78",
+            "label": "Impacts are most likely to be brief",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q3-some-impacts-may-last-a-matter-of-months-but-some-lingering-impacts-may-last-lon-r79",
+            "label": "Some impacts may last a matter of months, but some lingering impacts may last longer",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q3-impacts-can-last-years-r80",
+            "label": "Impacts can last years",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81",
+            "label": "Most impacts are perpetual/can last indefinitely",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q3-describe-why-the-impacts-resulting-from-the-decision-are-as-per-selected-option--r82",
+            "label": "Describe why the impacts resulting from the decision are as per selected option above including potential risks identified and any mitigations in place",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81",
+          "c2c": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81",
+          "desa": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81"
+        }
+      },
+      {
+        "id": "DNH Q4",
+        "text": "The impacts that the AI System's decisions could have on the human rights or freedoms of individuals may be:",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q4-little-to-no-impact-r84",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q4-moderate-impact-r85",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q4-high-impact-r86",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q4-very-high-impact-r87",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q4-describe-how-this-impact-level-was-determined-potential-risks-that-were-identifi-r88",
+            "label": "Describe how this impact level was determined, potential risks that were identified, and mitigations put in place.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q4-very-high-impact-r87",
+          "c2c": "DNH Q4-very-high-impact-r87",
+          "desa": "DNH Q4-very-high-impact-r87"
+        }
+      },
+      {
+        "id": "DNH Q5",
+        "text": "The impacts that the AI System's decisions could have on the equality, dignity, privacy, or autonomy of individuals may be:",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q5-little-to-no-impact-r90",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q5-moderate-impact-r91",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q5-high-impact-r92",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q5-very-high-impact-r93",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q5-describe-how-this-impact-level-was-determined-potential-risks-that-were-identifi-r94",
+            "label": "Describe how this impact level was determined, potential risks that were identified, and mitigations put in place.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q5-very-high-impact-r93",
+          "c2c": "DNH Q5-very-high-impact-r93",
+          "desa": "DNH Q5-very-high-impact-r93"
+        }
+      },
+      {
+        "id": "DNH Q6",
+        "text": "The impacts that the decision could have on the health and well-being of individuals may be:",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q6-little-to-no-impact-r96",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q6-moderate-impact-r97",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q6-high-impact-r98",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q6-very-high-impact-r99",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q6-describe-how-this-impact-level-was-determined-potential-risks-that-were-identifi-r100",
+            "label": "Describe how this impact level was determined, potential risks that were identified, and mitigations put in place.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q6-very-high-impact-r99",
+          "c2c": "DNH Q6-very-high-impact-r99",
+          "desa": "DNH Q6-very-high-impact-r99"
+        }
+      },
+      {
+        "id": "DNH Q7",
+        "text": "The impacts that the decision could have on the economic interests of individuals may be:",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "DNH Q7-little-to-no-impact-r102",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q7-moderate-impact-r103",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q7-high-impact-r104",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q7-very-high-impact-r105",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q7-describe-how-this-impact-level-was-determined-potential-risks-that-were-identifi-r106",
+            "label": "Describe how this impact level was determined, potential risks that were identified, and mitigations put in place.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q7-very-high-impact-r105",
+          "c2c": "DNH Q7-very-high-impact-r105"
+        }
+      },
+      {
+        "id": "DNH Q8",
+        "text": "The impact of individuals being wrongfully included or overlooked by the system could be:",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "DNH Q8-little-to-no-impact-r126",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "DNH Q8-moderate-impact-r127",
+            "label": "Moderate Impact",
+            "weight": 2
+          },
+          {
+            "code": "DNH Q8-high-impact-r128",
+            "label": "High Impact",
+            "weight": 3
+          },
+          {
+            "code": "DNH Q8-very-high-impact-r129",
+            "label": "Very High Impact",
+            "weight": 4
+          },
+          {
+            "code": "DNH Q8-describe-why-the-impact-of-being-wrongfully-included-or-overlooked-by-the-system-r130",
+            "label": "Describe why the impact of being wrongfully included or overlooked by the system is as selected.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "DNH Q8-very-high-impact-r129",
+          "c2c": "DNH Q8-very-high-impact-r129"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Fairness and non-discrimination",
+    "color": "#FB923C",
+    "num": "03",
+    "key": "fair",
+    "questions": [
+      {
+        "id": "F&ND Q1",
+        "text": "Are there groups that may experience more serious or disproportionate negative effects from the system\u2019s use?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "F&ND Q1-yes-describe-r114",
+            "label": "Yes (Describe)",
+            "weight": 2
+          },
+          {
+            "code": "F&ND Q1-no-r115",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q2A",
+        "text": "Will you test the AI system to assess whether it performs fairly for people with different identity characteristics, such as gender, age, race, language, ethnicity, or disability?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "F&ND Q2A-yes-if-yes-describe-your-assessment-approach-r132",
+            "label": "Yes (if yes, describe your assessment approach)",
+            "weight": 0
+          },
+          {
+            "code": "F&ND Q2A-no-if-no-explain-why-r133",
+            "label": "No (if no, explain why)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "F&ND Q2A-no-if-no-explain-why-r133",
+          "c2c": "F&ND Q2A-no-if-no-explain-why-r133"
+        }
+      },
+      {
+        "id": "F&ND  Q2B",
+        "text": "If this test was completed and performance diferences were observed, is the difference in performance  justified?",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "F&ND  Q2B-yes-if-yes-describe-the-difference-in-system-performance-and-any-mitigation-meas-r135",
+            "label": "Yes (if yes, describe the difference in system performance and any mitigation measures taken)",
+            "weight": 0
+          },
+          {
+            "code": "F&ND  Q2B-no-the-difference-in-performance-is-not-justified-r136",
+            "label": "No, the difference in performance is not justified",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q3",
+        "text": "Have you tested the AI system to assess how it performs for people with a variety of different disabilities?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "F&ND Q3-yes-if-yes-describe-your-assessment-approach-r138",
+            "label": "Yes (if yes, describe your assessment approach)",
+            "weight": 0
+          },
+          {
+            "code": "F&ND Q3-no-if-no-explain-why-r139",
+            "label": "No (if no, explain why)",
+            "weight": 1
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q4",
+        "text": "Is the training and testing data for the AI system representative of the clients being served?",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "F&ND Q4-yes-describe-how-you-have-assessed-that-the-data-was-representative-r170",
+            "label": "Yes (Describe how you have assessed that the data was representative)",
+            "weight": 0
+          },
+          {
+            "code": "F&ND Q4-no-explain-why-the-data-is-not-representative-and-indicate-how-this-has-or-will--r171",
+            "label": "No (Explain why the data is not representative and indicate how this has or will be managed)",
+            "weight": 2
+          },
+          {
+            "code": "F&ND Q4-unsure-explain-why-you-are-unsure-whether-the-data-is-representative-r172",
+            "label": "Unsure (Explain why you are unsure whether the data is representative)",
+            "weight": 1
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q5",
+        "text": "Are there biases in the training data that could increase the likelihood of discriminatory outcomes or lead to other impacts on human rights?",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "F&ND Q5-yes-explain-the-biases-identified-and-any-mitigations-to-address-this-r174",
+            "label": "Yes (Explain the biases identified and any mitigations to address this)",
+            "weight": 2
+          },
+          {
+            "code": "F&ND Q5-no-explain-the-process-taken-to-confirm-that-there-are-no-biases-in-the-training-r175",
+            "label": "No (Explain the process taken to confirm that there are no biases in the training data that could increase the likelihood of discriminatory outcomes or other impacts on human rights.)",
+            "weight": 0
+          },
+          {
+            "code": "F&ND Q5-unsure-explain-why-you-are-unsure-of-whether-the-data-could-increase-the-likelih-r176",
+            "label": "Unsure (Explain why you are unsure of whether the data could increase the likelihood of discriminatory outcomes or other impacts on human rights)",
+            "weight": 1
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q6",
+        "text": "Do the algorithms used in the AI System consider protected characteristics under international human rights law to make its decisions or recommendations (these include: race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, disability)?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "F&ND Q6-yes-if-yes-describe-why-protected-characteristics-are-being-considered-and-any-m-r253",
+            "label": "Yes (If yes, describe why protected characteristics are being considered and any mitigations in place to address potential issues with bias or discrimination)",
+            "weight": 2
+          },
+          {
+            "code": "F&ND Q6-no-r254",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "F&ND Q7",
+        "text": "Have you evaluated whether variables that the AI system bases its decisions or recommendations on could be proxies for protected characteristics under internatioanl human rigths law  (i.e., race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth, or disability)?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "F&ND Q7-yes-r256",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "F&ND Q7-no-describe-why-r257",
+            "label": "No (Describe why)",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      }
+    ]
+  },
+  {
+    "name": "Human Autonomy and Oversight",
+    "color": "#FBBF24",
+    "num": "04",
+    "key": "hao",
+    "questions": [
+      {
+        "id": "HAO Q1",
+        "text": "Will this project have major impacts on staff, either in terms of their numbers or their roles?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "HAO Q1-yes-r64",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "HAO Q1-no-r65",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "HAO Q2",
+        "text": "Can the impacts of the AI system\u2019s decisions or recommendations be reversed if needed?",
+        "weight": 0,
+        "lifecycle": "Operate, Monitor and Maintain",
+        "opts": [
+          {
+            "code": "HAO Q2-reversible-r73",
+            "label": "Reversible",
+            "weight": 1
+          },
+          {
+            "code": "HAO Q2-likely-reversible-r74",
+            "label": "Likely reversible",
+            "weight": 2
+          },
+          {
+            "code": "HAO Q2-difficult-to-reverse-r75",
+            "label": "Difficult to reverse",
+            "weight": 3
+          },
+          {
+            "code": "HAO Q2-irreversible-r76",
+            "label": "Irreversible",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "HAO Q2-irreversible-r76",
+          "c2c": "HAO Q2-irreversible-r76",
+          "desa": "HAO Q2-irreversible-r76"
+        }
+      },
+      {
+        "id": "HAO Q3",
+        "text": "Which of the following best describes the type of automation you are planning with this AI system?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "HAO Q3-full-automation-the-ai-system-will-make-a-decision-r271",
+            "label": "Full automation (the AI system will make a decision)",
+            "weight": 4
+          },
+          {
+            "code": "HAO Q3-partial-automations-the-ai-system-will-support-a-human-being-in-their-decision-m-r272",
+            "label": "Partial automations (the AI system will support a human being in their decision-making process)",
+            "weight": 2
+          },
+          {
+            "code": "HAO Q3-describe-in-more-detail-the-role-of-the-ai-system-in-the-decision-making-process-r273",
+            "label": "Describe in more detail the role of the AI system in the decision-making process.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "HAO Q3-full-automation-the-ai-system-will-make-a-decision-r271"
+        }
+      },
+      {
+        "id": "HAO Q4",
+        "text": "Will the AI system be making decisions or assessments that require judgment or discretion?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "HAO Q4-yes-describe-r275",
+            "label": "Yes (Describe)",
+            "weight": 4
+          },
+          {
+            "code": "HAO Q4-no-r276",
+            "label": "No",
+            "weight": 1
+          }
+        ],
+        "answers": {
+          "unmiss": "HAO Q4-yes-describe-r275"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Inclusion and Participation",
+    "color": "#34D399",
+    "num": "05",
+    "key": "inc",
+    "questions": [
+      {
+        "id": "I&P Q1",
+        "text": "Could not being subject to the use of the AI System have a negative impact on an individual or groups of individuals?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "I&P Q1-yes-if-yes-explain-why-r123",
+            "label": "Yes (if yes, explain why)",
+            "weight": 1
+          },
+          {
+            "code": "I&P Q1-no-if-no-explain-why-r124",
+            "label": "No (if no, explain why)",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "I&P Q2",
+        "text": "Will accessibility needs be considered in the design of the AI system, consistent with UN Secretariat accessibility practices (e.g. web accessibility standards)?\"",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "I&P Q2-yes-r222",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "I&P Q2-no-why-not-r223",
+            "label": "No (why not?)",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      }
+    ]
+  },
+  {
+    "name": "Responsibility and Accountability",
+    "color": "#60A5FA",
+    "num": "06",
+    "key": "resp",
+    "questions": [
+      {
+        "id": "R&A Q1",
+        "text": "Will you develop and monitor performance targets and indicators for this AI system?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q1-yes-r31",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q1-no-r32",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q1-no-r32",
+          "c2c": "R&A Q1-no-r32",
+          "desa": "R&A Q1-no-r32"
+        }
+      },
+      {
+        "id": "R&A Q2",
+        "text": "Have you submitted a project proposal for this AI system to the UN Secretariat Architecture Review Board?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q2-yes-r55",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q2-no-r56",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q2-no-r56",
+          "c2c": "R&A Q2-no-r56",
+          "desa": "R&A Q2-no-r56"
+        }
+      },
+      {
+        "id": "R&A Q3",
+        "text": "Have you assigned accountability for the design, development, and stewardship of the system?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q3-yes-r58",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q3-no-r59",
+            "label": "No",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q4",
+        "text": "Will the AI system be developed for use by a different part of the organization than the ones who developed it?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q4-yes-r70",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q4-no-r71",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q5",
+        "text": "Will the AI system interface with other IT systems?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q5-yes-r141",
+            "label": "Yes",
+            "weight": 4
+          },
+          {
+            "code": "R&A Q5-no-r142",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q5-yes-r141"
+        }
+      },
+      {
+        "id": "R&A Q6",
+        "text": "Who controls the input data?",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "R&A Q6-you-department-r187",
+            "label": "You Department",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q6-another-un-secretariat-department-r188",
+            "label": "Another UN Secretariat Department",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q6-another-part-of-the-un-system-outside-un-secretariat-r189",
+            "label": "Another part of the UN System (outside UN Secretariat)",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q6-a-third-party-non-un-specify-r190",
+            "label": "A Third Party (non-UN) (specify)",
+            "weight": 3
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q7",
+        "text": "Will the AI system use data from multiple sources?",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "R&A Q7-yes-r192",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q7-no-r193",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q8",
+        "text": "Has there been a decision to exclude certain data?",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "R&A Q8-yes-describe-why-r198",
+            "label": "Yes (describe why)",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q8-no-r199",
+            "label": "No",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q8-n-a-explain-why-r200",
+            "label": "N/A (Explain why)",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q9",
+        "text": "Who collected the data used for training the system (i.e. input data)? (choose all that apply)",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "R&A Q9-your-department-office-r202",
+            "label": "Your Department/Office",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q9-another-un-secretariat-department-office-r203",
+            "label": "Another UN Secretariat Department/Office",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q9-another-un-system-entity-outside-the-un-secretariat-r204",
+            "label": "Another UN System entity (Outside the UN Secretariat)",
+            "weight": 3
+          },
+          {
+            "code": "R&A Q9-a-third-party-non-un-r205",
+            "label": "A Third Party (non-UN)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q9-a-third-party-non-un-r205"
+        }
+      },
+      {
+        "id": "R&A Q10",
+        "text": "Who will develop the AI system?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q10-your-department-office-r207",
+            "label": "Your Department/Office",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q10-another-un-secretariat-entity-specify-r208",
+            "label": "Another UN Secretariat entity (specify)",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q10-another-un-system-entity-outside-the-un-secretariat-specify-r209",
+            "label": "Another UN System entity (outside the UN Secretariat) (specify)",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q10-a-third-party-non-un-r210",
+            "label": "A Third Party (non-UN)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q10-a-third-party-non-un-r210"
+        }
+      },
+      {
+        "id": "R&A Q11",
+        "text": "Who will configure the AI System (i.e., setting up or adjusting the system)?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "R&A Q11-your-department-office-r212",
+            "label": "Your Department/Office",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q11-another-un-secretariat-entity-specify-r213",
+            "label": "Another UN Secretariat entity (specify)",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q11-another-un-system-entity-outside-the-un-secretariat-specify-r214",
+            "label": "Another UN System entity (outside the UN Secretariat) (specify)",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q11-a-third-party-non-un-r215",
+            "label": "A Third Party (non-UN)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q11-a-third-party-non-un-r215"
+        }
+      },
+      {
+        "id": "R&A Q12",
+        "text": "Will the AI system be:",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "R&A Q12-custom-built-r217",
+            "label": "Custom built",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q12-open-source-indicate-license-that-applies-r218",
+            "label": "Open Source (indicate license that applies)",
+            "weight": 3
+          },
+          {
+            "code": "R&A Q12-commercial-off-the-shelf-cots-r219",
+            "label": "Commercial off the shelf (COTS)",
+            "weight": 3
+          },
+          {
+            "code": "R&A Q12-question-for-open-source-and-cots-cases-has-the-product-been-customized-to-add-f-r220",
+            "label": "Question for Open Source and COTS cases: Has the product been customized to add functionality beyond what is available off the shelf? If yes, specify what has been customized and who performed the customization.",
+            "weight": 3
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "R&A Q13",
+        "text": "Who will collect the input data to be used by the AI system? (choose all that apply)",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "R&A Q13-your-department-office-r287",
+            "label": "Your Department/Office",
+            "weight": 1
+          },
+          {
+            "code": "R&A Q13-another-un-secretariat-department-office-r288",
+            "label": "Another UN Secretariat Department/Office",
+            "weight": 2
+          },
+          {
+            "code": "R&A Q13-another-un-system-entity-outside-the-secretariat-r289",
+            "label": "Another UN System entity (outside the Secretariat)",
+            "weight": 3
+          },
+          {
+            "code": "R&A Q13-a-third-party-non-un-r290",
+            "label": "A Third Party (non-UN)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q13-a-third-party-non-un-r290"
+        }
+      },
+      {
+        "id": "R&A Q14",
+        "text": "Describe the input data to be collected and used by the system, its source(s), and method(s) of collection, and any quality assurance measures in place.",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "R&A Q14-will-historical-decisions-or-outputs-generated-by-the-ai-system-be-accessible-an-r292",
+            "label": "Will historical decisions or outputs generated by the AI system be accessible and explainable after the system is retired?",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q14-yes-r293",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "R&A Q14-no-r294",
+            "label": "No",
+            "weight": 4
+          },
+          {
+            "code": "R&A Q14-need-to-include-a-question-broadly-related-to-agents-e-g-can-the-ai-system-auton-r300",
+            "label": "Need to include a question broadly related to agents. e.g. \"Can the AI system autonomously initiate or execute actions that modify systems, data, processes, services, or records?\" [need to add in table]",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "R&A Q14-no-r294"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Right to Privacy, Data Protection and Data Governance",
+    "color": "#A78BFA",
+    "num": "07",
+    "key": "priv",
+    "questions": [
+      {
+        "id": "RPPG Q1",
+        "text": "Will the system use personal information as input data?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "RPPG Q1-yes-r152",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "RPPG Q1-no-r153",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "RPPG Q2",
+        "text": "Have you verified that the collection of personal information is limited to only what is directly related to a program or activity in the UN Secretariat?",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "RPPG Q2-yes-r155",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q2-no-r156",
+            "label": "No",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "RPPG Q3",
+        "text": "Is the AI system using personal information of individuals to make decisions that directly impact those individuals?",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "RPPG Q3-yes-r158",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "RPPG Q3-no-r159",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "RPPG Q4",
+        "text": "Have you verified if the AI system is in compliance with the current SGB on Data Protection and Privacy (ST/SGB/2024/3), including with the UN Secretariat Data Impact Assessment(s) required by that SGB?",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "RPPG Q4-yes-r161",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q4-no-r162",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "RPPG Q4-no-r162"
+        }
+      },
+      {
+        "id": "RPPG Q5",
+        "text": "Will the personal information used by the AI system as input data be shared (check all that apply):",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "RPPG Q5-no-sharing-r164",
+            "label": "No sharing",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q5-within-your-department-r165",
+            "label": "Within your department",
+            "weight": 1
+          },
+          {
+            "code": "RPPG Q5-with-another-un-secretarait-department-r166",
+            "label": "With another UN Secretarait department",
+            "weight": 2
+          },
+          {
+            "code": "RPPG Q5-with-another-un-system-entity-outside-the-secretariat-r167",
+            "label": "With another UN System entity (outside the Secretariat)",
+            "weight": 3
+          },
+          {
+            "code": "RPPG Q5-with-a-third-party-non-un-e-g-private-sector-ngo-r168",
+            "label": "With a third party (non-UN) (e.g. private sector/NGO)",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "RPPG Q5-with-a-third-party-non-un-e-g-private-sector-ngo-r168"
+        }
+      },
+      {
+        "id": "RPPG Q6",
+        "text": "What is the highest information classification level of the input data used by the system (select one)? Note: These classification levels are derived from ST/SGB/2007/6 titled \"Information Sensitivity, classification, and handling\".",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "RPPG Q6-public-r178",
+            "label": "Public",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q6-unclassified-r179",
+            "label": "Unclassified",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q6-confidential-r180",
+            "label": "Confidential",
+            "weight": 3
+          },
+          {
+            "code": "RPPG Q6-strictly-confidential-r181",
+            "label": "Strictly Confidential",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "RPPG Q6-strictly-confidential-r181"
+        }
+      },
+      {
+        "id": "RPPG Q7",
+        "text": "Are there measures in place to ensure and verify the accuracy of the personal information used in the AI system?",
+        "weight": 0,
+        "lifecycle": "Collect and Process Data",
+        "opts": [
+          {
+            "code": "RPPG Q7-yes-describe-the-measures-taken-r183",
+            "label": "Yes (Describe the measures taken)",
+            "weight": 0
+          },
+          {
+            "code": "RPPG Q7-no-describe-why-there-are-no-measures-in-place-r184",
+            "label": "No (Describe why there are no measures in place)",
+            "weight": 2
+          },
+          {
+            "code": "RPPG Q7-n-a-describe-why-r185",
+            "label": "N/A (Describe why)",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      }
+    ]
+  },
+  {
+    "name": "Safety and Security",
+    "color": "#F472B6",
+    "num": "08",
+    "key": "safe",
+    "questions": [
+      {
+        "id": "SS Q1",
+        "text": "Could the AI system be at heightened risk of being an exploitation target for malicious actors (for example, fraud for financial gain)?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "SS Q1-yes-r49",
+            "label": "Yes",
+            "weight": 3
+          },
+          {
+            "code": "SS Q1-no-r50",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "SS Q2",
+        "text": "Is a manual or non-AI alternative available in case the AI system cannot perform its intended function for an extended period?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "SS Q2-yes-r61",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "SS Q2-no-r62",
+            "label": "No",
+            "weight": 2
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "SS Q3",
+        "text": "Will the AI system require input data from a network-connected device? (such as Internet of Things, sensor)",
+        "weight": 0,
+        "lifecycle": "",
+        "opts": [
+          {
+            "code": "SS Q3-yes-r195",
+            "label": "Yes",
+            "weight": 2
+          },
+          {
+            "code": "SS Q3-no-r196",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "SS Q4",
+        "text": "Will the algorithm continue to learn and evolve as it is used?",
+        "weight": 0,
+        "lifecycle": "Operate, Monitor and Maintain",
+        "opts": [
+          {
+            "code": "SS Q4-yes-r247",
+            "label": "Yes",
+            "weight": 3
+          },
+          {
+            "code": "SS Q4-no-r248",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "SS Q5",
+        "text": "(Sub-question) If Yes, are there mechanisms in place to monitor the changes?",
+        "weight": 0,
+        "lifecycle": "Operate, Monitor and Maintain",
+        "opts": [
+          {
+            "code": "SS Q5-yes-r250",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "SS Q5-no-r251",
+            "label": "No",
+            "weight": 3
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "SS Q6",
+        "text": "Is there a process in place to grant, monitor, and revoke access permission to the AI system?",
+        "weight": 0,
+        "lifecycle": "Deploy",
+        "opts": [
+          {
+            "code": "SS Q6-yes-r278",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "SS Q6-no-r279",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "SS Q6-no-r279"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Sustainability",
+    "color": "#86EFAC",
+    "num": "09",
+    "key": "sust",
+    "questions": [
+      {
+        "id": "S Q1",
+        "text": "The impacts that the decision could have on the ongoing sustainability of an environmental ecosystem (e.g. carbon emissions, e-waste generation, land use, depletion of natural resources, water pollution, etc.) may be:",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "S Q1-little-to-no-impact-r108",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "S Q1-moderate-impact-r109",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "S Q1-high-impact-r110",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "S Q1-very-high-impact-r111",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "S Q1-describe-how-this-impact-level-was-determined-potential-risks-that-were-identifi-r112",
+            "label": "Describe how this impact level was determined, potential risks that were identified, and mitigations put in place.",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "S Q1-very-high-impact-r111",
+          "c2c": "S Q1-very-high-impact-r111"
+        }
+      },
+      {
+        "id": "S Q2",
+        "text": "The impacts that the development, operation, and maintenance of the AI system could have on the ongoing sustainability of the natural environment (e.g. energy use, emissions, resource consumption, etc.), may be:",
+        "weight": 0,
+        "lifecycle": "Operate, Monitor and Maintain",
+        "opts": [
+          {
+            "code": "S Q2-little-to-no-impact-r281",
+            "label": "Little to no impact",
+            "weight": 1
+          },
+          {
+            "code": "S Q2-moderate-impact-r282",
+            "label": "Moderate impact",
+            "weight": 2
+          },
+          {
+            "code": "S Q2-high-impact-r283",
+            "label": "High impact",
+            "weight": 3
+          },
+          {
+            "code": "S Q2-very-high-impact-r284",
+            "label": "Very high impact",
+            "weight": 4
+          },
+          {
+            "code": "S Q2-describe-the-rationale-for-your-selected-response-r285",
+            "label": "Describe the rationale for your selected response",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "S Q2-very-high-impact-r284"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Transparency and Explainability",
+    "color": "#7DD3FC",
+    "num": "10",
+    "key": "trans",
+    "questions": [
+      {
+        "id": "T&E Q1",
+        "text": "Will the AI system require the analysis of unstructured data to make an assessment, recommendation or decision?",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "T&E Q1-yes-r144",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q1-no-r145",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "T&E Q2",
+        "text": "What type of unstructured data will the AI system create? (chose all that apply) (related with previous question)",
+        "weight": 0,
+        "lifecycle": "Plan and Design",
+        "opts": [
+          {
+            "code": "T&E Q2-text-r147",
+            "label": "Text",
+            "weight": 1
+          },
+          {
+            "code": "T&E Q2-audio-r148",
+            "label": "Audio",
+            "weight": 2
+          },
+          {
+            "code": "T&E Q2-images-r149",
+            "label": "Images",
+            "weight": 3
+          },
+          {
+            "code": "T&E Q2-video-r150",
+            "label": "Video",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "T&E Q2-video-r150"
+        }
+      },
+      {
+        "id": "T&E Q3",
+        "text": "Does the AI system rely on proprietary models, algorithms, or components protected by intellectual property rights or trade secret protections?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "T&E Q3-yes-r225",
+            "label": "Yes",
+            "weight": 4
+          },
+          {
+            "code": "T&E Q3-no-r226",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {
+          "unmiss": "T&E Q3-yes-r225"
+        }
+      },
+      {
+        "id": "T&E Q4",
+        "text": "If the AI system relies on proprietary or protected components, does the UN retain sufficient contractual rights to ensure appropriate transparency, auditability, oversight, and accountability?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "T&E Q4-yes-r228",
+            "label": "Yes",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q4-no-r229",
+            "label": "No",
+            "weight": 4
+          }
+        ],
+        "answers": {
+          "unmiss": "T&E Q4-no-r229"
+        }
+      },
+      {
+        "id": "T&E Q5",
+        "text": "Will the AI system's outputs, recommendations, or decision-making process be difficult to interpret or explain?",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "T&E Q5-yes-r231",
+            "label": "Yes",
+            "weight": 3
+          },
+          {
+            "code": "T&E Q5-no-r232",
+            "label": "No",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      },
+      {
+        "id": "T&E Q6",
+        "text": "How does the AI system make decisions?  [Should we add \"choose all that apply\"?]",
+        "weight": 0,
+        "lifecycle": "Build Model",
+        "opts": [
+          {
+            "code": "T&E Q6-based-on-rules-developed-from-laws-and-policy-and-or-using-human-expertise-e-g-i-r234",
+            "label": "Based on rules developed from laws and policy and/or using human expertise (e.g., if/then statements)",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-based-on-learning-from-data-e-g-trained-model-r235",
+            "label": "Based on learning from data (e.g., trained model)",
+            "weight": 2
+          },
+          {
+            "code": "T&E Q6-any-option-missing-r236",
+            "label": "Any option missing?",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-what-type-of-outputs-does-the-ai-system-produce-should-we-add-choose-all-that-ap-r237",
+            "label": "What type of outputs does the AI system produce? [Should we add \"choose all that apply\"?]",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-deterministic-i-e-same-input-same-output-r238",
+            "label": "Deterministic (i.e., Same input = same output)",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-probabilistic-i-e-outputs-may-vary-or-include-uncertainty-r239",
+            "label": "Probabilistic (i.e., Outputs may vary or include uncertainty)",
+            "weight": 1
+          },
+          {
+            "code": "T&E Q6-any-option-missing-r240",
+            "label": "Any option missing?",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-what-types-of-models-are-used-in-the-ai-system-should-we-add-choose-all-that-app-r241",
+            "label": "What types of models are used in the AI system? [Should we add \"choose all that apply?\"]",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-discriminative-classifying-or-predicting-r242",
+            "label": "Discriminative (classifying or predicting)",
+            "weight": 0
+          },
+          {
+            "code": "T&E Q6-generative-simulating-creating-new-outputs-r243",
+            "label": "Generative (simulating, creating new outputs)",
+            "weight": 2
+          },
+          {
+            "code": "T&E Q6-any-option-missing-r244",
+            "label": "Any option missing?",
+            "weight": 0
+          }
+        ],
+        "answers": {}
+      }
+    ]
+  }
+],
+  cases: {
+    unmiss: {label:"UNMISS Incident Classifier",risk:"very_high",score:104,color:"#F87171",status:"escalated",reviewer:"Ibrahim Al-Rashid",decision:"escalate",answers:{"R&A Q1": "R&A Q1-no-r32", "DNH Q1": "DNH Q1-no-r47", "R&A Q2": "R&A Q2-no-r56", "HAO Q2": "HAO Q2-irreversible-r76", "DNH Q3": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81", "DNH Q4": "DNH Q4-very-high-impact-r87", "DNH Q5": "DNH Q5-very-high-impact-r93", "DNH Q6": "DNH Q6-very-high-impact-r99", "DNH Q7": "DNH Q7-very-high-impact-r105", "S Q1": "S Q1-very-high-impact-r111", "DPNP 17": "DPNP 17-76-to-100-r121", "DNH Q8": "DNH Q8-very-high-impact-r129", "F&ND Q2A": "F&ND Q2A-no-if-no-explain-why-r133", "R&A Q5": "R&A Q5-yes-r141", "T&E Q2": "T&E Q2-video-r150", "RPPG Q4": "RPPG Q4-no-r162", "RPPG Q5": "RPPG Q5-with-a-third-party-non-un-e-g-private-sector-ngo-r168", "RPPG Q6": "RPPG Q6-strictly-confidential-r181", "R&A Q9": "R&A Q9-a-third-party-non-un-r205", "R&A Q10": "R&A Q10-a-third-party-non-un-r210", "R&A Q11": "R&A Q11-a-third-party-non-un-r215", "T&E Q3": "T&E Q3-yes-r225", "T&E Q4": "T&E Q4-no-r229", "HAO Q3": "HAO Q3-full-automation-the-ai-system-will-make-a-decision-r271", "HAO Q4": "HAO Q4-yes-describe-r275", "SS Q6": "SS Q6-no-r279", "S Q2": "S Q2-very-high-impact-r284", "R&A Q13": "R&A Q13-a-third-party-non-un-r290", "R&A Q14": "R&A Q14-no-r294"}},
+    c2c:   {label:"AU-UN C2C Assistant",risk:"medium",score:34,color:"#F59E0B",status:"approved",reviewer:"Sarah Chen",decision:"approve",answers:{"R&A Q1": "R&A Q1-no-r32", "DNH Q1": "DNH Q1-no-r47", "R&A Q2": "R&A Q2-no-r56", "HAO Q2": "HAO Q2-irreversible-r76", "DNH Q3": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81", "DNH Q4": "DNH Q4-very-high-impact-r87", "DNH Q5": "DNH Q5-very-high-impact-r93", "DNH Q6": "DNH Q6-very-high-impact-r99", "DNH Q7": "DNH Q7-very-high-impact-r105", "S Q1": "S Q1-very-high-impact-r111", "DPNP 17": "DPNP 17-76-to-100-r121", "DNH Q8": "DNH Q8-very-high-impact-r129", "F&ND Q2A": "F&ND Q2A-no-if-no-explain-why-r133"}},
+    desa:  {label:"DESA SDG Anomaly Detection",risk:"low",score:10,color:"#22D3AE",status:"approved",reviewer:"James Okonkwo",decision:"approve",answers:{"R&A Q1": "R&A Q1-no-r32", "DNH Q1": "DNH Q1-no-r47", "R&A Q2": "R&A Q2-no-r56", "HAO Q2": "HAO Q2-irreversible-r76", "DNH Q3": "DNH Q3-most-impacts-are-perpetual-can-last-indefinitely-r81", "DNH Q4": "DNH Q4-very-high-impact-r87", "DNH Q5": "DNH Q5-very-high-impact-r93", "DNH Q6": "DNH Q6-very-high-impact-r99"}}
+  },
+  reviewerNotes: {"Do No Harm": "High-weight answers here indicate potential harm to affected persons \u2014 reviewer must assess severity, reversibility, and mitigation adequacy. Score \u22658 triggers mandatory independent safety review.", "Human Autonomy and Oversight": "Answers indicating no human override or limited explainability will escalate to senior governance review. UNMISS scored maximum here.", "Defined Purpose, Necessity, and Proportionality": "Questions here establish whether AI is needed and justified. Weak answers suggest scope creep.", "Responsibility and Accountability": "Defines who is accountable if the system fails. Missing accountability chains are a red flag for any reviewer.", "Right to Privacy, Data Protection and Data Governance": "Personal or sensitive data processing without proper governance triggers GDPR/data policy review.", "Safety and Security": "Security vulnerabilities or lack of adversarial testing require cybersecurity team sign-off.", "Transparency and Explainability": "Systems affecting individuals must have explainable outputs. Opaque models serving high-stakes decisions fail this principle.", "Fairness and non-discrimination": "Biased training data or unrepresentative datasets trigger fairness audits.", "Inclusion and Participation": "Systems serving diverse populations must be accessible and culturally sensitive.", "Sustainability": "Long-term environmental and operational sustainability of the AI system."}
+};
+
+// ── State ──────────────────────────────────────────────────────────────────
+let qexCurrentCase = 'unmiss';
+let qexCurrentPrincipleKey = null;
+let qexCurrentQuestionId = null;
+const RISK_LABELS = {very_high:'VERY HIGH RISK',high:'HIGH RISK',medium:'MEDIUM RISK',low:'LOW RISK'};
+const RISK_COLORS = {very_high:'#F87171',high:'#F59E0B',medium:'#FBBF24',low:'#22D3AE'};
+
+function qexInit() {
+  qexBuildTree();
+  qexSetCase('unmiss');
+}
+
+function qexBuildTree() {
+  const tree = document.getElementById('qexTree');
+  tree.innerHTML = '';
+  QEXPLORER.principles.forEach(p => {
+    const group = document.createElement('div');
+    group.className = 'qex-p-group';
+    group.id = 'pgroup-' + p.key;
+
+    const hdr = document.createElement('button');
+    hdr.className = 'qex-p-hdr';
+    hdr.innerHTML = `<span class="qex-p-dot" style="background:${p.color}"></span><span class="qex-p-name">${p.name.length > 30 ? p.name.slice(0,30)+'…' : p.name}</span><span class="qex-p-count">${p.questions.length}</span><span class="qex-p-chevron">&#x25BC;</span>`;
+    hdr.onclick = () => qexTogglePrinciple(p.key);
+    hdr.style.borderLeft = '3px solid ' + p.color;
+
+    const qlist = document.createElement('div');
+    qlist.className = 'qex-q-list';
+    qlist.id = 'qlist-' + p.key;
+    qlist.style.display = 'none';
+
+    p.questions.forEach(q => {
+      const qbtn = document.createElement('button');
+      qbtn.className = 'qex-q-btn';
+      qbtn.id = 'qbtn-' + q.id.replace(/\s/g,'-');
+      qbtn.onclick = () => qexSelectQuestion(p.key, q.id);
+      tree.appendChild;
+      const wDots = q.weight > 0 ? '▪'.repeat(Math.min(q.weight,4)) : '·';
+      qbtn.innerHTML = `<span class="qex-q-id">${q.id}</span><span class="qex-q-brief">${q.text.slice(0,42)}…</span><span class="qex-q-status" id="qstat-${q.id.replace(/\s/g,'-')}"></span>`;
+      qlist.appendChild(qbtn);
+    });
+
+    group.appendChild(hdr);
+    group.appendChild(qlist);
+    tree.appendChild(group);
+  });
+}
+
+function qexTogglePrinciple(key) {
+  const qlist = document.getElementById('qlist-' + key);
+  const group = document.getElementById('pgroup-' + key);
+  const hdr = group.querySelector('.qex-p-hdr');
+  const open = qlist.style.display !== 'none';
+  // Close all others
+  document.querySelectorAll('.qex-q-list').forEach(l => { l.style.display = 'none'; });
+  document.querySelectorAll('.qex-p-hdr').forEach(h => h.classList.remove('open'));
+  if (!open) {
+    qlist.style.display = 'block';
+    hdr.classList.add('open');
+    qexCurrentPrincipleKey = key;
+  } else {
+    qexCurrentPrincipleKey = null;
+  }
+}
+
+function qexSetCase(caseKey) {
+  qexCurrentCase = caseKey;
+  const c = QEXPLORER.cases[caseKey];
+  document.querySelectorAll('.qex-case-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('caseBtn-' + caseKey).classList.add('active');
+  document.getElementById('qexScoreVal').textContent = c.score;
+  document.getElementById('qexScoreVal').style.color = RISK_COLORS[c.risk] || '#fff';
+  document.getElementById('qexScoreLabel').textContent = RISK_LABELS[c.risk] || c.risk.toUpperCase();
+  document.getElementById('qexScoreLabel').style.color = RISK_COLORS[c.risk] || '#999';
+  // Update question status indicators
+  qexUpdateStatusIndicators();
+  // Re-render current question if one is selected
+  if (qexCurrentQuestionId) qexSelectQuestion(qexCurrentPrincipleKey, qexCurrentQuestionId);
+}
+
+function qexUpdateStatusIndicators() {
+  const c = QEXPLORER.cases[qexCurrentCase];
+  QEXPLORER.principles.forEach(p => {
+    p.questions.forEach(q => {
+      const el = document.getElementById('qstat-' + q.id.replace(/\s/g,'-'));
+      if (!el) return;
+      const selCode = c.answers[q.id];
+      if (!selCode) { el.textContent = ''; el.className = 'qex-q-status'; return; }
+      const opt = q.opts.find(o => o.code === selCode);
+      const w = opt ? opt.weight : 0;
+      el.textContent = w >= 3 ? '⚠' : w >= 1 ? '●' : '✓';
+      el.className = 'qex-q-status ' + (w >= 3 ? 'qex-stat-high' : w >= 1 ? 'qex-stat-med' : 'qex-stat-low');
+    });
+  });
+}
+
+function qexSelectQuestion(principleKey, questionId) {
+  qexCurrentPrincipleKey = principleKey;
+  qexCurrentQuestionId = questionId;
+  // Find question data
+  const pData = QEXPLORER.principles.find(p => p.key === principleKey);
+  const q = pData && pData.questions.find(x => x.id === questionId);
+  if (!q) return;
+
+  // Highlight active question button
+  document.querySelectorAll('.qex-q-btn').forEach(b => b.classList.remove('active'));
+  const activeBtn = document.getElementById('qbtn-' + questionId.replace(/\s/g,'-'));
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Show question view
+  document.getElementById('qexPlaceholder').style.display = 'none';
+  document.getElementById('qexQuestionView').style.display = 'flex';
+
+  // Fill header
+  document.getElementById('qexQPill').innerHTML =
+    `<span style="background:${pData.color}20;color:${pData.color};border:1px solid ${pData.color}40;padding:3px 11px;border-radius:20px;font-size:11px;font-weight:800;">${pData.name}</span>` +
+    `<span style="background:rgba(255,255,255,.06);padding:3px 11px;border-radius:20px;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);">${q.lifecycle}</span>` +
+    `<span style="background:rgba(255,255,255,.06);padding:3px 11px;border-radius:20px;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);">Q weight: ${q.weight}/4</span>`;
+
+  document.getElementById('qexQMeta').innerHTML =
+    `<span style="font-size:11px;color:rgba(255,255,255,.35);">Question ID: <strong style="color:rgba(255,255,255,.6);">${q.id}</strong></span>` +
+    ` &nbsp;·&nbsp; <span style="font-size:11px;color:rgba(255,255,255,.35);">Answered by: <strong style="color:rgba(255,255,255,.6);">Entity Focal Point / Contributor</strong></span>`;
+
+  document.getElementById('qexQText').textContent = q.text;
+
+  // Current case answers
+  const c = QEXPLORER.cases[qexCurrentCase];
+  const selectedCode = c.answers[q.id];
+
+  // Render options
+  const optsEl = document.getElementById('qexQOptions');
+  optsEl.innerHTML = '';
+  q.opts.forEach(opt => {
+    const isSelected = opt.code === selectedCode;
+    const card = document.createElement('div');
+    card.className = 'qex-opt-card' + (isSelected ? ' qex-opt-selected' : '');
+    if (isSelected) card.style.borderColor = c.color;
+
+    const wPct = (opt.weight / 4) * 100;
+    const wColor = opt.weight >= 3 ? '#F87171' : opt.weight >= 2 ? '#F59E0B' : opt.weight >= 1 ? '#60A5FA' : '#22D3AE';
+
+    card.innerHTML = `
+      <div class="qex-opt-row">
+        <div class="qex-opt-check" style="border-color:${isSelected ? c.color : 'rgba(255,255,255,.15)'};background:${isSelected ? c.color + '30' : 'transparent'}">${isSelected ? '✓' : ''}</div>
+        <div class="qex-opt-text">${opt.label}</div>
+        <div class="qex-opt-weight">
+          <div class="qex-opt-wbar"><div style="width:${wPct}%;background:${wColor};height:100%;border-radius:2px;transition:width .3s;"></div></div>
+          <span style="font-size:11px;font-weight:800;color:${wColor}">${opt.weight}/4</span>
+        </div>
+      </div>
+      ${isSelected ? `<div class="qex-opt-case-tag" style="border-color:${c.color}40;color:${c.color};">&#9654; Selected by ${c.label} · contributes ${q.weight * opt.weight} pts to exposure</div>` : ''}
+    `;
+    card.onclick = () => qexShowOptionPopup(q, opt, isSelected, pData);
+    optsEl.appendChild(card);
+  });
+
+  // Reviewer note
+  const note = QEXPLORER.reviewerNotes[pData.name] || '';
+  const noteEl = document.getElementById('qexReviewerNote');
+  noteEl.innerHTML = note ? `<div class="qex-rev-note"><span style="font-size:11px;font-weight:800;color:rgba(255,200,100,.7);letter-spacing:.08em;">&#128269; REVIEWER ATTENTION</span><div style="margin-top:5px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;">${note}</div></div>` : '';
+}
+
+function qexShowOptionPopup(q, opt, isSelectedByCurrent, pData) {
+  // Find which cases selected this option
+  const casesWithThis = [];
+  Object.entries(QEXPLORER.cases).forEach(([key, c]) => {
+    if (c.answers[q.id] === opt.code) casesWithThis.push({key, c});
+  });
+
+  const contribution = q.weight * opt.weight;
+  const wColor = opt.weight >= 3 ? '#F87171' : opt.weight >= 2 ? '#F59E0B' : opt.weight >= 1 ? '#60A5FA' : '#22D3AE';
+  const riskImpact = opt.weight >= 3 ? '⚠ High risk flag — this principle will be scrutinised by the reviewer' :
+                     opt.weight >= 2 ? '● Moderate contribution — included in reviewer summary' :
+                     opt.weight >= 1 ? '↑ Low contribution — noted but unlikely to trigger review action' :
+                                       '✓ No risk contribution from this answer';
+
+  const caseHtml = casesWithThis.length > 0
+    ? casesWithThis.map(({}, c) => `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;"><span style="width:8px;height:8px;border-radius:50%;background:${c.color};flex-shrink:0;display:inline-block;"></span><span style="font-size:12px;color:rgba(255,255,255,.7);">${c.label}</span><span style="font-size:11px;color:rgba(255,255,255,.35);">(${RISK_LABELS[c.risk]})</span></div>`).join('')
+    : '<div style="font-size:12px;color:rgba(255,255,255,.35);font-style:italic;">No demo case selected this option</div>';
+
+  document.getElementById('qexPopupContent').innerHTML = `
+    <div style="font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;">Selected Option</div>
+    <div style="font-size:15px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:14px;line-height:1.4;">"${opt.label}"</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div style="background:rgba(255,255,255,.04);border-radius:9px;padding:10px 13px;">
+        <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-bottom:4px;">OPTION WEIGHT</div>
+        <div style="font-size:24px;font-weight:900;color:${wColor}">${opt.weight}<span style="font-size:14px;color:rgba(255,255,255,.3)">/4</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;">Question weight: ${q.weight}/4</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border-radius:9px;padding:10px 13px;">
+        <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-bottom:4px;">RISK CONTRIBUTION</div>
+        <div style="font-size:24px;font-weight:900;color:${wColor}">${contribution}<span style="font-size:14px;color:rgba(255,255,255,.3)"> pts</span></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px;">= Q weight ${q.weight} × opt weight ${opt.weight}</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:10px 13px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-bottom:5px;">RISK IMPLICATION</div>
+      <div style="font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.5;">${riskImpact}</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:10px 13px;margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-bottom:8px;">DEMO CASES WITH THIS ANSWER</div>
+      ${caseHtml}
+    </div>
+
+    <div style="background:rgba(255,180,0,.04);border:1px solid rgba(255,180,0,.15);border-radius:9px;padding:10px 13px;">
+      <div style="font-size:10px;font-weight:800;color:rgba(255,200,100,.5);letter-spacing:.1em;margin-bottom:5px;">REVIEWER TRIGGER — ${pData.name.toUpperCase()}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.55);line-height:1.55;">${QEXPLORER.reviewerNotes[pData.name] || 'No specific reviewer trigger for this principle.'}</div>
+    </div>
+  `;
+  document.getElementById('qexOverlay').style.display = 'block';
+  document.getElementById('qexPopup').classList.add('open');
+}
+
+function qexClosePopup() {
+  document.getElementById('qexOverlay').style.display = 'none';
+  document.getElementById('qexPopup').classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => { qexInit(); });
+if (document.readyState !== 'loading') qexInit();
+</script>
+
 <nav class="nav-bar">
   <button class="nav-btn" id="prevBtn" disabled onclick="navigate(-1)">&#x2190; Prev</button>
   <div class="nav-center">
@@ -1231,8 +3420,8 @@ function updateSidebarActive(n) {
   });
 }
 
-const TOTAL=24;
-const LABELS=['Introduction','The Problem','Objectives','AI Principles','End-to-End Workflow','User Roles','Role Activity Map','Focal Point Journey','Screening: 5 Questions','Screening: Decision Map','Screening: Route Outcomes','Contributor Role','Reviewer Decisions','Admin & Viewer','RBAC Matrix','Dashboard','Policy Chat','How to Use','Example Use Case','Architecture','Azure Costs','Roadmap','Value Proposition','Next Steps'];
+const TOTAL=25;
+const LABELS=['Introduction','The Problem','Objectives','AI Principles','End-to-End Workflow','User Roles','Role Activity Map','Focal Point Journey','Screening: 5 Questions','Screening: Decision Map','Screening: Route Outcomes','Contributor Role','Reviewer Decisions','Admin & Viewer','RBAC Matrix','Dashboard','Policy Chat','How to Use','Example Use Case','Architecture','Azure Costs','Roadmap','Value Proposition','Next Steps','Questionnaire Explorer'];
 let current=0;
 const slides=Array.from({length:TOTAL},(_,i)=>document.getElementById('s'+(i+1)));
 const dotNav=document.getElementById('dotNav');
