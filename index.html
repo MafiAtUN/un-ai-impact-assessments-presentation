@@ -3680,8 +3680,8 @@ const CSC_STAGE_DEFS = [
   {id:'outcome',  label:'Outcome',    icon:'✅', sublabel:'Decision + Actions',   role:'Governance'}
 ];
 
-const RISK_COLORS = {very_high:'#F87171',high:'#F59E0B',medium:'#FBBF24',low:'#22D3AE'};
-const RISK_LABELS = {very_high:'VERY HIGH RISK',high:'HIGH RISK',medium:'MEDIUM RISK',low:'LOW RISK'};
+const CSC_RISK_COLORS = {very_high:'#F87171',high:'#F59E0B',medium:'#FBBF24',low:'#22D3AE'};
+const CSC_RISK_LABELS = {very_high:'VERY HIGH RISK',high:'HIGH RISK',medium:'MEDIUM RISK',low:'LOW RISK'};
 const DEC_COLORS  = {escalate:'#F87171',conditions:'#F59E0B',approve:'#22D3AE'};
 const DEC_LABELS  = {escalate:'ESCALATED',conditions:'APPROVED WITH CONDITIONS',approve:'APPROVED'};
 
@@ -3747,7 +3747,7 @@ function cscSelectScenario(sid) {
     if (st.id === 'score') {
       const sc = cscActive.stages.score.val;
       const pct = Math.min(100, Math.round(sc / 150 * 100));
-      const rc = RISK_COLORS[cscActive.risk];
+      const rc = CSC_RISK_COLORS[cscActive.risk];
       box.querySelector('.csc-st-sub').innerHTML = `<div style="margin-top:4px;height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${rc};border-radius:3px;transition:width .6s;"></div></div><div style="font-size:10px;margin-top:2px;color:${rc};font-weight:700;">Score: ${sc} / 150</div>`;
     }
   });
@@ -3811,11 +3811,11 @@ function cscSelectStage(stageId) {
   if (stageId === 'score') {
     const sc = stData.val || 0;
     const pct = Math.min(100, Math.round(sc / 150 * 100));
-    const rc = RISK_COLORS[cscActive.risk];
+    const rc = CSC_RISK_COLORS[cscActive.risk];
     html += `<div style="margin-top:10px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
         <span style="font-size:11px;color:rgba(255,255,255,.4);">0</span>
-        <span style="font-size:11px;font-weight:800;color:${rc};">${RISK_LABELS[cscActive.risk]}: ${sc} / 150</span>
+        <span style="font-size:11px;font-weight:800;color:${rc};">${CSC_RISK_LABELS[cscActive.risk]}: ${sc} / 150</span>
         <span style="font-size:11px;color:rgba(255,255,255,.4);">150</span>
       </div>
       <div style="height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;">
